@@ -1,0 +1,24 @@
+{
+  "parser": "@typescript-eslint/parser", // ts는 parsing이 필요하기때문에 사용
+  "plugins": ["@typescript-eslint", "prettier"], // 사용할 ESLint 플러그인. eslint-plugin-prettier가 사용되게 하기 위해 prettier를 추가해준다
+  "parserOptions": {
+    // TypeScript 파일 분석에 필요한 옵션을 설정
+    "project": "./tsconfig.json" // project 옵션은 TypeScript 프로젝트의 설정 파일(tsconfig.json)을 지정하여 ESLint가 프로젝트의 구성을 이해하도록 함
+  },
+  "extends": [
+    // ESLint 구성을 확장. Next.js의 코어 웹 바이탈스 및 TypeScript 및 Prettier와 관련된 권장 규칙을 사용
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:@typescript-eslint/recommended", // @typescript-eslint를 적용하고 recommended 규칙으로 확장.
+    "plugin:prettier/recommended" // eslint-plugin-prettier + eslint-config-prettier 동시 적용.
+  ],
+  "rules": {
+    // ESLint 규칙을 설정
+    // 'React' must be in scope when using JSX 에러 해결 (Next.js)
+    "react/react-in-jsx-scope": "off",
+    // ts파일에서 tsx구문 허용 (Next.js)
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "no-unused-vars": "off", //타입스크립트 사용시 interface의 변수명을 eslint가 잡지 않도록 함.
+    "@typescript-eslint/no-unused-vars": "warn" //대신 사용하지 않는 변수는 @typescript/eslint를 통해 잡아줌.
+  }
+}
