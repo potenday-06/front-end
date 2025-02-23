@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-cloud {
+  background-image: url('/assets/images/cloud.png');
+  background-repeat: no-repeat;
+  background-size: 807px;
+  background-position: top 200% right 47%;
+}
