@@ -2,7 +2,18 @@
 
 import Image from 'next/image'
 
-const page = () => {
+const Onboarding = () => {
+  const handleLoginWithKakao = () => {
+    if (typeof window !== 'undefined' && window.Kakao) {
+      window.Kakao.Auth.authorize({
+        redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECTURL,
+        scope: 'profile_nickname',
+      })
+    } else {
+      console.error('Kakao SDK not loaded')
+    }
+  }
+
   return (
     <div className='flex flex-col rounded-30'>
       <p className='flex justify-center text-center text-white'>
@@ -15,7 +26,10 @@ const page = () => {
         토리는 언제나 귀를 기울여 줄 거예요
       </p>
       <div className='flex max-w-335 flex-col gap-12'>
-        <button className='flex h-46 w-full items-center justify-center gap-10 rounded-30 bg-[#FFEC45]'>
+        <button
+          onClick={handleLoginWithKakao}
+          className='flex h-46 w-full items-center justify-center gap-10 rounded-30 bg-[#FFEC45]'
+        >
           <Image
             src='/assets/icons/kakao-logo.svg'
             width={16}
@@ -40,4 +54,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Onboarding
