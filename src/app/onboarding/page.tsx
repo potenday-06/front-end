@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useRef } from 'react'
 
 const Onboarding = () => {
   const handleLoginWithKakao = () => {
@@ -11,6 +12,27 @@ const Onboarding = () => {
       })
     } else {
       console.error('Kakao SDK not loaded')
+    }
+  }
+
+  const naverRef = useRef<HTMLDivElement>(null)
+
+  const handleLoginWithNaver = () => {
+    if (typeof window === 'undefined') return
+
+    const naverLogin = new window.naver.LoginWithNaverId({
+      clientId: process.env.NEXT_PUBLIC_NAVER_CLIENT_ID,
+      callbackUrl: `${process.env.NEXT_PUBLIC_NAVER_CALLBACKURL}`,
+      isPopup: false,
+      loginButton: { color: 'white', type: 1, height: '16' },
+      callbackHandle: true,
+    })
+    naverLogin.init()
+
+    // 커스텀한 아이콘으로 눌러주기 위한 useRef를 사용하여 첫 번째 자식을 클릭
+    const firstChild = naverRef.current?.children[0] as HTMLElement
+    if (firstChild) {
+      firstChild.click()
     }
   }
 
@@ -39,7 +61,10 @@ const Onboarding = () => {
           />
           <span className='text-[#3C1E1E]'>카카오로 시작하기</span>
         </button>
-        <button className='flex h-46 w-full items-center justify-center gap-10 rounded-30 bg-[#00BF18]'>
+        <button
+          onClick={handleLoginWithNaver}
+          className='flex h-46 w-full items-center justify-center gap-10 rounded-30 bg-[#00BF18]'
+        >
           <Image
             src='/assets/icons/naver-logo.svg'
             width={16}
@@ -47,6 +72,7 @@ const Onboarding = () => {
             alt='네이버'
             priority
           />
+          <span id='naverIdLogin' className='hidden' ref={naverRef} />
           <span className='text-white'>네이버로 시작하기</span>
         </button>
       </div>
