@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from 'next'
 
 import './globals.css'
 import KakaoScript from './KakaoScript/page'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -10,8 +12,8 @@ export const metadata: Metadata = {
 
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Kakao: any
+    naver: any
   }
 }
 
@@ -22,8 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className='bg-[#7A4AFF]'>{children}</body>
-      <KakaoScript />
+      <body suppressHydrationWarning className='bg-[#7A4AFF]'>
+        {children}
+        <KakaoScript />
+        <Script
+          src='https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js'
+          strategy='beforeInteractive'
+        />
+      </body>
     </html>
   )
 }
