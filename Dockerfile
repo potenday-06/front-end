@@ -6,9 +6,11 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /usr/src/app
 
 # Install dependencies based on the preferred package manager
-ENV NODE_ENV=production
+# ENV NODE_ENV=production
+ENV NODE_ENV=development 
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev --ignore-scripts
+# RUN npm ci --omit=dev --ignore-scripts
+RUN npm ci --ignore-scripts  # devDependencies 포함해서 설치
 RUN rm -rf ./.next/cache
 
 # Rebuild the source code only when needed
