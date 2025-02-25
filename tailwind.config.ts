@@ -17,7 +17,6 @@ export default {
       fontSize: {
         '18-600': ['18px', { fontWeight: '600', lineHeight: '21px' }],
         '18-600-25': ['18px', { fontWeight: '600', lineHeight: '25px' }],
-
         '18-600-30': ['18px', { fontWeight: '600', lineHeight: '30px' }],
 
         '20-500': ['20px', { fontWeight: '500', lineHeight: '30px' }],
