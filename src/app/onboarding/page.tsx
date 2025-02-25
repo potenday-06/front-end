@@ -36,18 +36,21 @@ const Onboarding = () => {
         className='mt-26'
       />
       <div className='fixed bottom-0 left-0 right-0 flex h-[30%] flex-col justify-between gap-31 rounded-t-10 bg-white px-24 pb-48 pt-38 text-center text-black-10'>
-        <p>
+        <div className='text-20-500'>
           안녕? 여기는 토리가 있는 토리별이야!
           <br />
           토리는 아이들과 대화하는 AI토끼야.
           <br />
-          기분을 물어보고 함께 대화를 나눌거야.
-        </p>
+          <span className='flex justify-center'>
+            기분을 물어보고 함께&nbsp;
+            <p className='text-20-700'>대화를 나눌거야.</p>
+          </span>
+        </div>
         <Link href='/onboarding/step2' className='flex justify-end'>
           <Image
             width={48}
             height={48}
-            src='/assets/icons/next-button.svg'
+            src='/assets/icons/button-next.svg'
             alt='다음 버튼'
           />
         </Link>
