@@ -1,4 +1,4 @@
-FROM node:20.18
+FROM amd64/node:20.18
 
 WORKDIR /app
 
