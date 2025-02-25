@@ -65,7 +65,7 @@ const AuthRedirect = () => {
           } else {
             console.error('카카오 인가 코드를 찾을 수 없습니다.')
             setError('카카오 로그인 인가 코드를 찾을 수 없습니다.')
-            router.push('/onboarding')
+            router.push('/login')
           }
           break
         }
@@ -78,14 +78,14 @@ const AuthRedirect = () => {
           } else {
             console.error('네이버 인가 토큰을 찾을 수 없습니다.')
             setError('네이버 인가 토큰을 찾을 수 없습니다.')
-            router.push('/onboarding')
+            router.push('/login')
           }
           break
         }
         default:
           console.error('알 수 없는 provider:', provider)
           setError('알 수 없는 인증 수단입니다.')
-          router.push('/onboarding')
+          router.push('/login')
           break
       }
     }
