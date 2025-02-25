@@ -37,20 +37,36 @@ const Login = () => {
   }
 
   return (
-    <div className='flex flex-col rounded-30'>
-      <p className='flex justify-center text-center text-white'>
-        달나라 토끼들의 꿈을 담아 탄생한 찹쌀떡 토리.
-        <br />
-        별빛에 실린 수많은 이야기를 듣는 걸 좋아해요
-        <br />
-        기쁨, 슬픔, 소망, 그리고 말하지 못한 마음까지
-        <br />
-        토리는 언제나 귀를 기울여 줄 거예요
-      </p>
-      <div className='flex max-w-335 flex-col gap-12'>
+    <div className='relative flex min-h-screen flex-col justify-between p-33'>
+      <header className='flex justify-center'>
+        <Image
+          src='/assets/icons/logo-text.svg'
+          alt='텍스트 로고'
+          width={51}
+          height={28}
+        />
+      </header>
+      <main className='flex flex-1 flex-col items-center justify-center'>
+        <p className='text-center text-18-600-30'>
+          토리는 달나라 토끼들의 꿈에서 태어난
+          <br />
+          찹쌀떡 토끼예요 토리와 소중한 이야기를
+          <br />
+          오래 간직하려면 먼저 가입해 주세요!
+        </p>
+      </main>
+      <Image
+        className='absolute left-1/2 top-[60%] -translate-x-1/2'
+        src='/assets/icons/tori-login.svg'
+        width={96}
+        height={116}
+        alt='토리'
+        priority
+      />
+      <footer className='flex flex-col items-center gap-12'>
         <button
           onClick={handleLoginWithKakao}
-          className='flex h-46 w-full items-center justify-center gap-10 rounded-30 bg-[#FFEC45]'
+          className='flex h-46 w-full max-w-335 items-center justify-center gap-10 rounded-30 bg-[#FFEC45]'
         >
           <Image
             src='/assets/icons/kakao-logo.svg'
@@ -63,7 +79,7 @@ const Login = () => {
         </button>
         <button
           onClick={handleLoginWithNaver}
-          className='flex h-46 w-full items-center justify-center gap-10 rounded-30 bg-[#00BF18]'
+          className='flex h-46 w-full max-w-335 items-center justify-center gap-10 rounded-30 bg-[#00BF18]'
         >
           <Image
             src='/assets/icons/naver-logo.svg'
@@ -75,7 +91,7 @@ const Login = () => {
           <span id='naverIdLogin' className='hidden' ref={naverRef} />
           <span className='text-white'>네이버로 시작하기</span>
         </button>
-      </div>
+      </footer>
     </div>
   )
 }
