@@ -42,7 +42,7 @@ const OnboardingStep3 = () => {
 
         <Link
           href='/login'
-          className='rounded-24 bg-purple-20 py-13 text-18-600 text-white'
+          className='rounded-24 bg-purple-30 py-13 text-18-600 text-white'
         >
           시작하기
         </Link>
