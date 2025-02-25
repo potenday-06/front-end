@@ -19,13 +19,13 @@ const Onboarding = () => {
           src='assets/icons/tori-smile.svg'
           alt='토리'
         />
-        <p>
+        <p className='text-18-600-25'>
           서영이랑 놀아서 신나!
           <br />
           오늘 기분 어떤지 이야기해줄래?
         </p>
       </div>
-      <div className='ml-auto mt-24 flex w-250 items-center justify-center rounded-30 bg-purple-20 px-23 py-13'>
+      <div className='ml-auto mt-24 flex w-250 items-center justify-center rounded-30 bg-purple-30 px-23 py-13 text-18-600'>
         나는 오늘 너무 기분 좋았어!
       </div>
       <Image

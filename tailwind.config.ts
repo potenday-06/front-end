@@ -6,9 +6,8 @@ const pxToRem = require('tailwindcss-preset-px-to-rem')
 export default {
   presets: [pxToRem],
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -17,6 +16,9 @@ export default {
       },
       fontSize: {
         '18-600': ['18px', { fontWeight: '600', lineHeight: '21px' }],
+        '18-600-25': ['18px', { fontWeight: '600', lineHeight: '25px' }],
+
+        '18-600-30': ['18px', { fontWeight: '600', lineHeight: '30px' }],
 
         '20-500': ['20px', { fontWeight: '500', lineHeight: '30px' }],
         '20-700': ['20px', { fontWeight: '700', lineHeight: '30px' }],
@@ -33,7 +35,8 @@ export default {
         foreground: 'var(--foreground)',
         purple: {
           10: '#7D4FFF',
-          20: '#5511D8',
+          20: '#693CE4',
+          30: '#5511D8',
         },
         yellow: {
           10: '#FFF2AA',
