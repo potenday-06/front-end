@@ -1,80 +1,59 @@
-'use client'
-
 import Image from 'next/image'
-import { useRef } from 'react'
+import Link from 'next/link'
 
 const Onboarding = () => {
-  const handleLoginWithKakao = () => {
-    if (typeof window !== 'undefined' && window.Kakao) {
-      window.Kakao.Auth.authorize({
-        redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECTURL,
-        scope: 'profile_nickname',
-      })
-    } else {
-      console.error('Kakao SDK not loaded')
-    }
-  }
-
-  const naverRef = useRef<HTMLDivElement>(null)
-
-  const handleLoginWithNaver = () => {
-    if (typeof window === 'undefined') return
-
-    const naverLogin = new window.naver.LoginWithNaverId({
-      clientId: process.env.NEXT_PUBLIC_NAVER_CLIENT_ID,
-      callbackUrl: `${process.env.NEXT_PUBLIC_NAVER_CALLBACKURL}`,
-      isPopup: false,
-      loginButton: { color: 'white', type: 1, height: '16' },
-      callbackHandle: true,
-    })
-    naverLogin.init()
-
-    // 커스텀한 아이콘으로 눌러주기 위한 useRef를 사용하여 첫 번째 자식을 클릭
-    const firstChild = naverRef.current?.children[0] as HTMLElement
-    if (firstChild) {
-      firstChild.click()
-    }
-  }
-
   return (
-    <div className='flex flex-col rounded-30'>
-      <p className='flex justify-center text-center text-white'>
-        달나라 토끼들의 꿈을 담아 탄생한 찹쌀떡 토리.
-        <br />
-        별빛에 실린 수많은 이야기를 듣는 걸 좋아해요
-        <br />
-        기쁨, 슬픔, 소망, 그리고 말하지 못한 마음까지
-        <br />
-        토리는 언제나 귀를 기울여 줄 거예요
-      </p>
-      <div className='flex max-w-335 flex-col gap-12'>
-        <button
-          onClick={handleLoginWithKakao}
-          className='flex h-46 w-full items-center justify-center gap-10 rounded-30 bg-[#FFEC45]'
-        >
+    <div className='px-24 pt-38'>
+      <div className='flex justify-center'>
+        <Image
+          width={289}
+          height={32}
+          src='/assets/icons/progress-bar-1.svg'
+          alt='상태바'
+        />
+      </div>
+      <div className='mt-61 flex items-center gap-16'>
+        <Image
+          width={70}
+          height={70}
+          src='assets/icons/tori-smile.svg'
+          alt='토리'
+        />
+        <p>
+          서영이랑 놀아서 신나!
+          <br />
+          오늘 기분 어떤지 이야기해줄래?
+        </p>
+      </div>
+      <div className='ml-auto mt-24 flex w-250 items-center justify-center rounded-30 bg-purple-20 px-23 py-13'>
+        나는 오늘 너무 기분 좋았어!
+      </div>
+      <Image
+        width={48}
+        height={10}
+        src='assets/icons/loading.svg'
+        alt='로딩'
+        className='mt-26'
+      />
+      <div className='fixed bottom-0 left-0 right-0 flex h-[30%] flex-col justify-between gap-31 rounded-t-10 bg-white px-24 pb-48 pt-38 text-center text-black-10'>
+        <div className='text-20-500'>
+          안녕? 여기는 토리가 있는 토리별이야!
+          <br />
+          토리는 아이들과 대화하는 AI토끼야.
+          <br />
+          <span className='flex justify-center'>
+            기분을 물어보고 함께&nbsp;
+            <p className='text-20-700'>대화를 나눌거야.</p>
+          </span>
+        </div>
+        <Link href='/onboarding/step2' className='flex justify-end'>
           <Image
-            src='/assets/icons/kakao-logo.svg'
-            width={16}
-            height={16}
-            alt='카카오'
-            priority
+            width={48}
+            height={48}
+            src='/assets/icons/button-next.svg'
+            alt='다음 버튼'
           />
-          <span className='text-[#3C1E1E]'>카카오로 시작하기</span>
-        </button>
-        <button
-          onClick={handleLoginWithNaver}
-          className='flex h-46 w-full items-center justify-center gap-10 rounded-30 bg-[#00BF18]'
-        >
-          <Image
-            src='/assets/icons/naver-logo.svg'
-            width={16}
-            height={14}
-            alt='네이버'
-            priority
-          />
-          <span id='naverIdLogin' className='hidden' ref={naverRef} />
-          <span className='text-white'>네이버로 시작하기</span>
-        </button>
+        </Link>
       </div>
     </div>
   )
