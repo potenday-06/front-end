@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 
-export default function TestCompletion() {
+export default function Completion() {
   const [input, setInput] = useState('')
   const [result, setResult] = useState<string | null>(null)
 
-  const sendFetchRequest = async () => {
+  const fetchClova = async () => {
     // 클라이언트에서 메시지(대화 내역) 전달
     const messages = [
       {
@@ -52,7 +52,7 @@ export default function TestCompletion() {
         onChange={(e) => setInput(e.target.value)}
         placeholder='질문을 입력하세요'
       />
-      <button onClick={sendFetchRequest}>문장 생성 요청 보내기</button>
+      <button onClick={fetchClova}>문장 생성 요청 보내기</button>
       {result && (
         <div>
           <h3>생성된 문장:</h3>
