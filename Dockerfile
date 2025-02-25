@@ -1,4 +1,4 @@
-FROM arm64/v8/node:20.18-alpine AS base
+FROM arm64v8/node:20.18-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
