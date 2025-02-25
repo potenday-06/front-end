@@ -16,9 +16,16 @@ export default {
         pretendard: ['Pretendard', 'sans-serif'],
       },
       fontSize: {
+        '18-600': ['18px', { fontWeight: '600', lineHeight: '21px' }],
+
+        '20-500': ['20px', { fontWeight: '500', lineHeight: '30px' }],
+        '20-700': ['20px', { fontWeight: '700', lineHeight: '30px' }],
+        '21-500': ['21px', { fontWeight: '500', lineHeight: '50px' }],
         '24-600': ['24px', { fontWeight: '600' }],
-        '27-500': ['27px', { fontWeight: '500' }],
-        '27-700': ['27px', { fontWeight: '700' }],
+        '24-600-25': ['24px', { fontWeight: '600', lineHeight: '25px' }],
+
+        '27-500': ['27px', { fontWeight: '500', lineHeight: '30px' }],
+        '27-700': ['27px', { fontWeight: '700', lineHeight: '30px' }],
         '32-700': ['32px', { fontWeight: '700' }],
       },
       colors: {
