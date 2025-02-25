@@ -36,6 +36,9 @@ export default {
           20: '#AEAEB2',
           30: '#8B8B8B',
         },
+        black: {
+          10: '#0B0B0B',
+        },
       },
     },
   },
