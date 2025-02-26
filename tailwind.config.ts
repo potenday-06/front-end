@@ -33,6 +33,7 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         purple: {
+          5: '#8D68FF',
           10: '#7D4FFF',
           20: '#693CE4',
           30: '#5511D8',
