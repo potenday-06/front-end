@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-cloud-case1 {
+  background-image: url('/assets/images/cloud-case1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+
+.bg-cloud-onb-page2 {
+  background-image: url('/assets/images/cloud-onb-page-2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+
+.bg-cloud-onb-page3 {
+  background-image: url('/assets/images/cloud-onb-page-3.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+
+.bg-cloud-case2 {
+  background-image: url('/assets/images/cloud-case2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+
+body {
+  color: white;
+}

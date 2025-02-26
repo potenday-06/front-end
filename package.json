@@ -7,12 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install"
+    "prepare": "node -e \"try { require('husky').install() } catch (e) { if (e.code !== 'ERR_REQUIRE_ESM') throw e }\""
   },
   "dependencies": {
+    "jotai": "^2.12.1",
     "next": "15.1.7",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss-preset-px-to-rem": "^1.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -28,6 +30,7 @@
     "lint-staged": "^15.4.3",
     "postcss": "^8",
     "prettier": "^3.5.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
