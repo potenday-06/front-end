@@ -4,6 +4,8 @@ export default function Layout({
   children: React.ReactNode
 }>) {
   return (
-    <div className='bg-cloud-case1 min-h-screen bg-purple-20'>{children}</div>
+    <div className='bg-cloud-case1 relative min-h-screen bg-purple-20'>
+      {children}
+    </div>
   )
 }

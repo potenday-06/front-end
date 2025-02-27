@@ -3,17 +3,20 @@
 import Image from 'next/image'
 import Button from '@/components/Button'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 type StepThreeAndFourProps = {
   userName: string
   userAge: number
   gender?: string
+  onPrev?: () => void
   onNext?: () => void
   onGenderSelect?: (gender: 'male' | 'female') => void
   isCompletionStep?: boolean
 }
 
 const StepThreeAndFour = ({
+  onPrev,
   onGenderSelect,
   isCompletionStep,
   userAge,
@@ -28,14 +31,29 @@ const StepThreeAndFour = ({
 
   return (
     <div>
+      {step === 4 && (
+        <Link href='/' className='absolute right-[4%] h-32 w-32 cursor-pointer'>
+          <Image fill src='/assets/icons/exit.svg' alt='나가기' />
+        </Link>
+      )}
       <div className='mb-62 flex justify-center'>
         {step === 3 && (
-          <Image
-            width={289}
-            height={32}
-            src='/assets/icons/progress-bar-3.svg'
-            alt='상태바'
-          />
+          <>
+            <Image
+              onClick={onPrev}
+              className='absolute left-[4%] cursor-pointer'
+              width={32}
+              height={32}
+              src='/assets/icons/button-prev-gray.svg'
+              alt='뒤로가기'
+            />
+            <Image
+              width={289}
+              height={32}
+              src='/assets/icons/progress-bar-3.svg'
+              alt='상태바'
+            />
+          </>
         )}
       </div>
 
@@ -67,7 +85,7 @@ const StepThreeAndFour = ({
         />
       )}
       {step === 3 && (
-        <footer className='fixed bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
+        <footer className='absolute bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
           {onGenderSelect && (
             <Button onClick={() => onGenderSelect('male')}>나는 남자야</Button>
           )}
@@ -79,7 +97,7 @@ const StepThreeAndFour = ({
         </footer>
       )}
       {step === 4 && (
-        <footer className='fixed bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
+        <footer className='absolute bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
           <Button onClick={handleStartChat}>시작하기</Button>
         </footer>
       )}

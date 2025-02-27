@@ -5,7 +5,8 @@ import Footer from '@/components/Footer'
 import Image from 'next/image'
 import React, { ChangeEvent } from 'react'
 
-export type MainPageProps = {
+export type ChatOnboardingPageProps = {
+  onPrev: () => void
   onNext: () => void
   isAgeStep?: boolean
   userName: string
@@ -17,14 +18,23 @@ export type MainPageProps = {
 const StepOneAndTwo = ({
   isAgeStep,
   onChange,
+  onPrev,
   onNext,
   disabled,
-}: MainPageProps) => {
+}: ChatOnboardingPageProps) => {
   const step = isAgeStep ? 2 : 1
 
   return (
     <div>
-      <div className='mb-62 flex justify-center'>
+      <div className='mb-62 flex items-center justify-center'>
+        <Image
+          onClick={onPrev}
+          className='absolute left-[4%] cursor-pointer'
+          width={32}
+          height={32}
+          src='/assets/icons/button-prev-gray.svg'
+          alt='뒤로가기'
+        />
         <Image
           width={289}
           height={32}

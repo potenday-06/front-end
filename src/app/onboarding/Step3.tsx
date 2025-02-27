@@ -1,18 +1,12 @@
+'use client'
+
+import Footer from '@/components/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const OnboardingStep3 = () => {
+const StepThree = () => {
   return (
-    <div className='relative min-h-screen px-24 pt-38'>
-      <div className='flex justify-center'>
-        <Image
-          width={289}
-          height={32}
-          src='/assets/icons/progress-bar-3.svg'
-          alt='상태바'
-        />
-      </div>
-
+    <div className='px-24 pt-38'>
       <Image
         className='absolute left-1/2 top-[18%] -translate-x-1/2'
         width={146}
@@ -28,7 +22,7 @@ const OnboardingStep3 = () => {
         alt='별'
       />
 
-      <div className='fixed bottom-0 left-0 right-0 flex h-[30%] flex-col justify-between gap-31 rounded-t-10 bg-white px-24 pb-48 pt-38 text-center text-black-10'>
+      <Footer type='onboarding'>
         <div className='text-20-500'>
           만든 별을 우주에서 다시 볼 수 있어.
           <br />
@@ -46,9 +40,9 @@ const OnboardingStep3 = () => {
         >
           시작하기
         </Link>
-      </div>
+      </Footer>
     </div>
   )
 }
 
-export default OnboardingStep3
+export default StepThree
