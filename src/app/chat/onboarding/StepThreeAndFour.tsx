@@ -32,7 +32,7 @@ const StepThreeAndFour = ({
   return (
     <div>
       {step === 4 && (
-        <Link href='/' className='fixed right-[4%] h-32 w-32 cursor-pointer'>
+        <Link href='/' className='absolute right-[4%] h-32 w-32 cursor-pointer'>
           <Image fill src='/assets/icons/exit.svg' alt='나가기' />
         </Link>
       )}
@@ -41,7 +41,7 @@ const StepThreeAndFour = ({
           <>
             <Image
               onClick={onPrev}
-              className='fixed left-[4%] cursor-pointer'
+              className='absolute left-[4%] cursor-pointer'
               width={32}
               height={32}
               src='/assets/icons/button-prev-gray.svg'
@@ -85,7 +85,7 @@ const StepThreeAndFour = ({
         />
       )}
       {step === 3 && (
-        <footer className='fixed bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
+        <footer className='absolute bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
           {onGenderSelect && (
             <Button onClick={() => onGenderSelect('male')}>나는 남자야</Button>
           )}
@@ -97,7 +97,7 @@ const StepThreeAndFour = ({
         </footer>
       )}
       {step === 4 && (
-        <footer className='fixed bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
+        <footer className='absolute bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
           <Button onClick={handleStartChat}>시작하기</Button>
         </footer>
       )}

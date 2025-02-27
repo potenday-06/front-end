@@ -14,7 +14,7 @@ export default function Home() {
         />
         <Link
           href='/setting'
-          className='fixed right-[5%] h-24 w-24 cursor-pointer'
+          className='absolute right-[5%] h-24 w-24 cursor-pointer'
         >
           <Image src='/assets/icons/setting.svg' alt='설정' fill />
         </Link>
