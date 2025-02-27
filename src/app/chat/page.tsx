@@ -3,11 +3,7 @@
 import Chat from './Chat'
 
 const Page = () => {
-  return (
-    <div className='min-h-screen'>
-      <Chat />
-    </div>
-  )
+  return <Chat />
 }
 
 export default Page

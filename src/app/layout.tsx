@@ -24,8 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body suppressHydrationWarning className='bg-[#7A4AFF]'>
-        {children}
+      <body
+        suppressHydrationWarning
+        className='m-0 flex h-screen items-center justify-center bg-[#ffffff]'
+      >
+        <div className='relative flex h-full min-h-screen w-full max-w-414 flex-col bg-purple-20'>
+          {children}
+        </div>
         <KakaoScript />
         <Script
           src='https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js'

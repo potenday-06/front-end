@@ -72,7 +72,7 @@ const Chat = () => {
   }
 
   return (
-    <div>
+    <div className='h-full'>
       <header className='flex justify-center'>
         <Image
           src='/assets/icons/logo-text.svg'
@@ -82,7 +82,7 @@ const Chat = () => {
         />
       </header>
 
-      <main>
+      <main className='h-[90%] overflow-y-scroll'>
         <div className='mt-42 flex items-center gap-16'>
           <Image
             width={72}
@@ -104,15 +104,15 @@ const Chat = () => {
           <ChatFooter onSubmit={onSubmit} isLoading={isLoading} />
         )}
         {chatMode === 'choice' && (
-          <div className='fixed bottom-0 left-0 right-0 flex flex-col gap-4'>
+          <div className='absolute bottom-0 left-0 right-0 flex flex-col gap-4 p-12'>
             <Button onClick={handleMoreTalk}>더 얘기할래</Button>
             <Button onClick={handleStopTalk}>그만할래</Button>
           </div>
         )}
         {chatMode === 'end' && (
-          <>
+          <div className='absolute bottom-0 left-0 right-0'>
             <Button onClick={handleMoveHomePage}>오늘 대화 마치기</Button>
-          </>
+          </div>
         )}
       </footer>
     </div>

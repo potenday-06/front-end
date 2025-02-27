@@ -3,5 +3,5 @@ export default function Layout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <div className='px-24 pt-38'>{children}</div>
+  return <div className='h-full overflow-hidden px-24 pt-38'>{children}</div>
 }
