@@ -1,6 +1,7 @@
 'use client'
 
 import Button from '@/components/Button'
+import Footer from '@/components/Footer'
 import Image from 'next/image'
 import React, { ChangeEvent } from 'react'
 
@@ -15,7 +16,6 @@ export type MainPageProps = {
 
 const StepOneAndTwo = ({
   isAgeStep,
-  userName,
   onChange,
   onNext,
   disabled,
@@ -23,7 +23,7 @@ const StepOneAndTwo = ({
   const step = isAgeStep ? 2 : 1
 
   return (
-    <div className='px-24 pt-38'>
+    <div>
       <div className='mb-62 flex justify-center'>
         <Image
           width={289}
@@ -42,14 +42,13 @@ const StepOneAndTwo = ({
           </>
         ) : (
           <>
-            <p>{`${userName}구나`}</p>
             <p>알려줘서 정말 고마워!</p>
-            <p>{`${userName}는 몇 살이야?`}</p>
+            <p>몇 살인지 알려줄래?</p>
           </>
         )}
       </span>
 
-      <div className='fixed bottom-0 left-0 right-0 flex h-[20%] flex-col justify-between gap-31 rounded-t-10 bg-white px-24 pb-48 pt-38 text-center text-black-10'>
+      <Footer type='chatOnboarding'>
         <div className='flex items-center gap-16'>
           <p className='text-18-600'>{step === 1 ? '내 이름은' : '나는'}</p>
           <input
@@ -64,7 +63,7 @@ const StepOneAndTwo = ({
         <Button disabled={disabled} onClick={onNext}>
           알려주기
         </Button>
-      </div>
+      </Footer>
     </div>
   )
 }

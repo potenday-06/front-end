@@ -1,19 +1,26 @@
+'use client'
+
 import Image from 'next/image'
-import { UserInfo } from './page'
 
 import { useState } from 'react'
 
 import MessageList from './MessageList'
-import ChatInput from './ChatInput'
+import ChatFooter from './ChatFooter'
+import Button from '@/components/Button'
+import { useRouter } from 'next/navigation'
 
 type Message = {
   type: 'user' | 'ai'
   content: string
 }
 
-const Chat = ({ userName }: Pick<UserInfo, 'userName'>) => {
+type ChatMode = 'input' | 'choice' | 'end'
+
+const Chat = () => {
+  const router = useRouter()
   const [messages, setMessages] = useState<Message[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [chatMode, setChatMode] = useState<ChatMode>('input')
 
   const onSubmit = async (inputMessage: string) => {
     // 유저 메시지
@@ -41,11 +48,31 @@ const Chat = ({ userName }: Pick<UserInfo, 'userName'>) => {
 
       const newAiMessage: Message = { type: 'ai', content: data.data }
       setMessages((prev) => [...prev, newAiMessage])
+
+      setChatMode('choice')
     } catch (error) {
       console.error('Fetch 오류:', error)
     } finally {
       setIsLoading(false)
     }
+  }
+
+  const handleMoreTalk = () => {
+    setChatMode('input')
+  }
+
+  const handleStopTalk = async () => {
+    setChatMode('end')
+
+    // TODO: 대화 요약 로직 API 호출
+  }
+
+  const handleMoveHomePage = () => {
+    router.push('/')
+  }
+
+  const handleMoveChatPage = () => {
+    router.push('/chat')
   }
 
   return (
@@ -68,7 +95,7 @@ const Chat = ({ userName }: Pick<UserInfo, 'userName'>) => {
             alt='토리'
           />
           <p className='text-18-600-25'>
-            {userName}랑 놀아서 신나!
+            같이 대화해서 좋아!
             <br />
             오늘 기분 어떤지 이야기해줄래?
           </p>
@@ -77,7 +104,21 @@ const Chat = ({ userName }: Pick<UserInfo, 'userName'>) => {
       </main>
 
       <footer>
-        <ChatInput onSubmit={onSubmit} isLoading={isLoading} />
+        {chatMode === 'input' && (
+          <ChatFooter onSubmit={onSubmit} isLoading={isLoading} />
+        )}
+        {chatMode === 'choice' && (
+          <div className='fixed bottom-0 left-0 right-0 flex flex-col gap-4'>
+            <Button onClick={handleMoreTalk}>더 얘기할래</Button>
+            <Button onClick={handleStopTalk}>그만할래</Button>
+          </div>
+        )}
+        {chatMode === 'end' && (
+          <>
+            <Button onClick={handleMoveHomePage}>홈</Button>
+            <Button onClick={handleMoveChatPage}>다시 대화하기</Button>
+          </>
+        )}
       </footer>
     </div>
   )

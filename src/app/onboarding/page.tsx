@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -35,7 +36,7 @@ const Onboarding = () => {
         alt='로딩'
         className='mt-26'
       />
-      <div className='fixed bottom-0 left-0 right-0 flex h-[30%] flex-col justify-between gap-31 rounded-t-10 bg-white px-24 pb-48 pt-38 text-center text-black-10'>
+      <Footer type='onboarding'>
         <div className='text-20-500'>
           안녕? 여기는 토리가 있는 토리별이야!
           <br />
@@ -54,7 +55,7 @@ const Onboarding = () => {
             alt='다음 버튼'
           />
         </Link>
-      </div>
+      </Footer>
     </div>
   )
 }
