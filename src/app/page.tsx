@@ -4,14 +4,20 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div className='bg-cloud-case2 relative flex min-h-screen flex-col justify-between p-33'>
-      <header className='flex justify-center'>
+    <div className='bg-cloud-case2 relative flex min-h-screen flex-col justify-between p-24'>
+      <header className='flex items-center justify-center'>
         <Image
           src='/assets/icons/logo-text.svg'
           alt='텍스트 로고'
           width={51}
           height={28}
         />
+        <Link
+          href='/setting'
+          className='fixed right-[5%] h-24 w-24 cursor-pointer'
+        >
+          <Image src='/assets/icons/setting.svg' alt='설정' fill />
+        </Link>
       </header>
 
       <main className='flex flex-1 flex-col items-center justify-center'>
