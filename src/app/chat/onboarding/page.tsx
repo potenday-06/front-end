@@ -3,6 +3,7 @@
 import { ChangeEvent, useState } from 'react'
 import StepOneAndTwo from './StepOneAndTwo'
 import StepThreeAndFour from './StepThreeAndFour'
+import { useRouter } from 'next/navigation'
 
 export type UserInfo = {
   userName: string
@@ -11,12 +12,21 @@ export type UserInfo = {
 }
 
 const ChatOnboarding = () => {
+  const router = useRouter()
   const [step, setStep] = useState(1)
   const [userInfo, setUserInfo] = useState({
     name: '',
     age: 0,
     gender: '',
   })
+
+  const handlePrevStep = () => {
+    if (step === 1) {
+      router.push('/')
+    } else {
+      setStep((prev) => prev - 1)
+    }
+  }
 
   const handleNextStep = () => {
     setStep((prev) => prev + 1)
@@ -56,6 +66,7 @@ const ChatOnboarding = () => {
       case 1:
         return (
           <StepOneAndTwo
+            onPrev={handlePrevStep}
             onNext={handleNextStep}
             userName={userInfo.name}
             disabled={isNextDisabled()}
@@ -65,6 +76,7 @@ const ChatOnboarding = () => {
       case 2:
         return (
           <StepOneAndTwo
+            onPrev={handlePrevStep}
             onNext={handleNextStep}
             userName={userInfo.name}
             disabled={isNextDisabled()}
@@ -76,6 +88,7 @@ const ChatOnboarding = () => {
       case 3:
         return (
           <StepThreeAndFour
+            onPrev={handlePrevStep}
             userName={userInfo.name}
             userAge={userInfo.age}
             onGenderSelect={handleGenderSelect}

@@ -6,6 +6,7 @@ import Image from 'next/image'
 import React, { ChangeEvent } from 'react'
 
 export type MainPageProps = {
+  onPrev: () => void
   onNext: () => void
   isAgeStep?: boolean
   userName: string
@@ -17,6 +18,7 @@ export type MainPageProps = {
 const StepOneAndTwo = ({
   isAgeStep,
   onChange,
+  onPrev,
   onNext,
   disabled,
 }: MainPageProps) => {
@@ -24,7 +26,15 @@ const StepOneAndTwo = ({
 
   return (
     <div>
-      <div className='mb-62 flex justify-center'>
+      <div className='mb-62 flex items-center justify-center'>
+        <Image
+          onClick={onPrev}
+          className='fixed left-[4%] cursor-pointer'
+          width={32}
+          height={32}
+          src='/assets/icons/button-prev-gray.svg'
+          alt='뒤로가기'
+        />
         <Image
           width={289}
           height={32}
