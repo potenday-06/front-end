@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 type ButtonProps = {
   children: ReactNode
-  onClick: () => void
+  onClick?: () => void
   disabled?: boolean
 }
 
