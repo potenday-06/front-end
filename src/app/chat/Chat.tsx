@@ -71,10 +71,6 @@ const Chat = () => {
     router.push('/')
   }
 
-  const handleMoveChatPage = () => {
-    router.push('/chat')
-  }
-
   return (
     <div>
       <header className='flex justify-center'>
@@ -115,8 +111,7 @@ const Chat = () => {
         )}
         {chatMode === 'end' && (
           <>
-            <Button onClick={handleMoveHomePage}>홈</Button>
-            <Button onClick={handleMoveChatPage}>다시 대화하기</Button>
+            <Button onClick={handleMoveHomePage}>오늘 대화 마치기</Button>
           </>
         )}
       </footer>

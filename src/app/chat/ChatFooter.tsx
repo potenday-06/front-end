@@ -30,7 +30,7 @@ const ChatFooter = ({ onSubmit, isLoading }: ChatFooterProps) => {
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder='어떤 기분인지 알려줘'
+          placeholder='편하게 남겨줘'
           className='flex-1 resize-none rounded-8 bg-gray-10 p-16'
         />
       </div>
