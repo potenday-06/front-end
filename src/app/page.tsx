@@ -38,7 +38,10 @@ export default function Home() {
         priority
       />
 
-      <Link href='chat' className='flex flex-col items-center gap-12'>
+      <Link
+        href='chat/onboarding'
+        className='flex flex-col items-center gap-12'
+      >
         <Button>토리와 이야기 시작하기</Button>
       </Link>
       {/**To Do: 이전에 이미 토리와 나눈 저장해둔 대화가 있다면 "나만의 우주 보러가기" 버튼 생성 */}

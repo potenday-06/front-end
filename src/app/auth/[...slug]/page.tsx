@@ -109,7 +109,7 @@ const AuthRedirect = () => {
         <p className='text-red-500'>오류가 발생했습니다</p>
         <p>{error}</p>
         <button
-          onClick={() => router.push('/onboarding')}
+          onClick={() => router.push('/login')}
           className='mt-4 rounded-30 bg-white px-4 py-2 text-[#7A4AFF]'
         >
           다시 시도하기
