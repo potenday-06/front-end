@@ -1,14 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-import { MainPageProps } from './StepOneAndTwo'
 import Button from '@/components/Button'
+import { useRouter } from 'next/navigation'
 
 type StepThreeAndFourProps = {
   userName: string
   userAge: number
   gender?: string
-  onNext: () => void
+  onNext?: () => void
   onGenderSelect?: (gender: 'male' | 'female') => void
   isCompletionStep?: boolean
 }
@@ -16,12 +16,15 @@ type StepThreeAndFourProps = {
 const StepThreeAndFour = ({
   onGenderSelect,
   isCompletionStep,
-  userName,
   userAge,
-  gender,
-  onNext,
 }: StepThreeAndFourProps) => {
   const step = isCompletionStep ? 4 : 3
+  const router = useRouter()
+
+  const handleStartChat = () => {
+    // 채팅 시작 페이지로 이동
+    router.push('/chat')
+  }
 
   return (
     <div>
@@ -77,7 +80,7 @@ const StepThreeAndFour = ({
       )}
       {step === 4 && (
         <footer className='fixed bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
-          <Button onClick={onNext}>시작하기</Button>
+          <Button onClick={handleStartChat}>시작하기</Button>
         </footer>
       )}
     </div>

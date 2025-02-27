@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import Button from '@/components/Button'
+import Footer from '@/components/Footer'
 
-type ChatInputProps = {
+type ChatFooterProps = {
   onSubmit: (message: string) => void
   isLoading: boolean
 }
 
-const ChatInput = ({ onSubmit, isLoading }: ChatInputProps) => {
+const ChatFooter = ({ onSubmit, isLoading }: ChatFooterProps) => {
   const [userInput, setUserInput] = useState('')
 
   const handleSubmit = () => {
@@ -23,7 +24,7 @@ const ChatInput = ({ onSubmit, isLoading }: ChatInputProps) => {
   }
 
   return (
-    <div className='fixed bottom-0 left-0 right-0 h-[20%] rounded-t-10 bg-white px-24 py-20 text-center text-black-10'>
+    <Footer type='chat'>
       <div className='flex flex-1'>
         <textarea
           value={userInput}
@@ -38,8 +39,8 @@ const ChatInput = ({ onSubmit, isLoading }: ChatInputProps) => {
           {isLoading ? '전송 중...' : '알려주기'}
         </Button>
       </div>
-    </div>
+    </Footer>
   )
 }
 
-export default ChatInput
+export default ChatFooter
