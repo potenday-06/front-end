@@ -16,7 +16,7 @@ const Onboarding = () => {
         <Image
           width={70}
           height={70}
-          src='assets/icons/tori-smile.svg'
+          src='assets/icons/tori-face.svg'
           alt='토리'
         />
         <p className='text-18-600-25'>
