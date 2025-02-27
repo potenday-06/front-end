@@ -31,6 +31,8 @@ const AuthRedirect = () => {
             'Content-Type': 'application/json',
             Accept: 'application/json',
           },
+          // 쿠키를 자동 포함
+          credentials: 'include',
         })
 
         if (!response.ok) {
@@ -39,9 +41,8 @@ const AuthRedirect = () => {
 
         const data = await response.json()
 
-        // 받은 accessToken 저장
-        if (data.data.accessToken) {
-          localStorage.setItem('accessToken', data.data.accessToken)
+        if (data.success === false) {
+          throw new Error(data.message || '로그인 처리 중 오류가 발생했습니다')
         }
 
         router.push('/')
