@@ -39,22 +39,17 @@ const StepThreeAndFour = ({
       <span className='text-20-700'>
         {step === 3 && (
           <>
-            <p>우와!</p>
-            <p>
-              {userName}이는 {userAge}살이구나.
-            </p>
-            <p>{userName}이는 남자야? 여자야?</p>
+            <p>우와! {userAge}살이구나.</p>
+            <p>남자야? 여자야?</p>
           </>
         )}
 
         {step === 4 && (
           <>
-            <p>{`안녕 ${userName}아.`}</p>
-            <p>{`${userName}이는 ${userAge}살이고, 여자구나`} </p>
-            <p>내가 잘 기억할게</p>
+            <p>고마워 내가 잘 기억할게</p>
             <br />
-            <p>내 이름은 토리야!</p>
-            <p>만나서 반가워</p>
+            <p>내 이름은 토리야</p>
+            <p>만나서 반가워!</p>
           </>
         )}
       </span>

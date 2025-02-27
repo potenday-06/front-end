@@ -23,7 +23,7 @@ const StepOneAndTwo = ({
   const step = isAgeStep ? 2 : 1
 
   return (
-    <div className='px-24 pt-38'>
+    <div>
       <div className='mb-62 flex justify-center'>
         <Image
           width={289}
@@ -42,9 +42,8 @@ const StepOneAndTwo = ({
           </>
         ) : (
           <>
-            <p>{`${userName}구나`}</p>
             <p>알려줘서 정말 고마워!</p>
-            <p>{`${userName}는 몇 살이야?`}</p>
+            <p>몇 살인지 알려줄래?</p>
           </>
         )}
       </span>

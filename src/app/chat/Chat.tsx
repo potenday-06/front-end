@@ -68,7 +68,7 @@ const Chat = ({ userName }: Pick<UserInfo, 'userName'>) => {
             alt='토리'
           />
           <p className='text-18-600-25'>
-            {userName}랑 놀아서 신나!
+            같이 대화해서 좋아!
             <br />
             오늘 기분 어떤지 이야기해줄래?
           </p>
