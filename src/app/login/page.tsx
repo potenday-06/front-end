@@ -27,6 +27,7 @@ const Login = () => {
       loginButton: { color: 'white', type: 1, height: '16' },
       callbackHandle: true,
     })
+
     naverLogin.init()
 
     // 커스텀한 아이콘으로 눌러주기 위한 useRef를 사용하여 첫 번째 자식을 클릭

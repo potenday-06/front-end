@@ -9,17 +9,14 @@ import ChatFooter from './ChatFooter'
 import Button from '@/components/Button'
 import { useRouter } from 'next/navigation'
 import ChatSummary from './ChatSummary'
+import { saveConversation } from '@/utils/saveConversation'
+import { MessageType } from '../api/wholeConversation/route'
 
-type Message = {
-  type: 'user' | 'ai'
-  content: string
-}
-
-type ChatMode = 'input' | 'choice' | 'end'
+export type ChatMode = 'input' | 'choice' | 'end'
 
 const Chat = () => {
   const router = useRouter()
-  const [messages, setMessages] = useState<Message[]>([])
+  const [messages, setMessages] = useState<MessageType[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [chatMode, setChatMode] = useState<ChatMode>('input')
   const [summary, setSummary] = useState('')
@@ -29,7 +26,10 @@ const Chat = () => {
     shouldAddUserMessage = true
   ) => {
     if (shouldAddUserMessage) {
-      const newUserMessage: Message = { type: 'user', content: inputMessage }
+      const newUserMessage: MessageType = {
+        type: 'USER',
+        message: inputMessage,
+      }
       setMessages((prev) => [...prev, newUserMessage])
     }
 
@@ -53,11 +53,12 @@ const Chat = () => {
       const data = await response.json()
 
       if (shouldAddUserMessage) {
-        const newAiMessage: Message = { type: 'ai', content: data.data }
+        const newAiMessage: MessageType = { type: 'AI', message: data.data }
         setMessages((prev) => [...prev, newAiMessage])
         setChatMode('choice')
       } else {
         setSummary(data.data)
+        return data.data
       }
     } catch (error) {
       console.error('Fetch 오류:', error)
@@ -71,10 +72,10 @@ const Chat = () => {
   }
 
   const handleStopTalk = async () => {
-    await onSubmit('이제 그만할래', false)
-    setChatMode('end')
-
-    // TODO: 대화 요약 로직 API 호출
+    await onSubmit('이제 그만할래', false).then(async (summaryData) => {
+      await saveConversation(summaryData, messages)
+      setChatMode('end')
+    })
   }
 
   const handleMoveHomePage = () => {
