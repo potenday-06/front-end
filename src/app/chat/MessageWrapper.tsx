@@ -1,16 +1,15 @@
 import { ReactNode } from 'react'
-
-export type MessageType = 'user' | 'ai'
+import { MessageType } from '../api/wholeConversation/route'
 
 export type MessageProps = {
-  type: MessageType
+  type: MessageType['type']
   content?: string
   children?: ReactNode
 }
 
 const MessageWrapper = ({ type, children }: MessageProps) => {
   return (
-    <div className={`mb-16 ${type === 'user' ? 'text-right' : 'text-left'}`}>
+    <div className={`mb-16 ${type === 'USER' ? 'text-right' : 'text-left'}`}>
       {children}
     </div>
   )

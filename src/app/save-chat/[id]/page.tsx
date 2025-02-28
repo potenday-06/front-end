@@ -1,29 +1,77 @@
-import Image from 'next/image'
-import Link from 'next/link'
+'use client'
 
-const page = () => {
+import {
+  Conversation as ConversationType,
+  getConversations,
+} from '@/app/api/chatList/route'
+import Image from 'next/image'
+
+import Conversation from './Conversation'
+import { useEffect, useState } from 'react'
+import Summary from './Summary'
+import { useParams, useRouter } from 'next/navigation'
+
+const ChatList = () => {
+  const { id } = useParams()
+  const router = useRouter()
+
+  const [conversations, setConversations] = useState<ConversationType[]>([])
+  const [selectedConversation, setSelectedConversation] =
+    useState<ConversationType>()
+
+  useEffect(() => {
+    const fetchConversations = async () => {
+      const data = await getConversations(id as string)
+
+      if (data) {
+        setConversations(data?.content)
+      }
+    }
+    fetchConversations()
+  }, [])
+
+  const handleLinkClick = () => {
+    if (selectedConversation) {
+      setSelectedConversation(undefined)
+    } else {
+      router.push('/save-chat')
+    }
+  }
+
   return (
-    <div className='relative flex min-h-screen flex-col justify-between'>
+    <div className='relative flex flex-col justify-between'>
       <header className='flex flex-col items-center'>
-        <Link href='/save-chat'>
-          <Image
-            className='fixed left-[7%]'
-            src='/assets/icons/button-prev-gray.svg'
-            width={32}
-            height={32}
-            alt='뒤로가기'
-          />
-        </Link>
+        <Image
+          onClick={handleLinkClick}
+          className='absolute left-[2%]'
+          src='/assets/icons/button-prev-gray.svg'
+          width={24}
+          height={24}
+          alt='뒤로가기'
+        />
+
         <h1 className='text-24-700'>
           {'2'}번째 {'서영이'}별 {/**To Do: userName 받아와서 적용*/}
         </h1>
       </header>
 
-      {/**To Do: 당일날 나눈 대화 갯수만큼 버튼 렌더링*/}
-
-      {/* <Button>n번째 이야기</Button> */}
+      {selectedConversation ? (
+        <Summary conversation={selectedConversation} />
+      ) : (
+        <div className='flex flex-col items-center gap-4'>
+          {conversations?.map((conversation) => {
+            return (
+              <Conversation
+                key={conversation.conversationId}
+                conversation={conversation}
+                setSelectedConversation={setSelectedConversation}
+              />
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }
 
-export default page
+export default ChatList

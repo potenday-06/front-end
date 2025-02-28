@@ -1,36 +1,32 @@
-import MessageWrapper, { MessageType } from './MessageWrapper'
+import MessageWrapper from './MessageWrapper'
 import UserMessage from './UserMessage'
 import AiMessage from './AiMessage'
-
-type Message = {
-  type: MessageType
-  content: string
-}
+import { MessageType } from '../api/wholeConversation/route'
 
 type MessageListProps = {
-  messages: Message[]
+  messages: MessageType[]
   isLoading: boolean
 }
 
 const MessageList = ({ messages, isLoading }: MessageListProps) => {
   return (
-    <div className='flex-1 p-16 pb-32'>
+    <div className='mt-16'>
       {messages.map((message, index) => (
         <MessageWrapper
           key={index}
           type={message.type}
-          content={message.content}
+          content={message.message}
         >
-          {message.type === 'user' ? (
-            <UserMessage content={message.content} />
+          {message.type === 'USER' ? (
+            <UserMessage content={message.message} />
           ) : (
-            <AiMessage content={message.content} />
+            <AiMessage content={message.message} />
           )}
         </MessageWrapper>
       ))}
 
       {isLoading && (
-        <MessageWrapper type='ai'>
+        <MessageWrapper type='AI'>
           <AiMessage content='답변 중...' />
         </MessageWrapper>
       )}

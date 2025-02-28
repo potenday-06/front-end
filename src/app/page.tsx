@@ -1,8 +1,18 @@
 import Button from '@/components/Button'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { getUserInfo } from './api/userInfo/route'
 
-export default function Home() {
+export default async function Home() {
+  const today = new Date().toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+
+  const userInfo = (await getUserInfo()).data
+
   return (
     <div className='bg-cloud-case2 relative flex min-h-screen flex-col justify-between p-24'>
       <header className='flex items-center justify-center'>
@@ -22,12 +32,10 @@ export default function Home() {
 
       <main className='flex flex-1 flex-col items-center justify-center'>
         <p className='text-center text-18-600-30'>
-          아직 우리가 대화해서 만든 별이 없어
+          오늘은 {today}이야
           <br />
-          대화를 저장하면 내가 별로 만들어줄게!
-          <br />그 별이 모여 우주가 될거야
+          어떤 하루를 보냈어?
         </p>
-        {/**To Do: 이미 토리와 나눈 저장해둔 대화가 있는 사용자는 멘트 "Ex. 서영아 오늘 하루는 어땠어?" 보여줘야함 */}
       </main>
       <Image
         className='absolute left-1/2 top-[60%] -translate-x-1/2'
@@ -38,13 +46,17 @@ export default function Home() {
         priority
       />
 
-      <Link
-        href='chat/onboarding'
-        className='flex flex-col items-center gap-12'
-      >
-        <Button>토리와 이야기 시작하기</Button>
-      </Link>
-      {/**To Do: 이전에 이미 토리와 나눈 저장해둔 대화가 있다면 "나만의 우주 보러가기" 버튼 생성 */}
+      <div className='flex flex-col gap-12'>
+        <Link
+          href={userInfo?.createdAt ? '/chat' : 'chat/onboarding'}
+          className='flex flex-col items-center gap-12'
+        >
+          <Button>토리와 이야기 시작하기</Button>
+        </Link>
+        <Link href='save-chat'>
+          <Button>우리가 만든 우주 보러가기</Button>
+        </Link>
+      </div>
     </div>
   )
 }

@@ -9,8 +9,8 @@ export type ChatOnboardingPageProps = {
   onPrev: () => void
   onNext: () => void
   isAgeStep?: boolean
-  userName: string
-  userAge?: number
+  nickname: string
+  age?: number
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
   disabled: boolean
 }
@@ -30,8 +30,8 @@ const StepOneAndTwo = ({
         <Image
           onClick={onPrev}
           className='absolute left-[4%] cursor-pointer'
-          width={32}
-          height={32}
+          width={24}
+          height={24}
           src='/assets/icons/button-prev-gray.svg'
           alt='뒤로가기'
         />
@@ -62,7 +62,7 @@ const StepOneAndTwo = ({
         <div className='flex items-center gap-16'>
           <p className='text-18-600'>{step === 1 ? '내 이름은' : '나는'}</p>
           <input
-            name={step === 1 ? 'name' : 'age'}
+            name={step === 1 ? 'nickname' : 'age'}
             type={step === 1 ? 'text' : 'number'}
             onChange={onChange}
             placeholder={step === 1 ? '이름 (최대 10자)' : '나이 (숫자)'}

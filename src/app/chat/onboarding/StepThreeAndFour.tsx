@@ -4,14 +4,15 @@ import Image from 'next/image'
 import Button from '@/components/Button'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { postUserInfo } from '@/utils/userInfo'
 
 type StepThreeAndFourProps = {
-  userName: string
-  userAge: number
-  gender?: string
+  nickname: string
+  age: number
+  gender?: 'MALE' | 'FEMALE'
   onPrev?: () => void
   onNext?: () => void
-  onGenderSelect?: (gender: 'male' | 'female') => void
+  onGenderSelect?: (gender: 'MALE' | 'FEMALE') => void
   isCompletionStep?: boolean
 }
 
@@ -19,12 +20,16 @@ const StepThreeAndFour = ({
   onPrev,
   onGenderSelect,
   isCompletionStep,
-  userAge,
+  nickname,
+  age,
+  gender,
 }: StepThreeAndFourProps) => {
   const step = isCompletionStep ? 4 : 3
   const router = useRouter()
 
-  const handleStartChat = () => {
+  const handleStartChat = async () => {
+    await postUserInfo({ nickname, age, gender: gender ?? 'MALE' })
+
     // 채팅 시작 페이지로 이동
     router.push('/chat')
   }
@@ -32,7 +37,7 @@ const StepThreeAndFour = ({
   return (
     <div>
       {step === 4 && (
-        <Link href='/' className='absolute right-[4%] h-32 w-32 cursor-pointer'>
+        <Link href='/' className='absolute right-[4%] h-24 w-24 cursor-pointer'>
           <Image fill src='/assets/icons/exit.svg' alt='나가기' />
         </Link>
       )}
@@ -42,8 +47,8 @@ const StepThreeAndFour = ({
             <Image
               onClick={onPrev}
               className='absolute left-[4%] cursor-pointer'
-              width={32}
-              height={32}
+              width={24}
+              height={24}
               src='/assets/icons/button-prev-gray.svg'
               alt='뒤로가기'
             />
@@ -60,7 +65,7 @@ const StepThreeAndFour = ({
       <span className='text-20-700'>
         {step === 3 && (
           <>
-            <p>우와! {userAge}살이구나.</p>
+            <p>우와! {age}살이구나.</p>
             <p>남자야? 여자야?</p>
           </>
         )}
@@ -87,10 +92,10 @@ const StepThreeAndFour = ({
       {step === 3 && (
         <footer className='absolute bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
           {onGenderSelect && (
-            <Button onClick={() => onGenderSelect('male')}>나는 남자야</Button>
+            <Button onClick={() => onGenderSelect('MALE')}>나는 남자야</Button>
           )}
           {onGenderSelect && (
-            <Button onClick={() => onGenderSelect('female')}>
+            <Button onClick={() => onGenderSelect('FEMALE')}>
               나는 여자야
             </Button>
           )}
