@@ -6,18 +6,18 @@ import StepThreeAndFour from './StepThreeAndFour'
 import { useRouter } from 'next/navigation'
 
 export type UserInfo = {
-  userName: string
-  userAge: number
-  userGender: string
+  nickname: string
+  age: number
+  gender: 'MALE' | 'FEMALE'
 }
 
 const ChatOnboarding = () => {
   const router = useRouter()
   const [step, setStep] = useState(1)
-  const [userInfo, setUserInfo] = useState({
-    name: '',
+  const [userInfo, setUserInfo] = useState<UserInfo>({
+    nickname: '',
     age: 0,
-    gender: '',
+    gender: 'MALE',
   })
 
   const handlePrevStep = () => {
@@ -41,7 +41,7 @@ const ChatOnboarding = () => {
     }))
   }
 
-  const handleGenderSelect = (gender: 'male' | 'female') => {
+  const handleGenderSelect = (gender: UserInfo['gender']) => {
     setUserInfo((prev) => ({
       ...prev,
       gender,
@@ -53,7 +53,7 @@ const ChatOnboarding = () => {
   const isNextDisabled = () => {
     switch (step) {
       case 1:
-        return !userInfo.name.trim()
+        return !userInfo.nickname.trim()
       case 2:
         return !userInfo.age || userInfo.age <= 0
       default:
@@ -68,7 +68,7 @@ const ChatOnboarding = () => {
           <StepOneAndTwo
             onPrev={handlePrevStep}
             onNext={handleNextStep}
-            userName={userInfo.name}
+            nickname={userInfo.nickname}
             disabled={isNextDisabled()}
             onChange={handleInputChange}
           />
@@ -78,19 +78,19 @@ const ChatOnboarding = () => {
           <StepOneAndTwo
             onPrev={handlePrevStep}
             onNext={handleNextStep}
-            userName={userInfo.name}
+            nickname={userInfo.nickname}
             disabled={isNextDisabled()}
             onChange={handleInputChange}
             isAgeStep={true}
-            userAge={userInfo.age}
+            age={userInfo.age}
           />
         )
       case 3:
         return (
           <StepThreeAndFour
             onPrev={handlePrevStep}
-            userName={userInfo.name}
-            userAge={userInfo.age}
+            nickname={userInfo.nickname}
+            age={userInfo.age}
             onGenderSelect={handleGenderSelect}
             onNext={handleNextStep}
           />
@@ -99,8 +99,8 @@ const ChatOnboarding = () => {
         return (
           <StepThreeAndFour
             isCompletionStep={true}
-            userName={userInfo.name}
-            userAge={userInfo.age}
+            nickname={userInfo.nickname}
+            age={userInfo.age}
             gender={userInfo.gender}
           />
         )
