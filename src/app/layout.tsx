@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang='ko'>
       <body
         suppressHydrationWarning
-        className='m-0 flex h-screen items-center justify-center bg-[#ffffff]'
+        className='m-0 flex h-dvh items-center justify-center bg-[#ffffff]'
       >
         <div className='relative flex h-full min-h-screen w-full max-w-414 flex-col bg-purple-20'>
           {children}

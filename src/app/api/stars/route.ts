@@ -1,18 +1,17 @@
-import { cookies } from 'next/headers'
-import { NextResponse } from 'next/server'
+import { getCookie } from 'cookies-next'
 
-export async function starList() {
-  const cookieStore = await cookies()
-  const accessToken = cookieStore.get('accessToken')?.value
+// const mockChatList = Array.from({ length: 10 }, (_, index) => index).map(
+//   (num) => ({
+//     starId: num,
+//     name: `star ${num}`,
+//     createdAt: `${num}일전`,
+//   })
+// )
 
-  if (!accessToken) {
-    return NextResponse.json(
-      { error: 'Access Token이 없습니다.' },
-      { status: 403 }
-    )
-  }
+export async function starList(page: number) {
+  const accessToken = getCookie('accessToken')
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/stars`, {
+  const res = await fetch(`/api/v1/stars?page=${page}`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -29,6 +28,12 @@ export async function starList() {
 
   const response = await res.json()
 
-  console.log(response)
   return response.data
+
+  // return {
+  //   totalCount: mockChatList.length,
+  //   isFirst: page === 1,
+  //   isLast: page === Math.floor(mockChatList.length / 3),
+  //   content: [...mockChatList].splice(3 * (page - 1), 3),
+  // }
 }
