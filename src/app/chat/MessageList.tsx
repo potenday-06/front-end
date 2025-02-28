@@ -14,7 +14,7 @@ type MessageListProps = {
 
 const MessageList = ({ messages, isLoading }: MessageListProps) => {
   return (
-    <div className='flex-1 p-16 pb-32'>
+    <div className='mt-16'>
       {messages.map((message, index) => (
         <MessageWrapper
           key={index}
