@@ -11,7 +11,7 @@ const Button = ({ children, onClick, disabled }: ButtonProps) => {
     <button
       disabled={disabled}
       onClick={onClick}
-      className='w-full rounded-24 bg-purple-30 py-13 text-18-600 text-white'
+      className='w-full cursor-pointer rounded-24 bg-purple-30 py-13 text-18-600 text-white'
     >
       {children}
     </button>

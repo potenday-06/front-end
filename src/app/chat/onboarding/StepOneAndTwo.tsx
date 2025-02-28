@@ -30,8 +30,8 @@ const StepOneAndTwo = ({
         <Image
           onClick={onPrev}
           className='absolute left-[4%] cursor-pointer'
-          width={32}
-          height={32}
+          width={24}
+          height={24}
           src='/assets/icons/button-prev-gray.svg'
           alt='뒤로가기'
         />

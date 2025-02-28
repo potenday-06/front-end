@@ -32,7 +32,7 @@ const StepThreeAndFour = ({
   return (
     <div>
       {step === 4 && (
-        <Link href='/' className='absolute right-[4%] h-32 w-32 cursor-pointer'>
+        <Link href='/' className='absolute right-[4%] h-24 w-24 cursor-pointer'>
           <Image fill src='/assets/icons/exit.svg' alt='나가기' />
         </Link>
       )}
@@ -42,8 +42,8 @@ const StepThreeAndFour = ({
             <Image
               onClick={onPrev}
               className='absolute left-[4%] cursor-pointer'
-              width={32}
-              height={32}
+              width={24}
+              height={24}
               src='/assets/icons/button-prev-gray.svg'
               alt='뒤로가기'
             />

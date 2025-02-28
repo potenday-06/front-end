@@ -9,8 +9,8 @@ const SaveChat = () => {
           <Image
             className='fixed left-[7%]'
             src='/assets/icons/button-prev-gray.svg'
-            width={32}
-            height={32}
+            width={24}
+            height={24}
             alt='뒤로가기'
           />
         </Link>
