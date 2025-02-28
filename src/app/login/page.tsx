@@ -1,9 +1,36 @@
 'use client'
 
 import Image from 'next/image'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 const Login = () => {
+  const naverRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.naver) {
+      const naverLogin = new window.naver.LoginWithNaverId({
+        clientId: process.env.NEXT_PUBLIC_NAVER_CLIENT_ID,
+        callbackUrl: process.env.NEXT_PUBLIC_NAVER_CALLBACKURL,
+        isPopup: false,
+        loginButton: { color: 'white', type: 1, height: '16' },
+        callbackHandle: true,
+      })
+      naverLogin.init()
+
+      // 네이버 로그인 버튼이 정상적으로 추가될 때까지 기다림 (최대 1초)
+      let attempts = 0
+      const checkButton = setInterval(() => {
+        if (naverRef.current?.children.length) {
+          clearInterval(checkButton)
+        } else if (attempts > 10) {
+          console.error('네이버 로그인 버튼 초기화 실패')
+          clearInterval(checkButton)
+        }
+        attempts++
+      }, 100)
+    }
+  }, [])
+
   const handleLoginWithKakao = () => {
     if (typeof window !== 'undefined' && window.Kakao) {
       window.Kakao.Auth.authorize({
@@ -15,26 +42,17 @@ const Login = () => {
     }
   }
 
-  const naverRef = useRef<HTMLDivElement>(null)
-
   const handleLoginWithNaver = () => {
     if (typeof window === 'undefined') return
 
-    const naverLogin = new window.naver.LoginWithNaverId({
-      clientId: process.env.NEXT_PUBLIC_NAVER_CLIENT_ID,
-      callbackUrl: `${process.env.NEXT_PUBLIC_NAVER_CALLBACKURL}`,
-      isPopup: false,
-      loginButton: { color: 'white', type: 1, height: '16' },
-      callbackHandle: true,
-    })
-
-    naverLogin.init()
-
-    // 커스텀한 아이콘으로 눌러주기 위한 useRef를 사용하여 첫 번째 자식을 클릭
+    // 네이버 로그인 버튼이 정상적으로 생성되었는지 확인 후 클릭
     const firstChild = naverRef.current?.children[0] as HTMLElement
-    if (firstChild) {
-      firstChild.click()
+    if (!firstChild) {
+      console.error('네이버 로그인 버튼이 초기화되지 않았습니다.')
+      return
     }
+
+    firstChild.click()
   }
 
   return (
@@ -78,6 +96,8 @@ const Login = () => {
           />
           <span className='text-[#3C1E1E]'>카카오로 시작하기</span>
         </button>
+
+        <div ref={naverRef} id='naverIdLogin' className='hidden' />
         <button
           onClick={handleLoginWithNaver}
           className='flex h-46 w-full max-w-335 items-center justify-center gap-10 rounded-30 bg-[#00BF18]'
@@ -89,7 +109,6 @@ const Login = () => {
             alt='네이버'
             priority
           />
-          <span id='naverIdLogin' className='hidden' ref={naverRef} />
           <span className='text-white'>네이버로 시작하기</span>
         </button>
       </footer>
