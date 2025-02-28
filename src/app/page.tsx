@@ -1,13 +1,17 @@
 import Button from '@/components/Button'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { getUserInfo } from './api/userInfo/route'
 
-export default function Home() {
+export default async function Home() {
   const today = new Date().toLocaleDateString('ko-KR', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   })
+
+  const userInfo = (await getUserInfo()).data
 
   return (
     <div className='bg-cloud-case2 relative flex min-h-screen flex-col justify-between p-24'>
@@ -44,7 +48,7 @@ export default function Home() {
 
       <div className='flex flex-col gap-12'>
         <Link
-          href='chat/onboarding'
+          href={userInfo?.createdAt ? '/chat' : 'chat/onboarding'}
           className='flex flex-col items-center gap-12'
         >
           <Button>토리와 이야기 시작하기</Button>
