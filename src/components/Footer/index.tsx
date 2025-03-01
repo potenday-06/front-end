@@ -9,12 +9,11 @@ interface FooterProps {
 
 const Footer = ({ children, type }: FooterProps) => {
   const footerStyle = clsx(
-    'fixed max-w-414 mx-auto bottom-0 left-0 right-0 flex flex-col h-[20%] rounded-t-10 bg-white text-center text-black-10', // 기본 스타일
+    'fixed max-w-414 mx-auto bottom-0 left-0 right-0 flex flex-col h-[20svh] rounded-t-10 bg-white text-center text-black-10', // 기본 스타일
     {
-      'justify-between gap-31 h-[30%] px-24 pb-48 pt-38': type === 'onboarding',
-      'justify-between gap-31 h-[20%] px-24 pb-48 pt-38':
-        type === 'chatOnboarding',
-      'h-[30%] px-24 py-20': type === 'chat',
+      'justify-between gap-31 h-[30lvh] px-24 py-38': type === 'onboarding',
+      'justify-between gap-31 h-[30svh] px-24 py-36': type === 'chatOnboarding',
+      ' px-24 py-20 h-[30lvh]': type === 'chat',
     }
   )
 

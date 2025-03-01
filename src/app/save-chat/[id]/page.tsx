@@ -42,7 +42,7 @@ const ChatList = () => {
 
   return (
     <div className='relative flex h-full flex-col px-24 py-38'>
-      <header className='mb-46 flex justify-between'>
+      <header className='mb-24 flex justify-between'>
         <Image
           className='mb-36'
           onClick={handleLinkClick}
@@ -56,7 +56,14 @@ const ChatList = () => {
           <h1 className='text-24-700'>토리와 대화 내용</h1>
           {date && <p className='text-16-500'>{date}</p>}
         </div>
-        <div className='h-24 w-24' />
+        <Image
+          className='mb-35'
+          onClick={() => router.push('/')}
+          src='/assets/icons/exit.svg'
+          width={24}
+          height={24}
+          alt='나가기'
+        />
       </header>
 
       {selectedConversation ? (

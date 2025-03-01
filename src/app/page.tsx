@@ -48,13 +48,13 @@ export default async function Home() {
 
       <div className='flex flex-col gap-12'>
         <Link
-          href={userInfo?.createdAt ? '/chat' : 'chat/onboarding'}
+          href={!userInfo?.nickname ? 'chat/onboarding' : '/chat'}
           className='flex flex-col items-center gap-12'
         >
           <Button>토리와 이야기 시작하기</Button>
         </Link>
         <Link href='save-chat'>
-          <Button>우리가 만든 우주 보러가기</Button>
+          <Button color='bg-purple-10'>우리가 만든 우주 보러가기</Button>
         </Link>
       </div>
     </div>

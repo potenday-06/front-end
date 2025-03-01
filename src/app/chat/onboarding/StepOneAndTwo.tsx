@@ -26,10 +26,10 @@ const StepOneAndTwo = ({
 
   return (
     <div>
-      <div className='mb-62 flex items-center justify-center'>
+      <div className='mb-62 flex items-center justify-between'>
         <Image
           onClick={onPrev}
-          className='absolute left-[4%] cursor-pointer'
+          className='cursor-pointer'
           width={24}
           height={24}
           src='/assets/icons/button-prev-gray.svg'
@@ -42,6 +42,7 @@ const StepOneAndTwo = ({
           src={`${step === 1 ? '/assets/icons/progress-bar-1.svg' : '/assets/icons/progress-bar-2.svg'}`}
           alt='상태바'
         />
+        <div className='h-24 w-24' />
       </div>
 
       <span className='text-20-700'>

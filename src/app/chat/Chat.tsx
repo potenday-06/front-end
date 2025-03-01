@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import MessageList from './MessageList'
 import ChatFooter from './ChatFooter'
@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation'
 import ChatSummary from './ChatSummary'
 import { saveConversation } from '@/utils/saveConversation'
 import { MessageType } from '@/utils/api/wholeConversation/route'
+import ChatStarter from '@/components/ChatStarter'
 
 export type ChatMode = 'input' | 'choice' | 'end'
 
@@ -18,6 +19,8 @@ const Chat = () => {
   const router = useRouter()
   const [messages, setMessages] = useState<MessageType[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
   const [chatMode, setChatMode] = useState<ChatMode>('input')
   const [summary, setSummary] = useState('')
 
@@ -72,8 +75,10 @@ const Chat = () => {
   }
 
   const handleStopTalk = async () => {
+    setIsSubmitted(true)
     await onSubmit('이제 그만할래', false).then(async (summaryData) => {
       await saveConversation(summaryData, messages)
+      setIsSubmitted(false)
       setChatMode('end')
     })
   }
@@ -82,8 +87,24 @@ const Chat = () => {
     router.push('/')
   }
 
+  useEffect(
+    function scrollToBottom() {
+      const header = document.getElementsByTagName('header')[0]
+      const footerElement = document.getElementsByTagName('footer')[0]
+        .firstChild as HTMLElement
+      const main = document.getElementsByTagName('main')[0]
+
+      if (main && header && footerElement) {
+        const mainHeight = `calc(100% - ${header.scrollHeight}px - ${footerElement.scrollHeight}px)`
+        main.style.height = mainHeight
+        main.scrollTop = main.scrollHeight
+      }
+    },
+    [chatMode]
+  )
+
   return (
-    <div className='h-full'>
+    <div className='h-svh p-24'>
       <header className='flex items-center justify-center'>
         {chatMode !== 'end' && (
           <Image
@@ -106,21 +127,9 @@ const Chat = () => {
 
       {chatMode !== 'end' && (
         <main
-          className={`scrollbar-bar-hidden h-[80%] overflow-y-auto [&::-webkit-scrollbar]:hidden`}
+          className={`scrollbar-bar-hidden mt-24 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
         >
-          <div className='mt-42 flex items-center gap-16'>
-            <Image
-              width={72}
-              height={72}
-              src='/assets/icons/tori-face.svg'
-              alt='토리'
-            />
-            <p className='text-18-600-25'>
-              같이 대화해서 좋아!
-              <br />
-              오늘 기분 어떤지 이야기해줄래?
-            </p>
-          </div>
+          <ChatStarter />
           <MessageList messages={messages} isLoading={isLoading} />
         </main>
       )}
@@ -136,7 +145,9 @@ const Chat = () => {
         {chatMode === 'choice' && (
           <div className='absolute bottom-0 left-0 right-0 flex flex-col gap-12 p-24'>
             <Button onClick={handleMoreTalk}>더 얘기할래</Button>
-            <Button onClick={handleStopTalk}>그만할래</Button>
+            <Button disabled={isSubmitted} onClick={handleStopTalk}>
+              {isSubmitted ? '대화 요약 중...' : '그만할래'}
+            </Button>
           </div>
         )}
         {chatMode === 'end' && (

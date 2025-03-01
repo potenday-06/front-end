@@ -33,7 +33,7 @@ const Onboarding = () => {
   }
 
   return (
-    <div className='px-24 pt-38'>
+    <div className='bg-cloud-case1 relative min-h-svh bg-purple-20 px-24 pt-38'>
       <div className='flex justify-center'>
         <Image
           width={289}
