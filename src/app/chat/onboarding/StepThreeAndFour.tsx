@@ -41,28 +41,30 @@ const StepThreeAndFour = ({
           <Image fill src='/assets/icons/exit.svg' alt='나가기' />
         </Link>
       )}
-      <div className='mb-62 flex justify-center'>
+      <div>
         {step === 3 && (
-          <>
+          <div className='flex items-center justify-between'>
             <Image
               onClick={onPrev}
-              className='absolute left-[4%] cursor-pointer'
+              className='cursor-pointer'
               width={24}
               height={24}
               src='/assets/icons/button-prev-gray.svg'
               alt='뒤로가기'
             />
             <Image
+              className='ml-36'
               width={289}
               height={32}
               src='/assets/icons/progress-bar-3.svg'
               alt='상태바'
             />
-          </>
+            <div className='h-24 w-24' />
+          </div>
         )}
       </div>
 
-      <span className='text-20-700'>
+      <div className='pt-80 text-20-700'>
         {step === 3 && (
           <>
             <p>우와! {age}살이구나.</p>
@@ -78,7 +80,7 @@ const StepThreeAndFour = ({
             <p>만나서 반가워!</p>
           </>
         )}
-      </span>
+      </div>
       {step === 4 && (
         <Image
           className='absolute left-1/2 top-[60%] -translate-x-1/2'
