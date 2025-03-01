@@ -3,9 +3,11 @@ import { StarProps } from './page'
 import Link from 'next/link'
 
 const Star = ({ star }: { star: StarProps }) => {
+  const formattedDate = star.createdAt || ''
+
   return (
     <Link
-      href={`/save-chat/${star.starId}`}
+      href={`/save-chat/${star.starId}?date=${encodeURIComponent(formattedDate)}`}
       className='mt-42 flex cursor-pointer flex-col items-center'
     >
       <Image

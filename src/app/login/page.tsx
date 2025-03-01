@@ -56,7 +56,7 @@ const Login = () => {
   }
 
   return (
-    <div className='relative flex min-h-screen flex-col justify-between p-33'>
+    <div className='relative flex min-h-svh flex-col justify-between p-33'>
       <header className='flex justify-center'>
         <Image
           src='/assets/icons/logo-text.svg'
@@ -92,7 +92,6 @@ const Login = () => {
             width={16}
             height={16}
             alt='카카오'
-            priority
           />
           <span className='text-[#3C1E1E]'>카카오로 시작하기</span>
         </button>
@@ -107,7 +106,6 @@ const Login = () => {
             width={16}
             height={14}
             alt='네이버'
-            priority
           />
           <span className='text-white'>네이버로 시작하기</span>
         </button>
