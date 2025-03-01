@@ -1,28 +1,30 @@
-'use client'
-
-import Cookies from 'js-cookie'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 
-const Setting = () => {
-  const router = useRouter()
+import LogoutButton from './LogoutButton'
+import { getUserInfo } from '@/utils/api/userInfo/route'
+import Link from 'next/link'
 
-  const handleLogout = () => {
-    Cookies.remove('accessToken1')
-    router.push('/login')
+const Setting = async () => {
+  const userInfo = (await getUserInfo()).data
+
+  const formatDate = (dateString: string) => {
+    if (!dateString) return ''
+    const date = new Date(dateString)
+    return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} 가입`
   }
 
   return (
     <div className='relative flex min-h-svh flex-col items-center p-24'>
       <div className='mb-60 flex w-full justify-start'>
-        <Image
-          className='cursor-pointer'
-          onClick={() => router.push('/')}
-          src='assets/icons/button-prev-gray.svg'
-          width={24}
-          height={24}
-          alt='뒤로가기'
-        />
+        <Link href='/'>
+          <Image
+            className='cursor-pointer'
+            src='assets/icons/button-prev-gray.svg'
+            width={24}
+            height={24}
+            alt='뒤로가기'
+          />
+        </Link>
         <Image
           className='ml-[36%]'
           src='assets/icons/setting-header.svg'
@@ -32,16 +34,11 @@ const Setting = () => {
         />
       </div>
       <div className='w-368 rounded-10 bg-white p-18 text-black-10'>
-        <p className='text-20-700'>박서영</p>
-        <p className='18-600'>2025.3.1 가입</p>
+        <p className='text-20-700'>{userInfo?.name || '사용자'}</p>
+        <p className='18-600'>{formatDate(userInfo?.createdAt || '')}</p>
       </div>
 
-      <button
-        className='absolute bottom-[3%] flex cursor-pointer justify-center text-16 text-[#D9D9D9] underline'
-        onClick={handleLogout}
-      >
-        로그아웃
-      </button>
+      <LogoutButton />
     </div>
   )
 }
