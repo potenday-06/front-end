@@ -7,8 +7,8 @@ type ChatSummaryProps = {
 
 const ChatSummary = ({ summary, isLoading }: ChatSummaryProps) => {
   return (
-    <div className='pt-[26%]'>
-      <p className='text-20-700'>{summary}</p>
+    <div className='pt-40'>
+      <p className='max-h-[50svh] overflow-y-auto text-20-700'>{summary}</p>
       <Image
         className='absolute bottom-[15%] left-1/2 -translate-x-1/2'
         src='/assets/icons/tori-hug-star.svg'
