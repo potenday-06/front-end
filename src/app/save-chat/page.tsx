@@ -2,9 +2,10 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { starList } from '../api/stars/route'
+
 import Star from './Star'
 import { useEffect, useState } from 'react'
+import { starList } from '@/utils/api/stars/route'
 
 export interface StarProps {
   starId: number

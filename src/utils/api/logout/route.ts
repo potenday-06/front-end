@@ -6,7 +6,12 @@ export async function POST() {
   // accessToken 쿠키 삭제
   response.cookies.set('accessToken', '', {
     path: '/',
-    expires: new Date(0), // 토큰 즉시 만료
+    expires: new Date(0),
+  })
+
+  response.cookies.set('accessToken1', '', {
+    path: '/',
+    expires: new Date(0),
   })
 
   return response

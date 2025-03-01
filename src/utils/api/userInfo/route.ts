@@ -8,7 +8,7 @@ export interface UserInfoType extends UserInfo {
 
 export async function getUserInfo() {
   const cookieStore = await cookies()
-  const accessToken = cookieStore.get('accessToken')?.value
+  const accessToken = cookieStore.get('accessToken1')?.value
 
   if (!accessToken) {
     return NextResponse.json(

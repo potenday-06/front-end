@@ -1,4 +1,4 @@
-import { getCookie } from 'cookies-next'
+import Cookies from 'js-cookie'
 
 // const mockChatList = Array.from({ length: 10 }, (_, index) => index).map(
 //   (num) => ({
@@ -9,18 +9,21 @@ import { getCookie } from 'cookies-next'
 // )
 
 export async function starList(page: number) {
-  const accessToken = getCookie('accessToken')
+  const accessToken = Cookies.get('accessToken1')
 
-  const res = await fetch(`/api/v1/stars?page=${page}`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}v1/stars?page=${page}`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
 
-    credentials: 'include',
-  })
+      credentials: 'include',
+    }
+  )
 
   if (!res.ok) {
     throw new Error(`별 목록 조회 실패: ${res.status}`)

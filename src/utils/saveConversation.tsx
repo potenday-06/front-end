@@ -1,4 +1,4 @@
-import { MessageType } from '@/app/api/wholeConversation/route'
+import { MessageType } from './api/wholeConversation/route'
 
 export type SaveConversationPayload = {
   summary: string
@@ -18,14 +18,17 @@ export const saveConversation = async (
       })),
     }
 
-    const response = await fetch('/api/v1/conversations', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify(payload),
-    })
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}v1/conversations`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(payload),
+      }
+    )
 
     if (!response.ok) {
       throw new Error(`대화 저장 실패: ${response.status}`)

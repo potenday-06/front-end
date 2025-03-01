@@ -1,5 +1,5 @@
 'use client'
-
+import { setCookie } from 'cookies-next'
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -19,8 +19,7 @@ const AuthRedirect = () => {
       try {
         setIsLoading(true)
 
-        // 프록시를 통해 요청 (next.config.ts에서 설정한 rewrites)
-        const apiUrl = `/api/${process.env.NEXT_PUBLIC_AUTH_API}/${provider}`
+        const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${process.env.NEXT_PUBLIC_AUTH_API}/${provider}`
 
         // 네이버는 액세스 토큰을, 카카오는 인가 코드를 쿼리 파라미터로 전송
         const url = `${apiUrl}?code=${encodeURIComponent(code)}`
@@ -44,6 +43,10 @@ const AuthRedirect = () => {
         if (data.success === false) {
           throw new Error(data.message || '로그인 처리 중 오류가 발생했습니다')
         }
+
+        const token = data.data.accessToken
+
+        setCookie('accessToken1', token)
 
         router.push('/')
       } catch (err) {
