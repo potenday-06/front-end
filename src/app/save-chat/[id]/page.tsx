@@ -42,7 +42,7 @@ const ChatList = () => {
 
   return (
     <div className='relative flex h-full flex-col px-24 py-38'>
-      <header className='mb-46 flex justify-between'>
+      <header className='mb-24 flex justify-between'>
         <Image
           className='mb-36'
           onClick={handleLinkClick}

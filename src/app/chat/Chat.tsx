@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation'
 import ChatSummary from './ChatSummary'
 import { saveConversation } from '@/utils/saveConversation'
 import { MessageType } from '@/utils/api/wholeConversation/route'
+import ChatStarter from '@/components/ChatStarter'
 
 export type ChatMode = 'input' | 'choice' | 'end'
 
@@ -110,21 +111,9 @@ const Chat = () => {
 
       {chatMode !== 'end' && (
         <main
-          className={`scrollbar-bar-hidden h-[80%] overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
+          className={`scrollbar-bar-hidden mt-24 h-[80%] overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
         >
-          <div className='mt-42 flex items-center gap-16'>
-            <Image
-              width={72}
-              height={72}
-              src='/assets/icons/tori-face.svg'
-              alt='토리'
-            />
-            <p className='text-18-600-25'>
-              같이 대화해서 좋아!
-              <br />
-              오늘 기분 어떤지 이야기해줄래?
-            </p>
-          </div>
+          <ChatStarter />
           <MessageList messages={messages} isLoading={isLoading} />
         </main>
       )}

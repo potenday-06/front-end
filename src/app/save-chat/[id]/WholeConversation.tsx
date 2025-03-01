@@ -1,4 +1,5 @@
 import MessageList from '@/app/chat/MessageList'
+import ChatStarter from '@/components/ChatStarter'
 import {
   MessageType,
   wholeConversation,
@@ -19,6 +20,7 @@ const WholeConversation = ({ conversationId }: { conversationId: number }) => {
 
   return (
     <div className='scrollbar-bar-hidden overflow-y-auto [&::-webkit-scrollbar]:hidden'>
+      <ChatStarter />
       <MessageList messages={messages} isLoading={!messages.length} />
     </div>
   )
