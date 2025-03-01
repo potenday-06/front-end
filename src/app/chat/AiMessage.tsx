@@ -3,10 +3,10 @@ import { MessageProps } from './MessageWrapper'
 
 const AIMessage = ({ content }: Pick<MessageProps, 'content'>) => {
   return (
-    <div className='flex items-center gap-8'>
+    <div className='flex items-start gap-8'>
       <Image
-        width={40}
-        height={40}
+        width={72}
+        height={72}
         src='/assets/icons/tori-face.svg'
         alt='토리'
       />
