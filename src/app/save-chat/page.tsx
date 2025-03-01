@@ -28,6 +28,8 @@ const SaveChat = () => {
   const hasPreviousPage = !data?.isFirst || false
   const hasNextPage = !data?.isLast || false
 
+  const isEmpty = data?.totalCount === 0
+
   useEffect(() => {
     const fetchStarList = async () => {
       const data = await starList(page)
@@ -63,13 +65,15 @@ const SaveChat = () => {
         <div className='h-24 w-24' />
       </header>
 
-      <div className='flex flex-col items-center'>
-        {chatList.map((star: StarProps) => (
-          <Star key={star.starId} star={star} />
-        ))}
-      </div>
+      {!isEmpty ? (
+        <div className='flex flex-col items-center'>
+          {chatList.map((star: StarProps) => (
+            <Star key={star.starId} star={star} />
+          ))}
+        </div>
+      ) : null}
 
-      {hasPreviousPage && (
+      {hasPreviousPage && !isEmpty && (
         <Image
           onClick={handlePrevPageClick}
           className='absolute bottom-0 left-[2%] cursor-pointer'
@@ -79,7 +83,7 @@ const SaveChat = () => {
           alt='이전페이지'
         />
       )}
-      {hasNextPage && (
+      {hasNextPage && !isEmpty && (
         <Image
           onClick={handleNextPageClick}
           className='absolute bottom-0 right-[2%] cursor-pointer'

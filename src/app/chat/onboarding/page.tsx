@@ -109,7 +109,7 @@ const ChatOnboarding = () => {
     }
   }
 
-  return <div className='min-h-screen'>{renderStep()}</div>
+  return <div className='min-h-svh'>{renderStep()}</div>
 }
 
 export default ChatOnboarding
