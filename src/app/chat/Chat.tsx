@@ -94,9 +94,11 @@ const Chat = () => {
         .firstChild as HTMLElement
       const main = document.getElementsByTagName('main')[0]
 
-      const mainHeight = `calc(100% - ${header.scrollHeight}px - ${footerElement.scrollHeight}px)`
-      main.style.height = mainHeight
-      main.scrollTop = main.scrollHeight
+      if (main && header && footerElement) {
+        const mainHeight = `calc(100% - ${header.scrollHeight}px - ${footerElement.scrollHeight}px)`
+        main.style.height = mainHeight
+        main.scrollTop = main.scrollHeight
+      }
     },
     [chatMode]
   )
