@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import MessageList from './MessageList'
 import ChatFooter from './ChatFooter'
@@ -87,6 +87,20 @@ const Chat = () => {
     router.push('/')
   }
 
+  useEffect(
+    function scrollToBottom() {
+      const footerElement = document.getElementsByTagName('footer')[0]
+        .firstChild as HTMLElement
+      const main = document.getElementsByTagName('main')[0]
+
+      if (footerElement) {
+        main.style.paddingBottom = `${footerElement.scrollHeight / 2}px`
+        main.scrollTop = main.scrollHeight
+      }
+    },
+    [chatMode]
+  )
+
   return (
     <div className='h-svh p-24'>
       <header className='flex items-center justify-center'>
@@ -111,7 +125,7 @@ const Chat = () => {
 
       {chatMode !== 'end' && (
         <main
-          className={`scrollbar-bar-hidden mt-24 h-[80%] overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
+          className={`scrollbar-bar-hidden mt-24 h-[80svh] overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
         >
           <ChatStarter />
           <MessageList messages={messages} isLoading={isLoading} />
