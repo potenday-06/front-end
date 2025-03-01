@@ -18,6 +18,8 @@ const Chat = () => {
   const router = useRouter()
   const [messages, setMessages] = useState<MessageType[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
   const [chatMode, setChatMode] = useState<ChatMode>('input')
   const [summary, setSummary] = useState('')
 
@@ -72,8 +74,10 @@ const Chat = () => {
   }
 
   const handleStopTalk = async () => {
+    setIsSubmitted(true)
     await onSubmit('이제 그만할래', false).then(async (summaryData) => {
       await saveConversation(summaryData, messages)
+      setIsSubmitted(false)
       setChatMode('end')
     })
   }
@@ -136,7 +140,9 @@ const Chat = () => {
         {chatMode === 'choice' && (
           <div className='absolute bottom-0 left-0 right-0 flex flex-col gap-12 p-24'>
             <Button onClick={handleMoreTalk}>더 얘기할래</Button>
-            <Button onClick={handleStopTalk}>그만할래</Button>
+            <Button disabled={isSubmitted} onClick={handleStopTalk}>
+              {isSubmitted ? '대화 요약 중...' : '그만할래'}
+            </Button>
           </div>
         )}
         {chatMode === 'end' && (
