@@ -1,8 +1,8 @@
+import MessageList from '@/app/chat/MessageList'
 import {
   MessageType,
   wholeConversation,
-} from '@/app/api/wholeConversation/route'
-import MessageList from '@/app/chat/MessageList'
+} from '@/utils/api/wholeConversation/route'
 import { useEffect, useState } from 'react'
 
 const WholeConversation = ({ conversationId }: { conversationId: number }) => {

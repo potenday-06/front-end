@@ -1,5 +1,5 @@
+import { MessageType } from '@/utils/api/wholeConversation/route'
 import { ReactNode } from 'react'
-import { MessageType } from '../api/wholeConversation/route'
 
 export type MessageProps = {
   type: MessageType['type']

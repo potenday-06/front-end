@@ -1,9 +1,9 @@
 'use client'
 
-import { Conversation } from '@/app/api/chatList/route'
 import Button from '@/components/Button'
 import { useState } from 'react'
 import WholeConversation from './WholeConversation'
+import { Conversation } from '@/utils/getConversation'
 
 const Summary = ({ conversation }: { conversation: Conversation }) => {
   const { summary, conversationId } = conversation

@@ -1,24 +1,15 @@
 import Cookies from 'js-cookie'
 
-export interface Conversation {
-  conversationId: number
-  createdAt: number
-  summary: string
+export type MessageType = {
+  type: 'AI' | 'USER'
+  message: string
 }
 
-interface StarConversations {
-  createdAt: string
-  content: Conversation[]
-}
-
-export async function getConversations(
-  starId: string
-): Promise<StarConversations | null> {
+export const wholeConversation = async (conversationId: number) => {
   const accessToken = Cookies.get('accessToken1')
-  console.log(accessToken)
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}v1/stars/${starId}/conversations`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}v1/conversations/${conversationId}/chats`,
     {
       method: 'GET',
       headers: {
@@ -32,7 +23,7 @@ export async function getConversations(
   )
 
   if (!res.ok) {
-    throw new Error(`채팅 목록 조회 실패: ${res.status}`)
+    throw new Error(`대화 전체 조회 실패: ${res.status}`)
   }
 
   const response = await res.json()

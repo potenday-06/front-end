@@ -10,7 +10,7 @@ import Button from '@/components/Button'
 import { useRouter } from 'next/navigation'
 import ChatSummary from './ChatSummary'
 import { saveConversation } from '@/utils/saveConversation'
-import { MessageType } from '../api/wholeConversation/route'
+import { MessageType } from '@/utils/api/wholeConversation/route'
 
 export type ChatMode = 'input' | 'choice' | 'end'
 

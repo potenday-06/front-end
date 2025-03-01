@@ -1,8 +1,8 @@
 import Button from '@/components/Button'
+import { getUserInfo } from '@/utils/api/userInfo/route'
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { getUserInfo } from './api/userInfo/route'
 
 export default async function Home() {
   const today = new Date().toLocaleDateString('ko-KR', {

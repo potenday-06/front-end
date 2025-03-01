@@ -1,16 +1,14 @@
 'use client'
 
-import {
-  Conversation as ConversationType,
-  // getConversations,
-} from '@/app/api/chatList/route'
 import Image from 'next/image'
-
 import Conversation from './Conversation'
 import { useEffect, useState } from 'react'
 import Summary from './Summary'
 import { useParams, useRouter } from 'next/navigation'
-import { getConversations } from '@/utils/getConversation'
+import {
+  Conversation as ConversationType,
+  getConversations,
+} from '@/utils/getConversation'
 
 const ChatList = () => {
   const { id } = useParams()

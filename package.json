@@ -10,9 +10,11 @@
     "prepare": "node -e \"try { require('husky').install() } catch (e) { if (e.code !== 'ERR_REQUIRE_ESM') throw e }\""
   },
   "dependencies": {
+    "@types/js-cookie": "^3.0.6",
     "clsx": "^2.1.1",
     "cookies-next": "^5.1.0",
     "jotai": "^2.12.1",
+    "js-cookie": "^3.0.5",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

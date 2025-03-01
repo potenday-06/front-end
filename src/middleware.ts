@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export function middleware(req: NextRequest) {
-  const token = req.cookies.get('accessToken')
+  const token = req.cookies.get('accessToken1')
   const { pathname } = req.nextUrl
 
   if (pathname === '/login' && token) {

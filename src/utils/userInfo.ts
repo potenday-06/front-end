@@ -1,7 +1,7 @@
 import { UserInfo } from '@/app/chat/onboarding/page'
 
 export async function postUserInfo({ nickname, age, gender }: UserInfo) {
-  const res = await fetch(`/api/v1/members`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}v1/members`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
