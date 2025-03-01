@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Conversation from './Conversation'
 import { useEffect, useState } from 'react'
 import Summary from './Summary'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import {
   Conversation as ConversationType,
   getConversations,
@@ -13,6 +13,9 @@ import {
 const ChatList = () => {
   const { id } = useParams()
   const router = useRouter()
+  const searchParams = useSearchParams()
+
+  const date = searchParams.get('date') || ''
 
   const [conversations, setConversations] = useState<ConversationType[]>([])
   const [selectedConversation, setSelectedConversation] =
@@ -38,26 +41,28 @@ const ChatList = () => {
   }
 
   return (
-    <div className='relative flex flex-col justify-between'>
-      <header className='flex flex-col items-center'>
+    <div className='relative flex h-full flex-col px-24 py-38'>
+      <header className='mb-46 flex justify-between'>
         <Image
+          className='mb-36'
           onClick={handleLinkClick}
-          className='absolute left-[2%]'
           src='/assets/icons/button-prev-gray.svg'
           width={24}
           height={24}
           alt='뒤로가기'
         />
 
-        <h1 className='text-24-700'>
-          {'2'}번째 {'서영이'}별 {/**To Do: userName 받아와서 적용*/}
-        </h1>
+        <div className='flex flex-col items-center'>
+          <h1 className='text-24-700'>토리와 대화 내용</h1>
+          {date && <p className='text-16-500'>{date}</p>}
+        </div>
+        <div className='h-24 w-24' />
       </header>
 
       {selectedConversation ? (
         <Summary conversation={selectedConversation} />
       ) : (
-        <div className='flex flex-col items-center gap-4'>
+        <div className='flex flex-col items-center gap-24'>
           {conversations?.map((conversation) => {
             return (
               <Conversation

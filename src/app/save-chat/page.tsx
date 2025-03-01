@@ -46,19 +46,21 @@ const SaveChat = () => {
   }
 
   return (
-    <div className='relative flex flex-col justify-between'>
-      <header className='relative flex flex-col items-center'>
-        <Link href='/'>
+    <div className='relative flex flex-col justify-between px-24 py-38'>
+      <header className='relative flex justify-between'>
+        <Link href='/' className='mt-4'>
           <Image
-            className='absolute left-[2%]'
             src='/assets/icons/button-prev-gray.svg'
             width={24}
             height={24}
             alt='뒤로가기'
           />
         </Link>
-        <h1 className='text-24-700'>우리가 만든 우주</h1>
-        <h3 className='text-16-500'>별들을 누르면 이전 대화를 볼 수 있어!</h3>
+        <div className='flex flex-col items-center'>
+          <h1 className='text-24-700'>우리가 만든 우주</h1>
+          <h3 className='text-16-500'>별들을 누르면 이전 대화를 볼 수 있어!</h3>
+        </div>
+        <div className='h-24 w-24' />
       </header>
 
       <div className='flex flex-col items-center'>

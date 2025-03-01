@@ -14,7 +14,7 @@ export default async function Home() {
   const userInfo = (await getUserInfo()).data
 
   return (
-    <div className='bg-cloud-case2 relative flex min-h-screen flex-col justify-between p-24'>
+    <div className='bg-cloud-case2 relative flex min-h-svh flex-col justify-between p-24'>
       <header className='flex items-center justify-center'>
         <Image
           src='/assets/icons/logo-text.svg'

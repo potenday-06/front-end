@@ -18,8 +18,11 @@ const Summary = ({ conversation }: { conversation: Conversation }) => {
     <WholeConversation conversationId={conversationId} />
   ) : (
     <div>
-      <p>{summary}</p>
-      <Button onClick={handleClick}>대화 내용 전체보기</Button>
+      <p className='text-20-700'>{summary}</p>
+
+      <div className='fixed bottom-0 left-0 right-0 mx-auto max-w-414 p-16'>
+        <Button onClick={handleClick}>대화 내용 전체보기</Button>
+      </div>
     </div>
   )
 }

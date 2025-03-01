@@ -18,7 +18,7 @@ const WholeConversation = ({ conversationId }: { conversationId: number }) => {
   }, [])
 
   return (
-    <div>
+    <div className='scrollbar-bar-hidden overflow-y-auto [&::-webkit-scrollbar]:hidden'>
       <MessageList messages={messages} isLoading={!messages.length} />
     </div>
   )

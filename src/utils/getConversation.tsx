@@ -15,7 +15,6 @@ export async function getConversations(
   starId: string
 ): Promise<StarConversations | null> {
   const accessToken = Cookies.get('accessToken1')
-  console.log(accessToken)
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}v1/stars/${starId}/conversations`,

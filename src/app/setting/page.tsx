@@ -13,7 +13,7 @@ const Setting = () => {
   }
 
   return (
-    <div className='relative flex min-h-dvh flex-col items-center p-24'>
+    <div className='relative flex min-h-svh flex-col items-center p-24'>
       <div className='mb-60 flex w-full justify-start'>
         <Image
           className='cursor-pointer'
