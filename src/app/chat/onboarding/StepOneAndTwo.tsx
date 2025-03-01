@@ -36,6 +36,7 @@ const StepOneAndTwo = ({
           alt='뒤로가기'
         />
         <Image
+          className='ml-36'
           width={289}
           height={32}
           src={`${step === 1 ? '/assets/icons/progress-bar-1.svg' : '/assets/icons/progress-bar-2.svg'}`}
