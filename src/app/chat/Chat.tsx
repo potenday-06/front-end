@@ -83,7 +83,7 @@ const Chat = () => {
   }
 
   return (
-    <div className='h-full'>
+    <div className='h-svh p-24'>
       <header className='flex items-center justify-center'>
         {chatMode !== 'end' && (
           <Image
