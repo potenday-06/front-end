@@ -54,7 +54,7 @@ export default async function Home() {
           <Button>토리와 이야기 시작하기</Button>
         </Link>
         <Link href='save-chat'>
-          <Button>우리가 만든 우주 보러가기</Button>
+          <Button color='bg-purple-10'>우리가 만든 우주 보러가기</Button>
         </Link>
       </div>
     </div>
