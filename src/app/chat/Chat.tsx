@@ -106,7 +106,7 @@ const Chat = () => {
 
       {chatMode !== 'end' && (
         <main
-          className={`scrollbar-bar-hidden h-[80%] overflow-y-auto [&::-webkit-scrollbar]:hidden`}
+          className={`scrollbar-bar-hidden h-[80%] overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
         >
           <div className='mt-42 flex items-center gap-16'>
             <Image
