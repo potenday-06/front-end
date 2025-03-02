@@ -48,7 +48,13 @@ export default async function Home() {
 
       <div className='flex flex-col gap-12'>
         <Link
-          href={!userInfo?.nickname ? 'chat/onboarding' : '/chat'}
+          href={
+            !userInfo.nickname ||
+            userInfo.nickname === '' ||
+            userInfo.userAge === 0
+              ? 'chat/onboarding'
+              : '/chat'
+          }
           className='flex flex-col items-center gap-12'
         >
           <Button>토리와 이야기 시작하기</Button>
