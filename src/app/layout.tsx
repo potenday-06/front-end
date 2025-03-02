@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 
 import './globals.css'
 import KakaoScript from './KakaoScript/page'
@@ -12,6 +13,13 @@ export const metadata: Metadata = {
     icon: '/assets/favicon.ico',
   },
 }
+
+const pretendard = localFont({
+  src: '../fonts/PretendardVariable.woff2',
+  display: 'swap',
+  weight: '45 920',
+  variable: '--font-pretendard',
+})
 
 declare global {
   interface Window {
@@ -26,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='ko'>
+    <html lang='ko' className={`${pretendard.variable}`}>
       <body
         suppressHydrationWarning
         className='m-0 flex h-svh items-center justify-center bg-[#ffffff]'

@@ -12,7 +12,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        pretendard: ['Pretendard', 'sans-serif'],
+        pretendard: ['var(--font-pretendard)'],
       },
       fontSize: {
         '16-500': ['16px', { fontWeight: '500', lineHeight: '35px' }],
