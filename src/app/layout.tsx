@@ -12,6 +12,18 @@ export const metadata: Metadata = {
   icons: {
     icon: '/assets/favicon.ico',
   },
+  openGraph: {
+    title: '토리별',
+    description: '달나라 토끼들의 꿈에서 태어난 토리와 대화해보세요',
+    url: 'https://toristar.site/onboarding',
+    siteName: '토리별',
+    images: [
+      {
+        url: '/assets/open-graph.png',
+        alt: '토리별 오픈그래프 이미지',
+      },
+    ],
+  },
 }
 
 const pretendard = localFont({
