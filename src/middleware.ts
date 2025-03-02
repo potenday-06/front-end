@@ -8,17 +8,12 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL('/', req.url))
   }
 
-  const pathToRedirect = ['/', '/chat', '/setting', '/save-chat']
+  const protectedPaths = ['/', '/chat', '/setting', '/save-chat']
+  const isProtectedPath = protectedPaths.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`)
+  )
 
-  if (pathname.startsWith('/chat')) {
-    return NextResponse.rewrite(new URL('/login', req.url))
-  }
-
-  if (pathname.startsWith('/save-chat')) {
-    return NextResponse.rewrite(new URL('/login', req.url))
-  }
-
-  if (pathToRedirect.includes(pathname) && !token) {
+  if (isProtectedPath && !token) {
     return NextResponse.redirect(new URL('/login', req.url))
   }
 
@@ -30,9 +25,9 @@ export const config = {
     '/',
     '/login',
     '/chat',
-    '/chat/:path',
+    '/chat/:path*',
     '/setting',
     '/save-chat',
-    '/save-chat/:path',
+    '/save-chat/:path*',
   ],
 }
