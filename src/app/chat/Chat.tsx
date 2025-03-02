@@ -85,6 +85,7 @@ const Chat = () => {
 
   const handleMoveHomePage = () => {
     router.push('/')
+    router.refresh()
   }
 
   useEffect(
