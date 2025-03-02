@@ -34,7 +34,7 @@ const Setting = async () => {
         />
       </div>
       <div className='w-368 rounded-10 bg-white p-18 text-black-10'>
-        <p className='text-20-700'>{userInfo?.name || '사용자'}</p>
+        <p className='text-20-700'>{userInfo?.nickname || '사용자'}</p>
         <p className='18-600'>{formatDate(userInfo?.createdAt || '')}</p>
       </div>
 
