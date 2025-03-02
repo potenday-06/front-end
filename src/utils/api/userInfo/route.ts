@@ -26,6 +26,7 @@ export async function getUserInfo() {
     },
 
     credentials: 'include',
+    cache: 'no-store',
   })
 
   if (!res.ok) {
