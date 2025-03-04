@@ -76,11 +76,35 @@ const Chat = () => {
 
   const handleStopTalk = async () => {
     setIsSubmitted(true)
-    await onSubmit('이제 그만할래', false).then(async (summaryData) => {
-      await saveConversation(summaryData, messages)
+
+    try {
+      // 요약 API 호출
+      const response = await fetch('/api/summary', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ messages }),
+      })
+
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('요약 API 호출 실패:', errorText)
+        return
+      }
+
+      const { data: summaryData } = await response.json()
+
+      // 요약된 데이터 DB 저장
+      await saveConversation(messages, summaryData)
+
+      setSummary(summaryData)
+      setChatMode('end') // 요약 화면으로 UI 변경
+    } catch (error) {
+      console.error('Fetch 오류:', error)
+    } finally {
       setIsSubmitted(false)
-      setChatMode('end')
-    })
+    }
   }
 
   const handleMoveHomePage = () => {
