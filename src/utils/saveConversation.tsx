@@ -1,16 +1,11 @@
 import { MessageType } from './api/wholeConversation/route'
 
-export type SaveConversationPayload = {
-  summary: string
-  chats: MessageType[]
-}
-
 export const saveConversation = async (
-  summary: string,
-  messages: MessageType[]
+  messages: MessageType[],
+  summary: string
 ) => {
   try {
-    const payload: SaveConversationPayload = {
+    const payload = {
       summary,
       chats: messages.map((msg) => ({
         type: msg.type.toUpperCase() as 'AI' | 'USER',
