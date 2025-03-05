@@ -56,7 +56,7 @@ const Login = () => {
   }
 
   return (
-    <div className='relative flex min-h-svh flex-col justify-between p-33'>
+    <div className='relative flex min-h-svh flex-col justify-between p-24'>
       <header className='flex justify-center'>
         <Image
           src='/assets/icons/logo-text.svg'
