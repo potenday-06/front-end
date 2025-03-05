@@ -48,7 +48,7 @@ const SaveChat = () => {
   }
 
   return (
-    <div className='flex h-svh flex-col p-24'>
+    <div className='bg-cloud-case2 flex h-svh flex-col p-24'>
       <header className='relative flex justify-between'>
         <Link href='/' className='mt-4'>
           <Image

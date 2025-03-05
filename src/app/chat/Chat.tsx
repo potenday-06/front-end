@@ -129,7 +129,7 @@ const Chat = () => {
   )
 
   return (
-    <div className='h-svh p-24'>
+    <div className='bg-cloud-case1 h-svh p-24'>
       <header className='flex items-center justify-center'>
         {chatMode !== 'end' && (
           <Image
