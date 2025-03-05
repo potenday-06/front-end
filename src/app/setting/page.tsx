@@ -3,6 +3,8 @@ import Image from 'next/image'
 import LogoutButton from './LogoutButton'
 import { getUserInfo } from '@/utils/api/userInfo/route'
 import Link from 'next/link'
+import { Suspense } from 'react'
+import SettingSkeleton from './SettingSkeleton'
 
 const Setting = async () => {
   const userInfo = (await getUserInfo()).data
@@ -14,8 +16,8 @@ const Setting = async () => {
   }
 
   return (
-    <div className='relative flex min-h-svh flex-col items-center p-24'>
-      <div className='mb-60 flex w-full justify-start'>
+    <div className='flex h-svh flex-col p-24'>
+      <header className='flex h-24 w-full justify-start'>
         <Link href='/'>
           <Image
             className='cursor-pointer'
@@ -32,15 +34,26 @@ const Setting = async () => {
           height={38}
           alt='설정 헤더'
         />
-      </div>
-      <div className='w-368 rounded-10 bg-white p-18 text-black-10'>
-        <p className='text-20-700'>{userInfo?.nickname || '사용자'}</p>
-        <p className='18-600'>{formatDate(userInfo?.createdAt || '')}</p>
-      </div>
+      </header>
+
+      <main className='flex-1'>
+        <div className='mt-60 w-full rounded-10 bg-white p-18 text-black-10'>
+          <p className='text-20-700'>{userInfo?.nickname || '사용자'}</p>
+          <p className='18-600'>{formatDate(userInfo?.createdAt || '')}</p>
+        </div>
+      </main>
 
       <LogoutButton />
     </div>
   )
 }
 
-export default Setting
+const SettingPage = () => {
+  return (
+    <Suspense fallback={<SettingSkeleton />}>
+      <Setting />
+    </Suspense>
+  )
+}
+
+export default SettingPage

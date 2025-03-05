@@ -15,7 +15,7 @@ export default async function Home() {
 
   return (
     <div className='bg-cloud-case2 relative flex min-h-svh flex-col justify-between p-24'>
-      <header className='flex items-center justify-center'>
+      <header className='flex h-28 items-center justify-center'>
         <Image
           src='/assets/icons/logo-text.svg'
           alt='텍스트 로고'
