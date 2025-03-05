@@ -41,10 +41,10 @@ const ChatList = () => {
   }
 
   return (
-    <div className='relative flex h-full flex-col px-24 py-38'>
+    <div className='relative flex h-full flex-col p-24'>
       <header className='mb-24 flex justify-between'>
         <Image
-          className='mb-36'
+          className='mb-36 cursor-pointer'
           onClick={handleLinkClick}
           src='/assets/icons/button-prev-gray.svg'
           width={24}
@@ -57,7 +57,7 @@ const ChatList = () => {
           {date && <p className='text-16-500'>{date}</p>}
         </div>
         <Image
-          className='mb-35'
+          className='mb-35 cursor-pointer'
           onClick={() => router.push('/')}
           src='/assets/icons/exit.svg'
           width={24}
@@ -69,7 +69,7 @@ const ChatList = () => {
       {selectedConversation ? (
         <Summary conversation={selectedConversation} />
       ) : (
-        <div className='flex flex-col items-center gap-24'>
+        <div className='scrollbar-bar-hidden flex flex-col items-center gap-24 overflow-y-auto [&::-webkit-scrollbar]:hidden'>
           {conversations?.map((conversation) => {
             return (
               <Conversation

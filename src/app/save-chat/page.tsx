@@ -48,7 +48,7 @@ const SaveChat = () => {
   }
 
   return (
-    <div className='relative flex flex-col justify-between px-24 py-38'>
+    <div className='bg-cloud-case2 flex h-svh flex-col p-24'>
       <header className='relative flex justify-between'>
         <Link href='/' className='mt-4'>
           <Image
@@ -65,34 +65,68 @@ const SaveChat = () => {
         <div className='h-24 w-24' />
       </header>
 
-      {!isEmpty ? (
-        <div className='flex flex-col items-center'>
-          {chatList.map((star: StarProps) => (
-            <Star key={star.starId} star={star} />
-          ))}
-        </div>
-      ) : null}
+      <main className='max-h-[80svh] flex-1 overflow-auto [&::-webkit-scrollbar]:hidden'>
+        {!isEmpty ? (
+          <div className='flex flex-col items-center'>
+            {chatList.map((star: StarProps, index) => {
+              let starImage = '/assets/icons/star-with-ring.svg'
+              let width = 146
+              let height = 136
+              switch (index) {
+                case 1: {
+                  starImage = '/assets/icons/star.svg'
+                  width = 103
+                  height = 103
+                  break
+                }
+                case 2: {
+                  starImage = '/assets/icons/star.svg'
+                  width = 77
+                  height = 77
+                  break
+                }
+              }
 
-      {hasPreviousPage && !isEmpty && (
-        <Image
-          onClick={handlePrevPageClick}
-          className='absolute bottom-0 left-[2%] cursor-pointer'
-          src='/assets/icons/button-previous.svg'
-          width={24}
-          height={24}
-          alt='이전페이지'
-        />
-      )}
-      {hasNextPage && !isEmpty && (
-        <Image
-          onClick={handleNextPageClick}
-          className='absolute bottom-0 right-[2%] cursor-pointer'
-          src='/assets/icons/button-next-purple.svg'
-          width={24}
-          height={24}
-          alt='다음페이지'
-        />
-      )}
+              return (
+                <Star
+                  key={star.starId}
+                  star={star}
+                  starImage={starImage}
+                  width={width}
+                  height={height}
+                />
+              )
+            })}
+          </div>
+        ) : null}
+      </main>
+
+      <footer className='flex justify-between'>
+        {hasPreviousPage && !isEmpty ? (
+          <Image
+            onClick={handlePrevPageClick}
+            className='cursor-pointer'
+            src='/assets/icons/button-prev-purple.svg'
+            width={48}
+            height={48}
+            alt='이전페이지'
+          />
+        ) : (
+          <div style={{ width: 48, height: 48 }} />
+        )}
+        {hasNextPage && !isEmpty ? (
+          <Image
+            onClick={handleNextPageClick}
+            className='cursor-pointer'
+            src='/assets/icons/button-next-purple.svg'
+            width={48}
+            height={48}
+            alt='다음페이지'
+          />
+        ) : (
+          <div style={{ width: 48, height: 48 }} />
+        )}
+      </footer>
     </div>
   )
 }

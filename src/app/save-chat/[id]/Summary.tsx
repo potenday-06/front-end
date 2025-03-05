@@ -18,7 +18,7 @@ const Summary = ({ conversation }: { conversation: Conversation }) => {
     <WholeConversation conversationId={conversationId} />
   ) : (
     <div>
-      <p className='scrollbar-bar-hidden max-h-[70svh] overflow-y-auto text-20-700 [&::-webkit-scrollbar]:hidden'>
+      <p className='scrollbar-bar-hidden overflow-y-auto text-20-700 [&::-webkit-scrollbar]:hidden'>
         {summary}
       </p>
 

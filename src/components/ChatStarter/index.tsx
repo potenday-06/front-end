@@ -3,7 +3,7 @@ import React from 'react'
 
 const ChatStarter = () => {
   return (
-    <div className='flex items-center gap-16'>
+    <div className='flex items-center gap-8'>
       <Image
         width={72}
         height={72}
