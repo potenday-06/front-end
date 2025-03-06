@@ -17,15 +17,15 @@ const Summary = ({ conversation }: { conversation: Conversation }) => {
   return displayWholeConversation ? (
     <WholeConversation conversationId={conversationId} />
   ) : (
-    <div>
-      <p className='scrollbar-bar-hidden overflow-y-auto text-20-700 [&::-webkit-scrollbar]:hidden'>
+    <>
+      <main className='scrollbar-bar-hidden overflow-y-auto pt-24 text-16-500 [&::-webkit-scrollbar]:hidden'>
         {summary}
-      </p>
+      </main>
 
-      <div className='fixed bottom-0 left-0 right-0 mx-auto max-w-414 p-16'>
+      <footer className='fixed bottom-0 left-0 right-0 mx-auto max-w-414 p-16'>
         <Button onClick={handleClick}>대화 내용 전체보기</Button>
-      </div>
-    </div>
+      </footer>
+    </>
   )
 }
 

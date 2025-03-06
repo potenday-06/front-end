@@ -41,10 +41,10 @@ const ChatList = () => {
   }
 
   return (
-    <div className='relative flex h-full flex-col p-24'>
-      <header className='mb-24 flex justify-between'>
+    <div className='bg-cloud-case1 flex h-full flex-col p-24'>
+      <header className='flex items-baseline justify-between'>
         <Image
-          className='mb-36 cursor-pointer'
+          className='cursor-pointer'
           onClick={handleLinkClick}
           src='/assets/icons/button-prev-gray.svg'
           width={24}
@@ -52,12 +52,17 @@ const ChatList = () => {
           alt='뒤로가기'
         />
 
-        <div className='flex flex-col items-center'>
-          <h1 className='text-24-700'>토리와 대화 내용</h1>
-          {date && <p className='text-16-500'>{date}</p>}
+        <div className='flex flex-col items-center gap-4'>
+          <Image
+            src='/assets/icons/header-summary.svg'
+            width={116}
+            height={24}
+            alt='헤더'
+          />
+          {date && <h3 className='text-14-500'>{date}</h3>}
         </div>
         <Image
-          className='mb-35 cursor-pointer'
+          className='cursor-pointer'
           onClick={() => router.push('/')}
           src='/assets/icons/exit.svg'
           width={24}
@@ -69,7 +74,7 @@ const ChatList = () => {
       {selectedConversation ? (
         <Summary conversation={selectedConversation} />
       ) : (
-        <div className='scrollbar-bar-hidden flex flex-col items-center gap-24 overflow-y-auto [&::-webkit-scrollbar]:hidden'>
+        <div className='scrollbar-bar-hidden flex flex-col items-center gap-24 overflow-y-auto pt-24 [&::-webkit-scrollbar]:hidden'>
           {conversations?.map((conversation) => {
             return (
               <Conversation

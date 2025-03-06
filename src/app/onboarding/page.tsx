@@ -2,29 +2,57 @@
 
 import Image from 'next/image'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import StepTwo from './Step2'
 import StepThree from './Step3'
 import StepOne from './Step1'
+import Lottie from 'lottie-react'
+import splashScreen from '../../../public/assets/animation/splash-screen.json'
+
+import Link from 'next/link'
+import OnboardingDescription from './OnboardingDescription'
+import { useRouter } from 'next/navigation'
+import Footer from '@/components/Footer'
+import clsx from 'clsx'
 
 const Onboarding = () => {
+  const router = useRouter()
   const [step, setStep] = useState(1)
+
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false)
+
+  const backgroundImageStyle = clsx('bg-cloud-case1', {
+    'bg-cloud-onb-page2': step === 2,
+    'bg-cloud-onb-page3': step === 3,
+  })
+
+  useEffect(() => {
+    const animation = setTimeout(() => {
+      setIsAnimationComplete(true)
+    }, 2000)
+
+    return () => clearTimeout(animation)
+  }, [])
 
   const handlePrevStep = () => {
     setStep((prev) => prev - 1)
   }
 
   const handleNextStep = () => {
-    setStep((prev) => prev + 1)
+    if (step === 3) {
+      router.push('/')
+    } else {
+      setStep((prev) => prev + 1)
+    }
   }
 
   const renderStep = () => {
     switch (step) {
       case 1:
-        return <StepOne onNext={handleNextStep} />
+        return <StepOne />
       case 2:
-        return <StepTwo onPrev={handlePrevStep} onNext={handleNextStep} />
+        return <StepTwo />
       case 3:
         return <StepThree />
       default:
@@ -33,18 +61,60 @@ const Onboarding = () => {
   }
 
   return (
-    <div className='bg-cloud-case1 relative min-h-svh bg-purple-20 px-24 pt-38'>
-      <div className='flex justify-center'>
-        <Image
-          width={289}
-          height={32}
-          src={`/assets/icons/progress-bar-${step}.svg`}
-          alt='상태바'
+    <>
+      {!isAnimationComplete && (
+        <Lottie
+          animationData={splashScreen}
+          loop={false}
+          className='fixed inset-0 z-[9999] h-svh'
         />
-      </div>
+      )}
+      <div
+        className={`${backgroundImageStyle} flex h-svh flex-col bg-purple-20`}
+      >
+        <header className='flex justify-center p-24'>
+          <Image
+            width={289}
+            height={32}
+            src={`/assets/icons/progress-bar-${step}.svg`}
+            alt='상태바'
+          />
+        </header>
 
-      <div>{renderStep()}</div>
-    </div>
+        <main className='flex-1 p-24'>{renderStep()}</main>
+
+        <Footer type='onboarding'>
+          <OnboardingDescription step={step} />
+
+          <div className='flex items-center justify-between'>
+            {step !== 1 ? (
+              <Image
+                className='cursor-pointer'
+                onClick={handlePrevStep}
+                width={48}
+                height={48}
+                src='/assets/icons/button-previous.svg'
+                alt='이전 버튼'
+              />
+            ) : (
+              <div className='h-48 w-48' />
+            )}
+
+            <Link href='/' className='text-14 text-gray-40 underline'>
+              바로 시작하기
+            </Link>
+            <Image
+              className='cursor-pointer'
+              onClick={handleNextStep}
+              width={48}
+              height={48}
+              src='/assets/icons/button-next.svg'
+              alt='다음 버튼'
+            />
+          </div>
+        </Footer>
+      </div>
+    </>
   )
 }
 

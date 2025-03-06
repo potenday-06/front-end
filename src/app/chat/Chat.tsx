@@ -11,7 +11,8 @@ import { useRouter } from 'next/navigation'
 import ChatSummary from './ChatSummary'
 import { saveConversation } from '@/utils/saveConversation'
 import { MessageType } from '@/utils/api/wholeConversation/route'
-import ChatStarter from '@/components/ChatStarter'
+
+import AIMessage from './AiMessage'
 
 export type ChatMode = 'input' | 'choice' | 'end'
 
@@ -129,8 +130,8 @@ const Chat = () => {
   )
 
   return (
-    <div className='bg-cloud-case1 h-svh p-24'>
-      <header className='flex items-center justify-center'>
+    <div className='bg-cloud-case1 flex h-svh flex-col'>
+      <header className='flex items-center justify-center p-24'>
         {chatMode !== 'end' && (
           <Image
             src='/assets/icons/logo-text.svg'
@@ -152,15 +153,23 @@ const Chat = () => {
 
       {chatMode !== 'end' && (
         <main
-          className={`scrollbar-bar-hidden mt-24 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
+          className={`scrollbar-bar-hidden flex-1 overflow-y-auto overflow-x-hidden p-24 pt-48 [&::-webkit-scrollbar]:hidden`}
         >
-          <ChatStarter />
+          <AIMessage />
           <MessageList messages={messages} isLoading={isLoading} />
         </main>
       )}
-
       {chatMode === 'end' && (
-        <ChatSummary summary={summary} isLoading={isLoading} />
+        <main className='flex flex-1 flex-col items-center justify-between overflow-y-hidden px-24'>
+          <ChatSummary summary={summary} />
+          <Image
+            className='mt-24'
+            src='/assets/icons/tori-hug-star.svg'
+            alt='토리'
+            width={91}
+            height={112}
+          />
+        </main>
       )}
 
       <footer>
@@ -168,7 +177,7 @@ const Chat = () => {
           <ChatFooter onSubmit={onSubmit} isLoading={isLoading} />
         )}
         {chatMode === 'choice' && (
-          <div className='absolute bottom-0 left-0 right-0 flex flex-col gap-12 p-24'>
+          <div className='flex flex-col gap-12 p-24'>
             <Button onClick={handleMoreTalk}>더 얘기할래</Button>
             <Button
               color='bg-purple-10'
@@ -180,7 +189,7 @@ const Chat = () => {
           </div>
         )}
         {chatMode === 'end' && (
-          <div className='absolute bottom-0 left-0 right-0 p-24'>
+          <div className='p-24'>
             <Button onClick={handleMoveHomePage}>오늘 대화 마치기</Button>
           </div>
         )}

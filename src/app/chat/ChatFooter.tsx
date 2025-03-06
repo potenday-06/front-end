@@ -30,22 +30,18 @@ const ChatFooter = ({ onSubmit, isLoading }: ChatFooterProps) => {
 
   return (
     <Footer type='chat'>
-      <div className='flex flex-1'>
-        <textarea
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          onCompositionStart={() => setIsComposing(true)}
-          onCompositionEnd={() => setIsComposing(false)}
-          placeholder='편하게 남겨줘'
-          className='flex-1 resize-none rounded-8 bg-gray-10 p-16'
-        />
-      </div>
-      <div className='mt-20'>
-        <Button onClick={handleSubmit} disabled={isLoading}>
-          {isLoading ? '전송 중...' : '알려주기'}
-        </Button>
-      </div>
+      <textarea
+        value={userInput}
+        onChange={(e) => setUserInput(e.target.value)}
+        onKeyDown={handleKeyDown}
+        onCompositionStart={() => setIsComposing(true)}
+        onCompositionEnd={() => setIsComposing(false)}
+        placeholder='편하게 남겨줘'
+        className='mb-16 h-110 resize-none rounded-8 bg-gray-10 p-16'
+      />
+      <Button onClick={handleSubmit} disabled={isLoading}>
+        {isLoading ? '전송 중...' : '알려주기'}
+      </Button>
     </Footer>
   )
 }

@@ -49,7 +49,7 @@ const SaveChat = () => {
 
   return (
     <div className='bg-cloud-case2 flex h-svh flex-col p-24'>
-      <header className='relative flex justify-between'>
+      <header className='relative flex items-baseline justify-between'>
         <Link href='/' className='mt-4'>
           <Image
             src='/assets/icons/button-prev-gray.svg'
@@ -58,9 +58,14 @@ const SaveChat = () => {
             alt='뒤로가기'
           />
         </Link>
-        <div className='flex flex-col items-center'>
-          <h1 className='text-24-700'>우리가 만든 우주</h1>
-          <h3 className='text-16-500'>별들을 누르면 이전 대화를 볼 수 있어!</h3>
+        <div className='flex flex-col items-center gap-4'>
+          <Image
+            src='/assets/icons/header-save-chat.svg'
+            width={116}
+            height={24}
+            alt='헤더'
+          />
+          <h3 className='text-14-500'>별들을 누르면 이전 대화를 볼 수 있어!</h3>
         </div>
         <div className='h-24 w-24' />
       </header>
@@ -70,19 +75,19 @@ const SaveChat = () => {
           <div className='flex flex-col items-center'>
             {chatList.map((star: StarProps, index) => {
               let starImage = '/assets/icons/star-with-ring.svg'
-              let width = 146
-              let height = 136
+              let width = 100
+              let height = 100
               switch (index) {
                 case 1: {
                   starImage = '/assets/icons/star.svg'
-                  width = 103
-                  height = 103
+                  width = 84
+                  height = 84
                   break
                 }
                 case 2: {
                   starImage = '/assets/icons/star.svg'
-                  width = 77
-                  height = 77
+                  width = 63
+                  height = 63
                   break
                 }
               }

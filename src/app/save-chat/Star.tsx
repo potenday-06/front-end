@@ -18,8 +18,8 @@ const Star = ({ star, starImage, width, height }: StarComponentProps) => {
       className='mt-42 flex cursor-pointer flex-col items-center'
     >
       <Image src={starImage} width={width} height={height} alt='별' priority />
-      <div className='mt-12 text-18-600'>{star.name}</div>
-      <div className='text-18-600'>{star.createdAt}</div>
+      <div className='mt-12 text-16-600'>{star.name}</div>
+      <div className='text-14-600'>{star.createdAt}</div>
     </Link>
   )
 }

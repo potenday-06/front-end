@@ -42,6 +42,13 @@ const pretendard = localFont({
   variable: '--font-pretendard',
 })
 
+const suit = localFont({
+  src: '../fonts/SUIT-Variable.woff2',
+  display: 'swap',
+  weight: '45 920',
+  variable: '--font-suit',
+})
+
 declare global {
   interface Window {
     Kakao: any
@@ -55,10 +62,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='ko' className={`${pretendard.variable}`}>
+    <html lang='ko' className={`${suit.variable}`}>
       <body
         suppressHydrationWarning
-        className='m-0 flex h-svh items-center justify-center bg-[#ffffff]'
+        className='m-0 flex h-svh items-center justify-center bg-[#f2f2f2]'
       >
         <div className='relative flex h-svh min-h-svh w-full max-w-414 flex-col bg-purple-20'>
           {children}

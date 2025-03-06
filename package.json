@@ -10,11 +10,13 @@
     "prepare": "node -e \"try { require('husky').install() } catch (e) { if (e.code !== 'ERR_REQUIRE_ESM') throw e }\""
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/js-cookie": "^3.0.6",
     "clsx": "^2.1.1",
     "cookies-next": "^5.1.0",
     "jotai": "^2.12.1",
     "js-cookie": "^3.0.5",
+    "lottie-react": "^2.4.1",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

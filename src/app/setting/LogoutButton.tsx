@@ -13,7 +13,7 @@ export default function LogoutButton() {
 
   return (
     <button
-      className='flex cursor-pointer justify-center text-16 text-[#D9D9D9] underline'
+      className='flex cursor-pointer justify-center text-14 text-[#D9D9D9] underline'
       onClick={handleLogout}
     >
       로그아웃
