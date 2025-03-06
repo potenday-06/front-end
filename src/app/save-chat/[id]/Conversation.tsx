@@ -18,7 +18,10 @@ const Conversation = ({
   const { createdAt } = conversation
 
   return (
-    <Button onClick={() => setSelectedConversation(conversation)}>
+    <Button
+      type='secondary'
+      onClick={() => setSelectedConversation(conversation)}
+    >
       {new Date(createdAt).toLocaleTimeString('ko-KR', {
         hour: '2-digit',
         minute: '2-digit',
