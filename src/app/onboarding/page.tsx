@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 
 import StepTwo from './Step2'
 import StepThree from './Step3'
@@ -16,9 +16,12 @@ import { useRouter } from 'next/navigation'
 import Footer from '@/components/Footer'
 import clsx from 'clsx'
 
+type FadeState = 'splash' | 'fade-out' | 'fade-in'
+
 const Onboarding = () => {
   const router = useRouter()
   const [step, setStep] = useState(1)
+  const [fadeState, setFadeState] = useState<FadeState>('splash')
 
   const [isAnimationComplete, setIsAnimationComplete] = useState(false)
 
@@ -27,9 +30,24 @@ const Onboarding = () => {
     'bg-cloud-onb-page3': step === 3,
   })
 
-  useEffect(() => {
+  const mainStyle = clsx({
+    'justify-end': step === 2,
+  })
+
+  const fadeClasses = {
+    splash: 'opacity-100',
+    'fade-out': 'opacity-0 transition-opacity duration-500',
+    'fade-in': 'opacity-100 transition-opacity duration-500',
+  }
+
+  useLayoutEffect(() => {
     const animation = setTimeout(() => {
-      setIsAnimationComplete(true)
+      setFadeState('fade-out')
+
+      setTimeout(() => {
+        setIsAnimationComplete(true)
+        setFadeState('fade-in')
+      }, 500)
     }, 2000)
 
     return () => clearTimeout(animation)
@@ -60,61 +78,60 @@ const Onboarding = () => {
     }
   }
 
-  return (
-    <>
-      {!isAnimationComplete && (
-        <Lottie
-          animationData={splashScreen}
-          loop={false}
-          className='fixed inset-0 z-[9999] h-svh'
+  return !isAnimationComplete ? (
+    <div
+      className={`z-[9999] h-svh max-w-414 bg-[#8a60ff] ${fadeClasses[fadeState]}`}
+    >
+      <Lottie animationData={splashScreen} loop={false} className='w-full' />
+    </div>
+  ) : (
+    <div
+      className={`${backgroundImageStyle} flex h-svh flex-col bg-purple-20 ${fadeClasses[fadeState]}`}
+    >
+      <header className='flex justify-center p-24'>
+        <Image
+          width={289}
+          height={32}
+          src={`/assets/icons/progress-bar-${step}.svg`}
+          alt='상태바'
         />
-      )}
-      <div
-        className={`${backgroundImageStyle} flex h-svh flex-col bg-purple-20`}
-      >
-        <header className='flex justify-center p-24'>
-          <Image
-            width={289}
-            height={32}
-            src={`/assets/icons/progress-bar-${step}.svg`}
-            alt='상태바'
-          />
-        </header>
+      </header>
 
-        <main className='flex-1 p-24'>{renderStep()}</main>
+      <main className={`${mainStyle} flex flex-1 flex-col items-center p-24`}>
+        {renderStep()}
+      </main>
 
-        <Footer type='onboarding'>
-          <OnboardingDescription step={step} />
+      <Footer type='onboarding'>
+        <OnboardingDescription step={step} />
 
-          <div className='flex items-center justify-between'>
-            {step !== 1 ? (
-              <Image
-                className='cursor-pointer'
-                onClick={handlePrevStep}
-                width={48}
-                height={48}
-                src='/assets/icons/button-previous.svg'
-                alt='이전 버튼'
-              />
-            ) : (
-              <div className='h-48 w-48' />
-            )}
-
-            <Link href='/' className='text-14 text-gray-40 underline'>
-              바로 시작하기
-            </Link>
+        <div className='flex items-center justify-between'>
+          {step !== 1 ? (
             <Image
               className='cursor-pointer'
-              onClick={handleNextStep}
+              onClick={handlePrevStep}
               width={48}
               height={48}
-              src='/assets/icons/button-next.svg'
-              alt='다음 버튼'
+              src='/assets/icons/button-previous.svg'
+              alt='이전 버튼'
             />
-          </div>
-        </Footer>
-      </div>
-    </>
+          ) : (
+            <div className='h-48 w-48' />
+          )}
+
+          <Link href='/' className='text-14 text-gray-40 underline'>
+            바로 시작하기
+          </Link>
+          <Image
+            className='cursor-pointer'
+            onClick={handleNextStep}
+            width={48}
+            height={48}
+            src='/assets/icons/button-next.svg'
+            alt='다음 버튼'
+          />
+        </div>
+      </Footer>
+    </div>
   )
 }
 
