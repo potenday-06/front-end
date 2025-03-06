@@ -14,7 +14,7 @@ export default async function Home() {
   const userInfo = (await getUserInfo()).data
 
   return (
-    <div className='bg-cloud-case2 relative flex min-h-svh flex-col justify-between p-24'>
+    <div className='bg-cloud-case1 relative flex min-h-svh flex-col justify-between p-24'>
       <header className='flex h-28 items-center justify-center'>
         <Image
           src='/assets/icons/logo-text.svg'
@@ -31,11 +31,15 @@ export default async function Home() {
       </header>
 
       <main className='flex flex-1 flex-col items-center justify-center'>
-        <p className='text-center text-18-600-30'>
-          오늘은 {today}이야
+        <div className='text-16-500-28 text-center'>
+          <div className='flex items-center'>
+            <p>오늘은&nbsp;</p>
+            <p className='text-16-600-28'>{today}</p>
+            <p>이야</p>
+          </div>
           <br />
-          어떤 하루를 보냈어?
-        </p>
+          <p>어떤 하루를 보냈어?</p>
+        </div>
       </main>
       <Image
         className='absolute left-1/2 top-[60%] -translate-x-1/2'
@@ -51,7 +55,7 @@ export default async function Home() {
           href={!userInfo.nickname ? 'chat/onboarding' : '/chat'}
           className='flex flex-col items-center gap-12'
         >
-          <Button>토리와 이야기 시작하기</Button>
+          <Button type='secondary'>토리와 이야기 시작하기</Button>
         </Link>
         <Link href='save-chat'>
           <Button color='bg-purple-10'>우리가 만든 우주 보러가기</Button>

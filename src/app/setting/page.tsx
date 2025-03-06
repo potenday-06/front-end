@@ -37,9 +37,9 @@ const Setting = async () => {
       </header>
 
       <main className='flex-1'>
-        <div className='mt-60 w-full rounded-10 bg-white p-18 text-black-10'>
-          <p className='text-20-700'>{userInfo?.nickname || '사용자'}</p>
-          <p className='18-600'>{formatDate(userInfo?.createdAt || '')}</p>
+        <div className='mt-60 w-full rounded-10 bg-white p-18 text-purple-40'>
+          <p className='text-16-600-22'>{userInfo?.nickname || '사용자'}</p>
+          <p className='text-14-500'>{formatDate(userInfo?.createdAt || '')}</p>
         </div>
       </main>
 

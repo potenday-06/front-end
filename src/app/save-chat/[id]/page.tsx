@@ -41,8 +41,8 @@ const ChatList = () => {
   }
 
   return (
-    <div className='relative flex h-full flex-col p-24'>
-      <header className='mb-24 flex justify-between'>
+    <div className='bg-cloud-case1 flex h-full flex-col p-24'>
+      <header className='flex justify-between'>
         <Image
           className='mb-36 cursor-pointer'
           onClick={handleLinkClick}
@@ -54,7 +54,7 @@ const ChatList = () => {
 
         <div className='flex flex-col items-center'>
           <h1 className='text-24-700'>토리와 대화 내용</h1>
-          {date && <p className='text-16-500'>{date}</p>}
+          {date && <p className='text-14-500'>{date}</p>}
         </div>
         <Image
           className='mb-35 cursor-pointer'
@@ -69,7 +69,7 @@ const ChatList = () => {
       {selectedConversation ? (
         <Summary conversation={selectedConversation} />
       ) : (
-        <div className='scrollbar-bar-hidden flex flex-col items-center gap-24 overflow-y-auto [&::-webkit-scrollbar]:hidden'>
+        <div className='scrollbar-bar-hidden flex flex-col items-center gap-24 overflow-y-auto pt-24 [&::-webkit-scrollbar]:hidden'>
           {conversations?.map((conversation) => {
             return (
               <Conversation
