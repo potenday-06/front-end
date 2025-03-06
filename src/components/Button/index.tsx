@@ -17,7 +17,7 @@ const Button = ({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`${color} w-full cursor-pointer rounded-24 py-13 text-18-600 text-white`}
+      className={`${color} w-full cursor-pointer rounded-24 py-13 text-16-600 text-white`}
     >
       {children}
     </button>
