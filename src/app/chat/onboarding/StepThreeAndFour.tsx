@@ -39,7 +39,7 @@ const StepThreeAndFour = ({
     <>
       <ChatOnboardingHeader step={step} onPrev={onPrev} />
 
-      <ChatOnboardingDescription step={step} />
+      <ChatOnboardingDescription step={step} age={age} />
 
       {step === 3 && (
         <footer className='flex w-full flex-col gap-12 p-24'>

@@ -10,15 +10,17 @@ const ChatOnboardingDescription = ({
   return (
     <>
       <main className='flex flex-1 flex-col items-center justify-center text-16-500'>
-        {step === 1 ? (
+        {step === 1 && (
           <>
             <p>반가워 안녕! 난 토리야</p>
             <p>너랑 더 친해지고 싶은데,</p>
             <p>뭐라고 부르면 될까?</p>
           </>
-        ) : (
+        )}
+        {step === 2 && (
           <>
-            <p>알려줘서 정말 고마워!</p>
+            <p>정말 멋진 이름이네!</p>
+            <p>알려줘서 정말 고마워</p>
             <p>몇 살인지 알려줄래?</p>
           </>
         )}
