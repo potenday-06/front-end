@@ -7,6 +7,7 @@ import KakaoScript from './KakaoScript/page'
 import Script from 'next/script'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://toristar.site/onboarding'),
   title: '토리별',
   description: '달나라 토끼들의 꿈에서 태어난 토리와 대화해보세요',
   icons: {
@@ -19,8 +20,16 @@ export const metadata: Metadata = {
     siteName: '토리별',
     images: [
       {
-        url: '/assets/open-graph.png',
-        alt: '토리별 오픈그래프 이미지',
+        url: '/opengraph-image.png',
+        alt: '토리별 오픈그래프',
+      },
+    ],
+  },
+  twitter: {
+    images: [
+      {
+        url: '/twitter-image.png',
+        alt: '토리별 트위터',
       },
     ],
   },
