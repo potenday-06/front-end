@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: '토리별',
     images: [
       {
-        url: '/opengraph-image.png',
+        url: 'https://toristar.site/onboarding/opengraph-image.png',
         alt: '토리별 오픈그래프',
       },
     ],
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     images: [
       {
-        url: '/twitter-image.png',
+        url: 'https://toristar.site/onboarding/twitter-image.png',
         alt: '토리별 트위터',
       },
     ],
