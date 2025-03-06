@@ -2,6 +2,7 @@
 
 import Button from '@/components/Button'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 
 const Login = () => {
@@ -82,9 +83,12 @@ const Login = () => {
         />
       </div>
       <footer className='flex flex-col items-center gap-12 pt-24'>
-        <button className='text-gray-[#d9d9d9] text-14 underline'>
+        <Link
+          href='https://chestnut-ellipse-bee.notion.site/1ae72891bfeb807597a3de5fc332e97b'
+          className='text-gray-[#d9d9d9] text-14 underline'
+        >
           개인정보처리방침
-        </button>
+        </Link>
 
         <Button
           type='login'
