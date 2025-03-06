@@ -1,5 +1,6 @@
 'use client'
 
+import Button from '@/components/Button'
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
 
@@ -56,36 +57,39 @@ const Login = () => {
   }
 
   return (
-    <div className='relative flex min-h-svh flex-col justify-between p-24'>
-      <header className='flex justify-center'>
+    <div className='relative flex min-h-svh flex-col p-24'>
+      <main className='flex flex-1 flex-col items-center justify-center gap-8'>
+        <Image
+          src='/assets/icons/login-text-logo.svg'
+          alt='텍스트 로고'
+          width={204}
+          height={22}
+        />
         <Image
           src='/assets/icons/logo-text.svg'
           alt='텍스트 로고'
-          width={51}
-          height={28}
+          width={220}
+          height={100}
         />
-      </header>
-      <main className='flex flex-1 flex-col items-center justify-center'>
-        <p className='text-center text-18-600-30'>
-          토리는 달나라 토끼들의 꿈에서 태어난
-          <br />
-          찹쌀떡 토끼예요 토리와 소중한 이야기를
-          <br />
-          오래 간직하려면 먼저 가입/로그인해 주세요!
-        </p>
       </main>
-      <Image
-        className='absolute left-1/2 top-[60%] -translate-x-1/2'
-        src='/assets/icons/tori-login.svg'
-        width={96}
-        height={116}
-        alt='토리'
-        priority
-      />
-      <footer className='flex flex-col items-center gap-12'>
-        <button
+      <div className='flex justify-center'>
+        <Image
+          src='/assets/icons/tori-login.svg'
+          width={96}
+          height={116}
+          alt='토리'
+          priority
+        />
+      </div>
+      <footer className='flex flex-col items-center gap-12 pt-24'>
+        <button className='text-gray-[#d9d9d9] text-14 underline'>
+          개인정보처리방침
+        </button>
+
+        <Button
+          type='login'
+          color='bg-[#FFEC45]'
           onClick={handleLoginWithKakao}
-          className='flex h-46 w-full max-w-335 items-center justify-center gap-10 rounded-30 bg-[#FFEC45]'
         >
           <Image
             src='/assets/icons/kakao-logo.svg'
@@ -93,13 +97,14 @@ const Login = () => {
             height={16}
             alt='카카오'
           />
-          <span className='text-[#3C1E1E]'>카카오로 시작하기</span>
-        </button>
+          <span className='text-16-600 text-[#3C1E1E]'>카카오로 시작하기</span>
+        </Button>
 
         <div ref={naverRef} id='naverIdLogin' className='hidden' />
-        <button
+        <Button
+          type='login'
+          color='bg-[#00BF18]'
           onClick={handleLoginWithNaver}
-          className='flex h-46 w-full max-w-335 items-center justify-center gap-10 rounded-30 bg-[#00BF18]'
         >
           <Image
             src='/assets/icons/naver-logo.svg'
@@ -107,8 +112,8 @@ const Login = () => {
             height={14}
             alt='네이버'
           />
-          <span className='text-white'>네이버로 시작하기</span>
-        </button>
+          <span className='text-16-600 text-white'>네이버로 시작하기</span>
+        </Button>
       </footer>
     </div>
   )
