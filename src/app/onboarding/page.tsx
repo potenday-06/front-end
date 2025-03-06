@@ -14,12 +14,18 @@ import Link from 'next/link'
 import OnboardingDescription from './OnboardingDescription'
 import { useRouter } from 'next/navigation'
 import Footer from '@/components/Footer'
+import clsx from 'clsx'
 
 const Onboarding = () => {
   const router = useRouter()
   const [step, setStep] = useState(1)
 
   const [isAnimationComplete, setIsAnimationComplete] = useState(false)
+
+  const backgroundImageStyle = clsx('bg-cloud-case1', {
+    'bg-cloud-onb-page2': step === 2,
+    'bg-cloud-onb-page3': step === 3,
+  })
 
   useEffect(() => {
     const animation = setTimeout(() => {
@@ -63,7 +69,9 @@ const Onboarding = () => {
           className='fixed inset-0 z-[9999] h-svh'
         />
       )}
-      <div className='bg-cloud-case1 flex h-svh flex-col bg-purple-20'>
+      <div
+        className={`${backgroundImageStyle} flex h-svh flex-col bg-purple-20`}
+      >
         <header className='flex justify-center p-24'>
           <Image
             width={289}
