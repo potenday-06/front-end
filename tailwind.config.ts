@@ -15,7 +15,13 @@ export default {
         pretendard: ['var(--font-pretendard)'],
       },
       fontSize: {
-        '16-500': ['16px', { fontWeight: '500', lineHeight: '35px' }],
+        '14-500': ['14px', { fontWeight: '500', lineHeight: '22px' }],
+        '14-600': ['14px', { fontWeight: '600', lineHeight: '22px' }],
+
+        '16-500': ['16px', { fontWeight: '500', lineHeight: '28px' }],
+        '16-600': ['16px', { fontWeight: '600' }],
+        '16-600-22': ['16px', { fontWeight: '600', lineHeight: '22px' }],
+        '16-600-28': ['16px', { fontWeight: '600', lineHeight: '28px' }],
 
         '18-600': ['18px', { fontWeight: '600', lineHeight: '21px' }],
         '18-600-25': ['18px', { fontWeight: '600', lineHeight: '25px' }],
@@ -40,6 +46,7 @@ export default {
           10: '#7D4FFF',
           20: '#693CE4',
           30: '#5511D8',
+          40: '#4701A9',
         },
         yellow: {
           10: '#FFF2AA',
@@ -48,6 +55,7 @@ export default {
           10: '#F2F2F2',
           20: '#AEAEB2',
           30: '#8B8B8B',
+          40: '#ACACAC',
         },
         black: {
           10: '#0B0B0B',
