@@ -1,5 +1,6 @@
+import AIMessage from '@/app/chat/AiMessage'
 import MessageList from '@/app/chat/MessageList'
-import ChatStarter from '@/components/ChatStarter'
+
 import {
   MessageType,
   wholeConversation,
@@ -19,10 +20,10 @@ const WholeConversation = ({ conversationId }: { conversationId: number }) => {
   }, [])
 
   return (
-    <div className='scrollbar-bar-hidden overflow-y-auto [&::-webkit-scrollbar]:hidden'>
-      <ChatStarter />
+    <main className='scrollbar-bar-hidden flex-1 overflow-y-auto pt-48 [&::-webkit-scrollbar]:hidden'>
+      <AIMessage />
       <MessageList messages={messages} isLoading={!messages.length} />
-    </div>
+    </main>
   )
 }
 

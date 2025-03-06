@@ -11,7 +11,8 @@ import { useRouter } from 'next/navigation'
 import ChatSummary from './ChatSummary'
 import { saveConversation } from '@/utils/saveConversation'
 import { MessageType } from '@/utils/api/wholeConversation/route'
-import ChatStarter from '@/components/ChatStarter'
+
+import AIMessage from './AiMessage'
 
 export type ChatMode = 'input' | 'choice' | 'end'
 
@@ -152,9 +153,9 @@ const Chat = () => {
 
       {chatMode !== 'end' && (
         <main
-          className={`scrollbar-bar-hidden flex-1 overflow-y-auto overflow-x-hidden p-24 [&::-webkit-scrollbar]:hidden`}
+          className={`scrollbar-bar-hidden flex-1 overflow-y-auto overflow-x-hidden p-24 pt-48 [&::-webkit-scrollbar]:hidden`}
         >
-          <ChatStarter />
+          <AIMessage />
           <MessageList messages={messages} isLoading={isLoading} />
         </main>
       )}
