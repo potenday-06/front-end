@@ -1,10 +1,11 @@
 'use client'
 
-import Image from 'next/image'
 import Button from '@/components/Button'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
+
 import { postUserInfo } from '@/utils/userInfo'
+import ChatOnboardingDescription from './ChatOnboardingDescription'
+import ChatOnboardingHeader from './ChatOnboardingHeader'
 
 type StepThreeAndFourProps = {
   nickname: string
@@ -35,80 +36,31 @@ const StepThreeAndFour = ({
   }
 
   return (
-    <div>
-      {step === 4 && (
-        <Link href='/' className='absolute right-[4%] h-24 w-24 cursor-pointer'>
-          <Image fill src='/assets/icons/exit.svg' alt='나가기' />
-        </Link>
-      )}
-      <div>
-        {step === 3 && (
-          <div className='flex items-center justify-between'>
-            <Image
-              onClick={onPrev}
-              className='cursor-pointer'
-              width={24}
-              height={24}
-              src='/assets/icons/button-prev-gray.svg'
-              alt='뒤로가기'
-            />
-            <Image
-              className='ml-36'
-              width={289}
-              height={32}
-              src='/assets/icons/progress-bar-3.svg'
-              alt='상태바'
-            />
-            <div className='h-24 w-24' />
-          </div>
-        )}
-      </div>
+    <>
+      <ChatOnboardingHeader step={step} onPrev={onPrev} />
 
-      <div className='pt-80 text-20-700'>
-        {step === 3 && (
-          <>
-            <p>우와! {age}살이구나.</p>
-            <p>남자야? 여자야?</p>
-          </>
-        )}
+      <ChatOnboardingDescription step={step} />
 
-        {step === 4 && (
-          <>
-            <p>고마워 내가 잘 기억할게</p>
-            <br />
-            <p>내 이름은 토리야</p>
-            <p>만나서 반가워!</p>
-          </>
-        )}
-      </div>
-      {step === 4 && (
-        <Image
-          className='absolute left-1/2 top-[60%] -translate-x-1/2'
-          src='/assets/icons/tori-cute.svg'
-          width={96}
-          height={116}
-          alt='토리'
-          priority
-        />
-      )}
       {step === 3 && (
-        <footer className='absolute bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
+        <footer className='flex w-full flex-col gap-12 p-24'>
           {onGenderSelect && (
-            <Button onClick={() => onGenderSelect('MALE')}>나는 남자야</Button>
-          )}
-          {onGenderSelect && (
-            <Button onClick={() => onGenderSelect('FEMALE')}>
-              나는 여자야
-            </Button>
+            <>
+              <Button onClick={() => onGenderSelect('MALE')}>
+                나는 남자야
+              </Button>
+              <Button onClick={() => onGenderSelect('FEMALE')}>
+                나는 여자야
+              </Button>
+            </>
           )}
         </footer>
       )}
       {step === 4 && (
-        <footer className='absolute bottom-0 left-1/2 mb-48 flex w-full -translate-x-1/2 flex-col gap-12 px-24'>
+        <footer className='w-full p-24'>
           <Button onClick={handleStartChat}>시작하기</Button>
         </footer>
       )}
-    </div>
+    </>
   )
 }
 

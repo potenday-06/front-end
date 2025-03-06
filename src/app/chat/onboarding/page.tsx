@@ -109,7 +109,11 @@ const ChatOnboarding = () => {
     }
   }
 
-  return <div className='h-svh p-24'>{renderStep()}</div>
+  return (
+    <div className='bg-cloud-case2 relative flex h-svh flex-col'>
+      {renderStep()}
+    </div>
+  )
 }
 
 export default ChatOnboarding
