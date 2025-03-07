@@ -80,7 +80,7 @@ const Onboarding = () => {
 
   return !isAnimationComplete ? (
     <div
-      className={`z-[9999] h-svh max-w-414 bg-[#8a60ff] ${fadeClasses[fadeState]}`}
+      className={`z-[9999] h-svh max-w-414 overflow-y-hidden bg-[#8a60ff] ${fadeClasses[fadeState]}`}
     >
       <Lottie animationData={splashScreen} loop={false} className='w-full' />
     </div>
