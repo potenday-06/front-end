@@ -1,5 +1,5 @@
 import { parseClovaResponse } from '@/lib/parseClovaResponse'
-import { MessageType } from '@/utils/api/wholeConversation/route'
+import { MessageType } from '@/utils/api/wholeConversation/getWholeConversation'
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {

@@ -8,7 +8,7 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import {
   Conversation as ConversationType,
   getConversations,
-} from '@/utils/getConversation'
+} from '@/utils/api/conversation/getConversation'
 
 const ChatList = () => {
   const { id } = useParams()

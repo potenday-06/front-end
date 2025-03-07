@@ -1,7 +1,7 @@
 import MessageWrapper from './MessageWrapper'
 import UserMessage from './UserMessage'
 import AiMessage from './AiMessage'
-import { MessageType } from '@/utils/api/wholeConversation/route'
+import { MessageType } from '@/utils/api/wholeConversation/getWholeConversation'
 
 type MessageListProps = {
   messages: MessageType[]

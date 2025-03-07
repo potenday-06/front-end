@@ -3,7 +3,7 @@
 import Button from '@/components/Button'
 import { useState } from 'react'
 import WholeConversation from './WholeConversation'
-import { Conversation } from '@/utils/getConversation'
+import { Conversation } from '@/utils/api/conversation/getConversation'
 
 const Summary = ({ conversation }: { conversation: Conversation }) => {
   const { summary, conversationId } = conversation

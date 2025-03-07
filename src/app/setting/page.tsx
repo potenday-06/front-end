@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import LogoutButton from './LogoutButton'
-import { getUserInfo } from '@/utils/api/userInfo/route'
+import { getUserInfo } from '@/utils/api/userInfo/getUserInfo'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import SettingSkeleton from './SettingSkeleton'

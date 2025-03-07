@@ -1,5 +1,5 @@
 import Button from '@/components/Button'
-import { getUserInfo } from '@/utils/api/userInfo/route'
+import { getUserInfo } from '@/utils/api/userInfo/getUserInfo'
 
 import Image from 'next/image'
 import Link from 'next/link'

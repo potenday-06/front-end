@@ -9,8 +9,8 @@ import ChatFooter from './ChatFooter'
 import Button from '@/components/Button'
 import { useRouter } from 'next/navigation'
 import ChatSummary from './ChatSummary'
-import { saveConversation } from '@/utils/saveConversation'
-import { MessageType } from '@/utils/api/wholeConversation/route'
+import { postConversation } from '@/utils/api/conversation/postConversation'
+import { MessageType } from '@/utils/api/wholeConversation/getWholeConversation'
 
 import AIMessage from './AiMessage'
 
@@ -97,7 +97,7 @@ const Chat = () => {
       const { data: summaryData } = await response.json()
 
       // 요약된 데이터 DB 저장
-      await saveConversation(messages, summaryData)
+      await postConversation(messages, summaryData)
 
       setSummary(summaryData)
       setChatMode('end') // 요약 화면으로 UI 변경

@@ -5,7 +5,7 @@ export type MessageType = {
   message: string
 }
 
-export const wholeConversation = async (conversationId: number) => {
+export const getWholeConversation = async (conversationId: number) => {
   const accessToken = Cookies.get('accessToken1')
 
   const res = await fetch(

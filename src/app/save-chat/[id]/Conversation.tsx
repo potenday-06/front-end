@@ -1,7 +1,7 @@
 'use client'
 
 import Button from '@/components/Button'
-import { Conversation as ConversationType } from '@/utils/getConversation'
+import { Conversation as ConversationType } from '@/utils/api/conversation/getConversation'
 import { Dispatch, SetStateAction } from 'react'
 
 type ConversationProps = {

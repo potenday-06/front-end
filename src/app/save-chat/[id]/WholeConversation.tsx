@@ -3,8 +3,8 @@ import MessageList from '@/app/chat/MessageList'
 
 import {
   MessageType,
-  wholeConversation,
-} from '@/utils/api/wholeConversation/route'
+  getWholeConversation,
+} from '@/utils/api/wholeConversation/getWholeConversation'
 import { useEffect, useState } from 'react'
 
 const WholeConversation = ({ conversationId }: { conversationId: number }) => {
@@ -12,7 +12,7 @@ const WholeConversation = ({ conversationId }: { conversationId: number }) => {
 
   useEffect(() => {
     const fetchWholeConversation = async () => {
-      const data = await wholeConversation(conversationId)
+      const data = await getWholeConversation(conversationId)
       setMessages(data.content)
     }
 

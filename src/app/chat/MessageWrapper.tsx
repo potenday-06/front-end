@@ -1,4 +1,4 @@
-import { MessageType } from '@/utils/api/wholeConversation/route'
+import { MessageType } from '@/utils/api/wholeConversation/getWholeConversation'
 import { ReactNode } from 'react'
 
 export type MessageProps = {
