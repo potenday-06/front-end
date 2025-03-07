@@ -144,10 +144,10 @@ const Chat = () => {
         <Image
           onClick={handleMoveHomePage}
           className='absolute right-[4%] cursor-pointer'
-          src='/assets/icons/exit.svg'
-          alt='나가기'
-          width={24}
-          height={24}
+          src='/assets/icons/home.svg'
+          alt='홈 버튼'
+          width={18}
+          height={18}
         />
       </header>
 
