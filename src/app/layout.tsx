@@ -20,20 +20,7 @@ export const metadata: Metadata = {
     url: 'https://toristar.site/onboarding',
     type: 'website',
     locale: 'ko_KR',
-    images: [
-      {
-        url: 'https://toristar.site/onboarding/opengraph-image.png',
-        alt: '토리별 오픈그래프',
-      },
-    ],
-  },
-  twitter: {
-    images: [
-      {
-        url: 'https://toristar.site/onboarding/twitter-image.png',
-        alt: '토리별 트위터',
-      },
-    ],
+    images: 'https://toristar.site/onboarding/opengraph-image.png',
   },
 }
 
