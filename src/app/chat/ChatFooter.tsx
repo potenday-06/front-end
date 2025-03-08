@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Button from '@/components/Button'
 import Footer from '@/components/Footer'
+import useCheckMobileDevice from '@/hooks/useCheckMobileDevice'
 
 type ChatFooterProps = {
   onSubmit: (message: string) => void
@@ -11,6 +12,8 @@ const ChatFooter = ({ onSubmit, isLoading }: ChatFooterProps) => {
   const [userInput, setUserInput] = useState('')
   const [isComposing, setIsComposing] = useState(false)
 
+  const isMobile = useCheckMobileDevice()
+
   const handleSubmit = () => {
     if (!userInput.trim()) return
     onSubmit(userInput)
@@ -18,6 +21,8 @@ const ChatFooter = ({ onSubmit, isLoading }: ChatFooterProps) => {
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (isMobile) return
+
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
       e.stopPropagation()
