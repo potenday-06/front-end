@@ -17,6 +17,7 @@ import Lottie from 'lottie-react'
 import chatEndAnimation from '../../../public/assets/animation/chat-end.json'
 import { postMessage } from '@/utils/api/chat/postMessage'
 import { postSummary } from '@/utils/api/chat/postSummary'
+import useScrollToBottom from '@/utils/useScrollToBottom'
 
 export type ChatMode = 'input' | 'choice' | 'end'
 
@@ -90,29 +91,14 @@ const Chat = () => {
     return () => clearTimeout(timer)
   }, [showAnimation, router, handleMoveHomePage])
 
-  useEffect(
-    function scrollToBottom() {
-      if (showAnimation) return
-      const header = document.getElementsByTagName('header')[0]
-      const footerElement = document.getElementsByTagName('footer')[0]
-        .firstChild as HTMLElement
-      const main = document.getElementsByTagName('main')[0]
-
-      if (main && header && footerElement) {
-        const mainHeight = `calc(100% - ${header.scrollHeight}px - ${footerElement.scrollHeight}px)`
-        main.style.height = mainHeight
-        main.scrollTop = main.scrollHeight
-      }
-    },
-    [chatMode]
-  )
+  useScrollToBottom([chatMode])
 
   if (showAnimation)
     return (
       <Lottie
         animationData={chatEndAnimation}
         loop={false}
-        className='absolute bottom-0 left-0 right-0 z-[9999]'
+        className='absolute bottom-0 left-0 right-0 z-[9999] overflow-y-hidden'
       />
     )
 
