@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { RequestInit } from 'next/dist/server/web/spec-extension/request'
+import Cookies from 'js-cookie'
 
 type RequestOptionsType = Omit<RequestInit, 'body'> & {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
@@ -7,6 +8,7 @@ type RequestOptionsType = Omit<RequestInit, 'body'> & {
   headers?: Headers
   query?: Record<string, string | number | boolean>
   cache?: string
+  includeAccessToken?: boolean
 }
 
 type DefaultOptions = {
@@ -37,16 +39,26 @@ const toQueryString = (query: Record<string, any>): string => {
 export const customFetcher =
   (defaultOptions: DefaultOptions) =>
   async (path: string, options: RequestOptionsType) => {
-    const { headers, body, query, ...restOptions } = options
+    const { headers, body, query, includeAccessToken, ...restOptions } = options
 
     let url = defaultOptions.baseURL + path
     if (query) {
       url += toQueryString(query)
     }
 
+    let authorizationHeader = {}
+    if (includeAccessToken) {
+      const accessToken = Cookies.get('accessToken1')
+      authorizationHeader = { Authorization: `Bearer ${accessToken}` }
+    }
+
     const requestOptions: RequestInit = {
       method: options.method || 'GET',
-      headers: new Headers({ ...defaultOptions.headers, ...headers }),
+      headers: new Headers({
+        ...defaultOptions.headers,
+        ...headers,
+        ...authorizationHeader,
+      }),
       ...restOptions,
     }
 
