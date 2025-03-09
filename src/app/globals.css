@@ -30,6 +30,13 @@
   background-position: bottom;
 }
 
+.bg-cloud-main {
+  background-image: url('/assets/images/cloud-main.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: bottom;
+}
+
 .scrollbar-bar-hidden {
   -ms-overflow-style: none; /* IE and 엣지 */
   scrollbar-width: none; /* 파이어폭스 */

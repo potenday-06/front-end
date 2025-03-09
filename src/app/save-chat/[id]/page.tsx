@@ -8,7 +8,7 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import {
   Conversation as ConversationType,
   getConversations,
-} from '@/utils/getConversation'
+} from '@/utils/api/conversation/getConversation'
 
 const ChatList = () => {
   const { id } = useParams()
@@ -64,10 +64,10 @@ const ChatList = () => {
         <Image
           className='cursor-pointer'
           onClick={() => router.push('/')}
-          src='/assets/icons/exit.svg'
-          width={24}
-          height={24}
-          alt='나가기'
+          src='/assets/icons/home.svg'
+          width={18}
+          height={18}
+          alt='홈'
         />
       </header>
 

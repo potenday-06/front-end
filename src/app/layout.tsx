@@ -3,8 +3,9 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 
 import './globals.css'
-import KakaoScript from './KakaoScript/page'
+
 import Script from 'next/script'
+import KakaoScript from '@/components/KakaoScript'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://toristar.site/onboarding'),
@@ -17,19 +18,25 @@ export const metadata: Metadata = {
     title: '토리별',
     siteName: '토리별',
     description: '달나라 토끼들의 꿈에서 태어난 토리와 대화해보세요',
-    url: 'https://toristar.site/onboarding',
+    url: 'https://toristar.site',
     type: 'website',
     locale: 'ko_KR',
-    images: 'https://toristar.site/onboarding/opengraph-image.png',
+    images: [
+      {
+        url: 'https://i.ibb.co/JwsgRR6m/opengraph-image.png',
+        alt: '토리별 오픈그래프',
+      },
+    ],
+  },
+  twitter: {
+    images: [
+      {
+        url: 'https://i.ibb.co/JwsgRR6m/opengraph-image.png',
+        alt: '토리별 트위터',
+      },
+    ],
   },
 }
-
-const pretendard = localFont({
-  src: '../fonts/PretendardVariable.woff2',
-  display: 'swap',
-  weight: '45 920',
-  variable: '--font-pretendard',
-})
 
 const suit = localFont({
   src: '../fonts/SUIT-Variable.woff2',

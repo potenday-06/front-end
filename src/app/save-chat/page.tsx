@@ -2,10 +2,9 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-
 import Star from './Star'
 import { useEffect, useState } from 'react'
-import { starList } from '@/utils/api/stars/route'
+import { instance } from '@/utils/api/instance'
 
 export interface StarProps {
   starId: number
@@ -32,8 +31,11 @@ const SaveChat = () => {
 
   useEffect(() => {
     const fetchStarList = async () => {
-      const data = await starList(page)
-      setData(data)
+      const data = await instance('v1/stars', {
+        query: { page },
+        includeAccessToken: true,
+      })
+      setData(data.data)
     }
 
     fetchStarList()
@@ -72,7 +74,7 @@ const SaveChat = () => {
 
       <main className='max-h-[80svh] flex-1 overflow-auto [&::-webkit-scrollbar]:hidden'>
         {!isEmpty ? (
-          <div className='flex flex-col items-center'>
+          <div className='mt-48 flex flex-col items-center'>
             {chatList.map((star: StarProps, index) => {
               let starImage = '/assets/icons/star-with-ring.svg'
               let width = 100

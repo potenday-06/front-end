@@ -3,7 +3,7 @@
 import Button from '@/components/Button'
 import { useRouter } from 'next/navigation'
 
-import { postUserInfo } from '@/utils/userInfo'
+import { postUserInfo } from '@/utils/api/userInfo/postUserInfo'
 import ChatOnboardingDescription from './ChatOnboardingDescription'
 import ChatOnboardingHeader from './ChatOnboardingHeader'
 

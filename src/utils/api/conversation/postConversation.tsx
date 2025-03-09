@@ -1,6 +1,6 @@
-import { MessageType } from './api/wholeConversation/route'
+import { MessageType } from '../wholeConversation/getWholeConversation'
 
-export const saveConversation = async (
+export const postConversation = async (
   messages: MessageType[],
   summary: string
 ) => {
