@@ -92,7 +92,7 @@ const Chat = () => {
     return () => clearTimeout(timer)
   }, [showAnimation, router, handleMoveHomePage])
 
-  useScrollToBottom([chatMode])
+  useScrollToBottom(showAnimation, [chatMode])
 
   if (showAnimation)
     return (
