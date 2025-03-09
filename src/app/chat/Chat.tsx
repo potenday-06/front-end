@@ -18,6 +18,7 @@ import chatEndAnimation from '../../../public/assets/animation/chat-end.json'
 import { postMessage } from '@/utils/api/chat/postMessage'
 import { postSummary } from '@/utils/api/chat/postSummary'
 import useScrollToBottom from '@/utils/useScrollToBottom'
+import ChatHeader from './ChatHeader'
 
 export type ChatMode = 'input' | 'choice' | 'end'
 
@@ -104,32 +105,7 @@ const Chat = () => {
 
   return (
     <div className='bg-cloud-case1 flex h-svh flex-col'>
-      <header className='flex items-center justify-center p-24'>
-        {chatMode !== 'end' && (
-          <Image
-            src='/assets/icons/logo-text.svg'
-            alt='텍스트 로고'
-            width={51}
-            height={28}
-          />
-        )}
-        {chatMode === 'end' && (
-          <Image
-            src='/assets/icons/header-chat-end.svg'
-            alt='헤더'
-            width={99}
-            height={25}
-          />
-        )}
-        <Image
-          onClick={handleMoveHomePage}
-          className='absolute right-[4%] cursor-pointer'
-          src='/assets/icons/home.svg'
-          alt='홈 버튼'
-          width={18}
-          height={18}
-        />
-      </header>
+      <ChatHeader chatMode={chatMode} />
 
       {chatMode === 'end' && (
         <main className='flex flex-1 flex-col items-center justify-between overflow-y-hidden px-24'>
