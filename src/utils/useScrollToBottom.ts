@@ -1,7 +1,12 @@
 import { useEffect } from 'react'
 
-const useScrollToBottom = (deps: React.DependencyList = []) => {
+const useScrollToBottom = (
+  showAnimation: boolean,
+  deps: React.DependencyList = []
+) => {
   useEffect(() => {
+    if (showAnimation) return
+
     const header = document.getElementsByTagName('header')[0]
     const footerElement = document.getElementsByTagName('footer')[0]
       .firstChild as HTMLElement
