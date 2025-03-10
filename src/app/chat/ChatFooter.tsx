@@ -1,53 +1,52 @@
-import { useState } from 'react'
 import Button from '@/components/Button'
-import Footer from '@/components/Footer'
-import useCheckMobileDevice from '@/hooks/useCheckMobileDevice'
+import ChatUserInput from './ChatUserInput'
+import { ChatMode } from './Chat'
+import { Dispatch, SetStateAction } from 'react'
 
-type ChatFooterProps = {
-  onSubmit: (message: string) => void
+interface ChatFooterProps {
+  chatMode: ChatMode
+  setChatMode: Dispatch<SetStateAction<ChatMode>>
+  onSubmit: (inputMessage: string) => Promise<void>
+  disabled: boolean
   isLoading: boolean
+  setShowAnimation: Dispatch<SetStateAction<boolean>>
+  handleChatStopAndSave: () => Promise<void>
 }
 
-const ChatFooter = ({ onSubmit, isLoading }: ChatFooterProps) => {
-  const [userInput, setUserInput] = useState('')
-  const [isComposing, setIsComposing] = useState(false)
-
-  const isMobile = useCheckMobileDevice()
-
-  const handleSubmit = () => {
-    if (!userInput.trim()) return
-    onSubmit(userInput)
-    setUserInput('')
-  }
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (isMobile) return
-
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault()
-      e.stopPropagation()
-
-      if (!userInput.trim() || isComposing) return
-
-      handleSubmit()
-    }
-  }
-
+const ChatFooter = ({
+  chatMode,
+  setChatMode,
+  onSubmit,
+  disabled,
+  isLoading,
+  setShowAnimation,
+  handleChatStopAndSave,
+}: ChatFooterProps) => {
   return (
-    <Footer type='chat'>
-      <textarea
-        value={userInput}
-        onChange={(e) => setUserInput(e.target.value)}
-        onKeyDown={handleKeyDown}
-        onCompositionStart={() => setIsComposing(true)}
-        onCompositionEnd={() => setIsComposing(false)}
-        placeholder='편하게 남겨줘'
-        className='mb-16 h-110 resize-none rounded-8 bg-gray-10 p-16'
-      />
-      <Button onClick={handleSubmit} disabled={isLoading}>
-        {isLoading ? '전송 중...' : '알려주기'}
-      </Button>
-    </Footer>
+    <footer>
+      {chatMode === 'input' && (
+        <ChatUserInput onSubmit={onSubmit} isLoading={isLoading} />
+      )}
+      {chatMode === 'choice' && (
+        <div className='flex flex-col gap-12 p-24'>
+          <Button onClick={() => setChatMode('input')}>더 얘기할래</Button>
+          <Button
+            color='bg-purple-10'
+            disabled={disabled}
+            onClick={handleChatStopAndSave}
+          >
+            {disabled ? '대화 요약 중...' : '그만할래'}
+          </Button>
+        </div>
+      )}
+      {chatMode === 'end' && (
+        <div className='p-24'>
+          <Button onClick={() => setShowAnimation(true)}>
+            오늘 대화 마치기
+          </Button>
+        </div>
+      )}
+    </footer>
   )
 }
 
