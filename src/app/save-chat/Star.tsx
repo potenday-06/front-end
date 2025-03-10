@@ -16,8 +16,16 @@ const Star = ({ star, starImage, width, height }: StarComponentProps) => {
     <Link
       href={`/save-chat/${star.starId}?date=${encodeURIComponent(formattedDate)}`}
       className='mt-16 flex cursor-pointer flex-col items-center'
+      tabIndex={2}
     >
-      <Image src={starImage} width={width} height={height} alt='별' priority />
+      <Image
+        src={starImage}
+        width={width}
+        height={height}
+        alt='별'
+        priority
+        loading='eager'
+      />
       <div className='mt-12 text-16-600'>{star.name}</div>
       <div className='text-14-600'>{star.createdAt}</div>
     </Link>

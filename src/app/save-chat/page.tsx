@@ -1,10 +1,8 @@
-'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import Star from './Star'
-import { useEffect, useState } from 'react'
-import { instance } from '@/utils/api/instance'
+import Pagination from './Pagination'
+import { getStarList } from '@/utils/api/starList/getStarList'
 
 export interface StarProps {
   starId: number
@@ -18,46 +16,28 @@ export interface StarData {
   content: StarProps[]
 }
 
-const SaveChat = () => {
-  const [data, setData] = useState<StarData>()
-  const [page, setPage] = useState(1)
+const SaveChat = async ({
+  searchParams,
+}: {
+  searchParams: { page?: string }
+}) => {
+  const page = parseInt(searchParams.page ?? '1')
+
+  const data: StarData = (await getStarList(page)).data
 
   const chatList = data?.content || []
 
-  const hasPreviousPage = !data?.isFirst || false
-  const hasNextPage = !data?.isLast || false
-
   const isEmpty = data?.totalCount === 0
-
-  useEffect(() => {
-    const fetchStarList = async () => {
-      const data = await instance('v1/stars', {
-        query: { page },
-        includeAccessToken: true,
-      })
-      setData(data.data)
-    }
-
-    fetchStarList()
-  }, [page])
-
-  const handlePrevPageClick = () => {
-    setPage((prev) => prev - 1)
-  }
-
-  const handleNextPageClick = () => {
-    setPage((prev) => prev + 1)
-  }
 
   return (
     <div className='bg-cloud-case2 flex h-svh flex-col p-24'>
       <header className='relative flex items-baseline justify-between'>
-        <Link href='/' className='mt-4'>
+        <Link href='/' className='mt-4' tabIndex={1}>
           <Image
             src='/assets/icons/button-prev-gray.svg'
             width={24}
             height={24}
-            alt='뒤로가기'
+            alt='뒤로 가기 버튼'
           />
         </Link>
         <div className='flex flex-col items-center gap-4'>
@@ -65,7 +45,7 @@ const SaveChat = () => {
             src='/assets/icons/header-save-chat.svg'
             width={116}
             height={24}
-            alt='헤더'
+            alt='우리가 만든 우주'
           />
           <h3 className='text-14-500'>별들을 누르면 이전 대화를 볼 수 있어!</h3>
         </div>
@@ -108,32 +88,12 @@ const SaveChat = () => {
         ) : null}
       </main>
 
-      <footer className='flex justify-between'>
-        {hasPreviousPage && !isEmpty ? (
-          <Image
-            onClick={handlePrevPageClick}
-            className='cursor-pointer'
-            src='/assets/icons/button-prev-purple.svg'
-            width={48}
-            height={48}
-            alt='이전페이지'
-          />
-        ) : (
-          <div style={{ width: 48, height: 48 }} />
-        )}
-        {hasNextPage && !isEmpty ? (
-          <Image
-            onClick={handleNextPageClick}
-            className='cursor-pointer'
-            src='/assets/icons/button-next-purple.svg'
-            width={48}
-            height={48}
-            alt='다음페이지'
-          />
-        ) : (
-          <div style={{ width: 48, height: 48 }} />
-        )}
-      </footer>
+      <Pagination
+        currentPage={page}
+        hasPreviousPage={!data.isFirst}
+        hasNextPage={!data.isLast}
+        isEmpty={isEmpty}
+      />
     </div>
   )
 }

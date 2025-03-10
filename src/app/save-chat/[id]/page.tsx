@@ -74,17 +74,19 @@ const ChatList = () => {
       {selectedConversation ? (
         <Summary conversation={selectedConversation} />
       ) : (
-        <div className='scrollbar-bar-hidden flex flex-col items-center gap-24 overflow-y-auto pt-24 [&::-webkit-scrollbar]:hidden'>
-          {conversations?.map((conversation) => {
+        <ul className='scrollbar-bar-hidden flex flex-col items-center gap-24 overflow-y-auto pt-24 [&::-webkit-scrollbar]:hidden'>
+          {conversations?.map((conversation, index) => {
+            const reversedIndex = conversations.length - 1 - index
             return (
               <Conversation
+                index={reversedIndex}
                 key={conversation.conversationId}
                 conversation={conversation}
                 setSelectedConversation={setSelectedConversation}
               />
             )
           })}
-        </div>
+        </ul>
       )}
     </div>
   )
