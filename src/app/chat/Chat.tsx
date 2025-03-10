@@ -47,7 +47,10 @@ const Chat = () => {
 
   const handleChatStopAndSave = async () => {
     setIsSubmitted(true)
-    const summaryData = await postSummary(messages)
+    let summaryData = await postSummary(messages)
+
+    // 요약 내용에 "AI:" 가 포함돼있으면 제거
+    summaryData = summaryData.replace(/AI:\s*/g, '')
 
     // 요약된 데이터 DB 저장
     await postConversation(messages, summaryData)
