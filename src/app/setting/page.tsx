@@ -3,8 +3,6 @@ import Image from 'next/image'
 import LogoutButton from './LogoutButton'
 import { getUserInfo } from '@/utils/api/userInfo/getUserInfo'
 import Link from 'next/link'
-import { Suspense } from 'react'
-import SettingSkeleton from './SettingSkeleton'
 
 const Setting = async () => {
   const userInfo = (await getUserInfo()).data
@@ -48,12 +46,4 @@ const Setting = async () => {
   )
 }
 
-const SettingPage = () => {
-  return (
-    <Suspense fallback={<SettingSkeleton />}>
-      <Setting />
-    </Suspense>
-  )
-}
-
-export default SettingPage
+export default Setting
