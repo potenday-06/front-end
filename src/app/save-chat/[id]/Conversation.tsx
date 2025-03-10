@@ -5,6 +5,7 @@ import { Conversation as ConversationType } from '@/utils/api/conversation/getCo
 import { Dispatch, SetStateAction } from 'react'
 
 type ConversationProps = {
+  index: number
   conversation: ConversationType
   setSelectedConversation: Dispatch<
     SetStateAction<ConversationType | undefined>
@@ -12,6 +13,7 @@ type ConversationProps = {
 }
 
 const Conversation = ({
+  index,
   conversation,
   setSelectedConversation,
 }: ConversationProps) => {
@@ -22,11 +24,16 @@ const Conversation = ({
       type='secondary'
       onClick={() => setSelectedConversation(conversation)}
     >
-      {new Date(createdAt).toLocaleTimeString('ko-KR', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true,
-      })}
+      <div className='flex justify-between px-32'>
+        <p>{`${index + 1}번째 대화`}</p>
+        <p>
+          {new Date(createdAt).toLocaleTimeString('ko-KR', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+          })}
+        </p>
+      </div>
     </Button>
   )
 }
