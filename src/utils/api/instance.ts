@@ -84,15 +84,3 @@ export const customFetcher =
   }
 
 export const instance = customFetcher(defaultOptions)
-
-export const createAuthorizedInstance = (token: string) => {
-  const authorizedOptions: DefaultOptions = {
-    ...defaultOptions,
-    headers: {
-      ...defaultOptions.headers,
-      Authorization: `Bearer ${token}`,
-    },
-  }
-
-  return customFetcher(authorizedOptions)
-}
