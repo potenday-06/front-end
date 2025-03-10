@@ -19,9 +19,10 @@ export interface StarData {
 const SaveChat = async ({
   searchParams,
 }: {
-  searchParams: { page?: string }
+  searchParams: Promise<{ page: string }>
 }) => {
-  const page = parseInt(searchParams.page ?? '1')
+  const params = await searchParams
+  const page = parseInt(params.page ?? '1')
 
   const data: StarData = (await getStarList(page)).data
 
