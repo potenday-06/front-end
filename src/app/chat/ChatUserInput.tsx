@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Button from '@/components/Button'
 import Footer from '@/components/Footer'
 import useCheckMobileDevice from '@/hooks/useCheckMobileDevice'
@@ -12,7 +12,15 @@ const ChatUserInput = ({ onSubmit, isLoading }: ChatUserInputProps) => {
   const [userInput, setUserInput] = useState('')
   const [isComposing, setIsComposing] = useState(false)
 
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+
   const isMobile = useCheckMobileDevice()
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.focus()
+    }
+  }, [])
 
   const handleSubmit = () => {
     if (!userInput.trim()) return
@@ -36,6 +44,7 @@ const ChatUserInput = ({ onSubmit, isLoading }: ChatUserInputProps) => {
   return (
     <Footer type='chat'>
       <textarea
+        ref={textareaRef}
         value={userInput}
         onChange={(e) => setUserInput(e.target.value)}
         onKeyDown={handleKeyDown}
