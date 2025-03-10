@@ -46,6 +46,7 @@ const ChatUserInput = ({ onSubmit, isLoading }: ChatUserInputProps) => {
       <textarea
         ref={textareaRef}
         value={userInput}
+        tabIndex={2}
         onChange={(e) => setUserInput(e.target.value)}
         onKeyDown={handleKeyDown}
         onCompositionStart={() => setIsComposing(true)}
@@ -53,7 +54,7 @@ const ChatUserInput = ({ onSubmit, isLoading }: ChatUserInputProps) => {
         placeholder='편하게 남겨줘'
         className='mb-16 h-110 resize-none rounded-8 bg-gray-10 p-16'
       />
-      <Button onClick={handleSubmit} disabled={isLoading}>
+      <Button tabIndex={3} onClick={handleSubmit} disabled={isLoading}>
         {isLoading ? '전송 중...' : '알려주기'}
       </Button>
     </Footer>

@@ -90,7 +90,7 @@ const Chat = () => {
 
   return (
     <div className='bg-cloud-case1 flex h-svh flex-col'>
-      <ChatHeader chatMode={chatMode} handleMoveHomePage={handleMoveHomePage} />
+      <ChatHeader chatMode={chatMode} />
       <ChatMain
         chatMode={chatMode}
         summary={summary}

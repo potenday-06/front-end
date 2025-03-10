@@ -26,7 +26,7 @@ export default async function Home() {
           href='/setting'
           className='absolute right-[5%] h-24 w-24 cursor-pointer'
         >
-          <Image src='/assets/icons/setting.svg' alt='설정' fill />
+          <Image src='/assets/icons/setting.svg' alt='설정페이지 아이콘' fill />
         </Link>
       </header>
 
@@ -52,12 +52,13 @@ export default async function Home() {
 
       <footer className='flex flex-col gap-12 pt-52'>
         <Link
+          tabIndex={-1}
           href={!userInfo.nickname ? 'chat/onboarding' : '/chat'}
           className='flex flex-col items-center gap-12'
         >
           <Button type='secondary'>토리와 이야기 시작하기</Button>
         </Link>
-        <Link href='save-chat'>
+        <Link tabIndex={-1} href='save-chat'>
           <Button color='bg-purple-10'>우리가 만든 우주 보러가기</Button>
         </Link>
       </footer>
