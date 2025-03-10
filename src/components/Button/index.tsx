@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 
 type ButtonProps = {
   children: ReactNode
+  tabIndex?: number
   onClick?: () => void
   disabled?: boolean
   color?: string
@@ -11,6 +12,7 @@ type ButtonProps = {
 
 const Button = ({
   children,
+  tabIndex,
   onClick,
   disabled,
   color = 'bg-purple-20',
@@ -29,6 +31,7 @@ const Button = ({
 
   return (
     <button
+      tabIndex={tabIndex}
       disabled={disabled}
       onClick={onClick}
       className={`${color} ${buttonStyles}`}
