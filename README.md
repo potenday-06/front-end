@@ -14,7 +14,7 @@
 
 **프로젝트 설명:** 아이와 감정을 나누고 소통하는 새로운 방법을 제시하는 ai 채팅 서비스
 
-**프로젝트 기간:** 2025.02.21 ~ 2024.03.12
+**프로젝트 기간:** 2025.02.21 ~ 2025.03.12
 
 **배포 주소:** https://toristar.site/onboarding
 
@@ -151,7 +151,7 @@ npm run dev # 웹 실행
 
 카카오, 네이버 소셜 로그인으로 로그인 할 수 있습니다.
 
-<img src="public/readme/login.png" width="300px" height="500px">
+<img src="public/readme/login.png" width="300px" height="550px">
 
 ## 2. "토리"와 채팅 - Naver Clova Studio
 
