@@ -41,13 +41,20 @@ const Setting = async () => {
         </div>
       </section>
 
-      <Link
-        href='https://chestnut-ellipse-bee.notion.site/1b172891bfeb8021b139ef873a24008f'
-        className='flex-1 text-14 text-[#D9D9D9]'
-      >
-        약관 및 정책
-      </Link>
-
+      <section className='flex flex-1 flex-col gap-16'>
+        <Link
+          href='https://chestnut-ellipse-bee.notion.site/1b172891bfeb8021b139ef873a24008f'
+          className='text-14 text-[#D9D9D9]'
+        >
+          서비스 이용약관
+        </Link>
+        <Link
+          href='https://chestnut-ellipse-bee.notion.site/1ae72891bfeb807597a3de5fc332e97b'
+          className='text-14 text-[#D9D9D9]'
+        >
+          개인정보처리방침
+        </Link>
+      </section>
       <LogoutButton />
     </div>
   )
