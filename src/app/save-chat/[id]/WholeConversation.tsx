@@ -20,7 +20,7 @@ const WholeConversation = ({ conversationId }: { conversationId: number }) => {
   }, [])
 
   return (
-    <main className='scrollbar-bar-hidden flex-1 overflow-y-auto pt-48 [&::-webkit-scrollbar]:hidden'>
+    <main className='scrollbar-bar-hidden flex-1 overflow-y-auto p-24 pt-48 [&::-webkit-scrollbar]:hidden'>
       <AIMessage />
       <MessageList messages={messages} isLoading={!messages.length} />
     </main>
