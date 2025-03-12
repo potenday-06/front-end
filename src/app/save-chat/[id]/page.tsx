@@ -9,6 +9,7 @@ import {
   Conversation as ConversationType,
   getConversations,
 } from '@/utils/api/conversation/getConversation'
+import Link from 'next/link'
 
 const ChatList = () => {
   const { id } = useParams()
@@ -41,34 +42,35 @@ const ChatList = () => {
   }
 
   return (
-    <div className='bg-cloud-case1 flex h-full flex-col p-24'>
-      <header className='flex items-baseline justify-between'>
+    <div className='bg-cloud-case1 flex h-full flex-col'>
+      <header className='flex items-baseline justify-between p-24'>
         <Image
           className='cursor-pointer'
           onClick={handleLinkClick}
           src='/assets/icons/button-prev-gray.svg'
           width={24}
           height={24}
-          alt='뒤로가기'
+          alt='뒤로 가기 버튼'
         />
 
         <div className='flex flex-col items-center gap-4'>
-          <Image
-            src='/assets/icons/header-summary.svg'
-            width={116}
-            height={24}
-            alt='헤더'
-          />
+          <div className='relative h-24 w-116'>
+            <Image
+              src='/assets/icons/header-summary.svg'
+              alt='토리와 대화 내용'
+              fill
+            />
+          </div>
           {date && <h3 className='text-14-500'>{date}</h3>}
         </div>
-        <Image
-          className='cursor-pointer'
-          onClick={() => router.push('/')}
-          src='/assets/icons/home.svg'
-          width={18}
-          height={18}
-          alt='홈'
-        />
+        <Link href='/' className='relative h-18 w-18'>
+          <Image
+            className='cursor-pointer'
+            src='/assets/icons/home.svg'
+            alt='홈 버튼'
+            fill
+          />
+        </Link>
       </header>
 
       {selectedConversation ? (
