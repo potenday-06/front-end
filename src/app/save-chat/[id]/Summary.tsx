@@ -12,7 +12,7 @@ const Summary = ({ conversation }: { conversation: Conversation }) => {
   const [displayWholeConversation, setDisplayWholeConversation] =
     useState(false)
   const [keywords, setKeywords] = useState<string[]>([])
-  const [isKeywordsLoading, setIsKeywordsLoading] = useState(false)
+  const [isKeywordsLoading, setIsKeywordsLoading] = useState(true)
 
   const handleClick = () => {
     setDisplayWholeConversation(true)
@@ -20,7 +20,6 @@ const Summary = ({ conversation }: { conversation: Conversation }) => {
 
   useEffect(() => {
     const getKeywords = async () => {
-      setIsKeywordsLoading(true)
       const data = await postKeywords(summary)
       const keywords = data.result.text
       if (keywords) {
