@@ -42,18 +42,19 @@ const SaveChat = async ({
           />
         </Link>
         <div className='flex flex-col items-center gap-4'>
-          <Image
-            src='/assets/icons/header-save-chat.svg'
-            width={116}
-            height={24}
-            alt='우리가 만든 우주'
-          />
+          <div className='relative h-24 w-116'>
+            <Image
+              src='/assets/icons/header-save-chat.svg'
+              fill
+              alt='우리가 만든 우주'
+            />
+          </div>
           <h3 className='text-14-500'>별들을 누르면 이전 대화를 볼 수 있어!</h3>
         </div>
         <div className='h-24 w-24' />
       </header>
 
-      <main className='max-h-[80svh] flex-1 overflow-auto [&::-webkit-scrollbar]:hidden'>
+      <main className='flex-1 overflow-auto [&::-webkit-scrollbar]:hidden'>
         {!isEmpty ? (
           <div className='mt-48 flex flex-col items-center'>
             {chatList.map((star: StarProps, index) => {

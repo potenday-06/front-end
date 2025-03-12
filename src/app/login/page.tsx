@@ -60,18 +60,16 @@ const Login = () => {
   return (
     <div className='relative flex min-h-svh flex-col p-24'>
       <main className='flex flex-1 flex-col items-center justify-center gap-8'>
-        <Image
-          src='/assets/icons/login-text-logo.svg'
-          alt='텍스트 로고'
-          width={204}
-          height={22}
-        />
-        <Image
-          src='/assets/icons/logo-text.svg'
-          alt='텍스트 로고'
-          width={220}
-          height={100}
-        />
+        <div className='relative h-22 w-204'>
+          <Image
+            src='/assets/icons/login-text-logo.svg'
+            alt='함께 이야기를 나누는 토리의 우주'
+            fill
+          />
+        </div>
+        <div className='relative h-100 w-220'>
+          <Image src='/assets/icons/logo-text.svg' alt='토리별' fill />
+        </div>
       </main>
       <div className='flex justify-center'>
         <Image

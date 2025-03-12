@@ -12,32 +12,30 @@ const ChatHeader = ({ chatMode }: { chatMode: ChatMode }) => {
       {chatMode === 'end' ? (
         <>
           <div className='h-18 w-18' />
-          <Image
-            src='/assets/icons/header-chat-end.svg'
-            alt='같이 별 남기기'
-            width={99}
-            height={25}
-          />
+          <div className='relative h-25 w-99'>
+            <Image
+              src='/assets/icons/header-chat-end.svg'
+              alt='같이 별 남기기'
+              fill
+            />
+          </div>
         </>
       ) : (
         <>
           <div className='h-18 w-18' />
-          <Image
-            src='/assets/icons/logo-text.svg'
-            alt='토리별 텍스트 로고'
-            width={51}
-            height={28}
-          />
+          <div className='relative h-28 w-51'>
+            <Image src='/assets/icons/logo-text.svg' alt='토리별 로고' fill />
+          </div>
         </>
       )}
 
       <Link href='/' className='relative h-18 w-18 cursor-pointer'>
         <Image
           onClick={() => router.refresh()}
-          fill
           src='/assets/icons/home.svg'
           alt='홈 버튼'
           tabIndex={1}
+          fill
         />
       </Link>
     </header>
