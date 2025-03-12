@@ -1,4 +1,5 @@
 'use client'
+import Loading from '@/app/loading'
 import { setCookie } from 'cookies-next'
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -97,14 +98,7 @@ const AuthRedirect = () => {
     handleAuth()
   }, [router, provider])
 
-  if (isLoading) {
-    return (
-      <div className='flex min-h-screen flex-col items-center justify-center'>
-        <div className='h-12 w-12 animate-spin rounded-full border-b-2 border-t-2 border-white'></div>
-        <p className='mt-4 text-white'>로그인 처리 중...</p>
-      </div>
-    )
-  }
+  if (isLoading) return <Loading />
 
   if (error) {
     return (
@@ -121,11 +115,7 @@ const AuthRedirect = () => {
     )
   }
 
-  return (
-    <div className='flex min-h-screen flex-col items-center justify-center'>
-      <p className='text-white'>로그인 성공! 페이지 이동 중...</p>
-    </div>
-  )
+  return <Loading />
 }
 
 export default AuthRedirect
