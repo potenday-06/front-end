@@ -16,7 +16,7 @@ const ChatMain = ({
   isLoading: boolean
 }) => {
   return chatMode === 'end' ? (
-    <main className='flex flex-1 flex-col items-center justify-between overflow-y-hidden px-24'>
+    <main className='flex flex-1 flex-col items-center justify-between overflow-y-hidden px-24 pb-0 pt-40'>
       <p className='scrollbar-bar-hidden overflow-y-auto text-16-600 [&::-webkit-scrollbar]:hidden'>
         {summary}
       </p>

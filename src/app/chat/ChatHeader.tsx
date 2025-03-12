@@ -8,7 +8,7 @@ const ChatHeader = ({ chatMode }: { chatMode: ChatMode }) => {
   const router = useRouter()
 
   return (
-    <header className='flex items-center justify-between p-24'>
+    <header className='flex items-center justify-between p-24 pb-0'>
       {chatMode === 'end' ? (
         <>
           <div className='h-18 w-18' />

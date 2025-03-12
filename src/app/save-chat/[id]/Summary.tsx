@@ -44,11 +44,11 @@ const Summary = ({ conversation }: { conversation: Conversation }) => {
     <WholeConversation conversationId={conversationId} />
   ) : (
     <>
-      <main className='scrollbar-bar-hidden flex-1 overflow-y-auto pt-24 text-16-500 [&::-webkit-scrollbar]:hidden'>
+      <main className='scrollbar-bar-hidden flex-1 overflow-y-auto p-24 text-16-500 [&::-webkit-scrollbar]:hidden'>
         {summary}
       </main>
 
-      <ul className='flex flex-wrap items-center gap-12 py-24'>
+      <ul className='flex flex-wrap items-center gap-12 p-24 pb-0'>
         {keywords.map((keyword, index) => (
           <li
             key={`${keyword}-${index}`}
@@ -59,7 +59,7 @@ const Summary = ({ conversation }: { conversation: Conversation }) => {
         ))}
       </ul>
 
-      <footer>
+      <footer className='p-24'>
         <Button onClick={handleClick}>대화 내용 전체보기</Button>
       </footer>
     </>

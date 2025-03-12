@@ -43,7 +43,7 @@ const ChatList = () => {
 
   return (
     <div className='bg-cloud-case1 flex h-full flex-col'>
-      <header className='flex items-baseline justify-between p-24'>
+      <header className='flex items-baseline justify-between p-24 pb-0'>
         <Image
           className='cursor-pointer'
           onClick={handleLinkClick}
@@ -76,7 +76,7 @@ const ChatList = () => {
       {selectedConversation ? (
         <Summary conversation={selectedConversation} />
       ) : (
-        <ul className='scrollbar-bar-hidden flex flex-col items-center gap-24 overflow-y-auto pt-24 [&::-webkit-scrollbar]:hidden'>
+        <ul className='scrollbar-bar-hidden flex flex-col items-center gap-24 overflow-y-auto p-24 [&::-webkit-scrollbar]:hidden'>
           {conversations?.map((conversation, index) => {
             const reversedIndex = conversations.length - 1 - index
             return (
