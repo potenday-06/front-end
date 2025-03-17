@@ -9,7 +9,7 @@ export type MessageProps = {
 
 const MessageWrapper = ({ type, children }: MessageProps) => {
   return (
-    <div className={`mb-32 ${type === 'USER' ? 'text-right' : 'text-left'}`}>
+    <div className={`mb-16 ${type === 'USER' ? 'text-right' : 'text-left'}`}>
       {children}
     </div>
   )
