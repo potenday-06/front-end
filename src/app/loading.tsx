@@ -9,15 +9,7 @@ const Loading = () => {
         width={55}
         height={55}
       />
-      <div className='flex items-center'>
-        <Image
-          src='/assets/icons/loading-text.svg'
-          alt='별 찾는중...'
-          width={69}
-          height={22}
-        />
-        <span className='loading-dots ml-1 text-16-600'>.</span>
-      </div>
+      <h2 className='text-20'>별 찾는중...</h2>
     </div>
   )
 }

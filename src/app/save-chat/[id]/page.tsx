@@ -43,9 +43,9 @@ const ChatList = () => {
 
   return (
     <div className='bg-cloud-case1 flex h-full flex-col'>
-      <header className='flex items-baseline justify-between p-24 pb-0'>
+      <header className='flex items-start justify-between p-24 pb-0'>
         <Image
-          className='cursor-pointer'
+          className='mt-4 cursor-pointer'
           onClick={handleLinkClick}
           src='/assets/icons/button-prev-gray.svg'
           width={24}
@@ -54,16 +54,10 @@ const ChatList = () => {
         />
 
         <div className='flex flex-col items-center gap-4'>
-          <div className='relative h-24 w-116'>
-            <Image
-              src='/assets/icons/header-summary.svg'
-              alt='토리와 대화 내용'
-              fill
-            />
-          </div>
+          <h1 className='text-18'>토리와 대화 내용</h1>
           {date && <h3 className='text-14-500'>{date}</h3>}
         </div>
-        <Link href='/' className='relative h-18 w-18'>
+        <Link href='/' className='relative mt-6 h-18 w-18'>
           <Image
             className='cursor-pointer'
             src='/assets/icons/home.svg'

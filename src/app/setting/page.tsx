@@ -15,23 +15,16 @@ const Setting = async () => {
 
   return (
     <div className='flex h-svh flex-col p-24'>
-      <header className='flex h-24 w-full justify-start'>
-        <Link href='/'>
+      <header className='flex items-center justify-between'>
+        <Link href='/' className='relative h-24 w-24 cursor-pointer'>
           <Image
-            className='cursor-pointer'
             src='assets/icons/button-prev-gray.svg'
-            width={24}
-            height={24}
+            fill
             alt='뒤로 가기 버튼'
           />
         </Link>
-        <Image
-          className='ml-[36%]'
-          src='assets/icons/setting-header.svg'
-          width={73}
-          height={38}
-          alt='나의 정보'
-        />
+        <h1 className='text-18'>나의 정보</h1>
+        <div className='h-24 w-24' />
       </header>
 
       <section className='flex-1'>
