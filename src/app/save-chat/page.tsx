@@ -32,7 +32,7 @@ const SaveChat = async ({
 
   return (
     <div className='bg-cloud-case2 flex h-svh flex-col p-24'>
-      <header className='relative flex items-baseline justify-between'>
+      <header className='flex justify-between'>
         <Link href='/' className='mt-4' tabIndex={1}>
           <Image
             src='/assets/icons/button-prev-gray.svg'
@@ -42,13 +42,7 @@ const SaveChat = async ({
           />
         </Link>
         <div className='flex flex-col items-center gap-4'>
-          <div className='relative h-24 w-116'>
-            <Image
-              src='/assets/icons/header-save-chat.svg'
-              fill
-              alt='우리가 만든 우주'
-            />
-          </div>
+          <h1 className='text-18'>우리가 만든 우주</h1>
           <h3 className='text-14-500'>별들을 누르면 이전 대화를 볼 수 있어!</h3>
         </div>
         <div className='h-24 w-24' />

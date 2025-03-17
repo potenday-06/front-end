@@ -15,17 +15,10 @@ export default async function Home() {
 
   return (
     <div className='bg-cloud-main relative flex min-h-svh flex-col justify-between p-24'>
-      <header className='flex h-28 items-center justify-center'>
-        <Image
-          src='/assets/icons/logo-text.svg'
-          alt='텍스트 로고'
-          width={51}
-          height={28}
-        />
-        <Link
-          href='/setting'
-          className='absolute right-[5%] h-24 w-24 cursor-pointer'
-        >
+      <header className='flex items-center justify-between'>
+        <div className='h-24 w-24' />
+        <h1 className='text-18'>토리별</h1>
+        <Link href='/setting' className='relative h-24 w-24 cursor-pointer'>
           <Image src='/assets/icons/setting.svg' alt='설정페이지 아이콘' fill />
         </Link>
       </header>
