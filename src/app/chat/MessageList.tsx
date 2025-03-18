@@ -15,7 +15,7 @@ type MessageListProps = {
   messages: MessageType[]
   isLoading?: boolean
   viewOnly?: boolean
-  chatMode: ChatMode
+  chatMode?: ChatMode
 }
 
 const MessageList = ({ messages, viewOnly, chatMode }: MessageListProps) => {
