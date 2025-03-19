@@ -9,9 +9,9 @@ const AIMessage = ({ content }: Pick<MessageProps, 'content'>) => {
         height={33}
         src='/assets/icons/tori-footer.svg'
         alt='토리'
-        className='absolute left-0 top-0 z-50'
+        className='relative top-2 z-50'
       />
-      <div className='relative mt-32 w-max max-w-[80%] rounded-12 border border-solid border-[#b49df1] px-24 py-10'>
+      <div className='w-max max-w-[80%] rounded-12 border border-solid border-[#b49df1] px-24 py-10'>
         {content ? (
           <div className='text-14-500'>{content}</div>
         ) : (

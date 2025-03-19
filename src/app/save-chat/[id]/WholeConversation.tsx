@@ -1,3 +1,4 @@
+import AIMessage from '@/app/chat/AiMessage'
 import MessageList from '@/app/chat/MessageList'
 
 import {
@@ -19,7 +20,10 @@ const WholeConversation = ({ conversationId }: { conversationId: number }) => {
   }, [])
 
   return (
-    <MessageList messages={messages} isLoading={!messages.length} viewOnly />
+    <main className='scrollbar-bar-hidden flex-1 overflow-y-auto p-24 [&::-webkit-scrollbar]:hidden'>
+      <AIMessage />
+      <MessageList messages={messages} isLoading={!messages.length} />
+    </main>
   )
 }
 
