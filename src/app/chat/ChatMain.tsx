@@ -30,7 +30,7 @@ const ChatMain = ({
     </main>
   ) : (
     <main
-      className={`scrollbar-bar-hidden flex-1 overflow-y-auto overflow-x-hidden p-24 pt-48 [&::-webkit-scrollbar]:hidden`}
+      className={`scrollbar-bar-hidden flex-1 overflow-y-auto overflow-x-hidden p-24 [&::-webkit-scrollbar]:hidden`}
     >
       <AIMessage />
       <MessageList messages={messages} isLoading={isLoading} />
