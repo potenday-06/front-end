@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { ChatMode } from './Chat'
-
+import AIMessage from './AiMessage'
 import MessageList from './MessageList'
 import { MessageType } from '@/utils/api/wholeConversation/getWholeConversation'
 
@@ -29,11 +29,12 @@ const ChatMain = ({
       />
     </main>
   ) : (
-    <MessageList
-      messages={messages}
-      isLoading={isLoading}
-      chatMode={chatMode}
-    />
+    <main
+      className={`scrollbar-bar-hidden flex-1 overflow-y-auto overflow-x-hidden p-24 pt-48 [&::-webkit-scrollbar]:hidden`}
+    >
+      <AIMessage />
+      <MessageList messages={messages} isLoading={isLoading} />
+    </main>
   )
 }
 
