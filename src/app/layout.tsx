@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 
 import './globals.css'
@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   icons: {
     icon: '/assets/favicon.ico',
   },
+  manifest: '/manifest.json',
+  viewport:
+    'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover',
   openGraph: {
     title: '토리별',
     siteName: '토리별',
@@ -48,6 +51,10 @@ const suit = localFont({
   weight: '45 920',
   variable: '--font-suit',
 })
+
+export const viewport: Viewport = {
+  themeColor: '#f2f2f2',
+}
 
 declare global {
   interface Window {

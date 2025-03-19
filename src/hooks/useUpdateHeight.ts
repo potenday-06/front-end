@@ -1,7 +1,7 @@
 import { ChatMode } from '@/app/chat/Chat'
 import { useEffect, useRef, useState } from 'react'
 
-const useUpdateHeight = ({ chatMode }: { chatMode: ChatMode }) => {
+const useUpdateHeight = ({ chatMode }: { chatMode: ChatMode | undefined }) => {
   const [containerHeight, setContainerHeight] = useState(0)
 
   const containerRef = useRef<HTMLDivElement>(null)
