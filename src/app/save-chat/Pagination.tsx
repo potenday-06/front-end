@@ -17,15 +17,10 @@ const Pagination = async ({
       {hasPreviousPage && !isEmpty ? (
         <Link
           aria-label='이전 페이지'
+          className='relative h-48 w-48 cursor-pointer'
           href={`/save-chat?page=${currentPage - 1}`}
         >
-          <Image
-            className='cursor-pointer'
-            src='/assets/icons/button-prev-purple.svg'
-            width={48}
-            height={48}
-            alt=''
-          />
+          <Image src='/assets/icons/button-prev-purple.svg' fill alt='' />
         </Link>
       ) : (
         <div style={{ width: 48, height: 48 }} />
@@ -33,15 +28,10 @@ const Pagination = async ({
       {hasNextPage && !isEmpty ? (
         <Link
           aria-label='다음 페이지'
+          className='relative h-48 w-48 cursor-pointer'
           href={`/save-chat?page=${currentPage + 1}`}
         >
-          <Image
-            className='cursor-pointer'
-            src='/assets/icons/button-next-purple.svg'
-            width={48}
-            height={48}
-            alt=''
-          />
+          <Image src='/assets/icons/button-next-purple.svg' fill alt='' />
         </Link>
       ) : (
         <div style={{ width: 48, height: 48 }} />
