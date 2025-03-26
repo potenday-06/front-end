@@ -14,15 +14,13 @@ const ChatOnboardingHeader = ({
     <>
       {step !== 4 ? (
         <header className='flex items-center justify-between p-24'>
-          <Image
+          <button
             onClick={onPrev}
-            className='cursor-pointer'
-            width={24}
-            height={24}
-            src='/assets/icons/button-prev-gray.svg'
-            alt='뒤로가기'
-            tabIndex={1}
-          />
+            aria-label='뒤로 돌아가기 버튼'
+            className='relative h-24 w-24 cursor-pointer'
+          >
+            <Image fill src='/assets/icons/button-prev-gray.svg' alt='' />
+          </button>
           <Image
             className='ml-auto'
             width={289}
@@ -34,8 +32,12 @@ const ChatOnboardingHeader = ({
         </header>
       ) : (
         <header className='flex justify-end p-24'>
-          <Link href='/' className='relative h-18 w-18 cursor-pointer'>
-            <Image fill src='/assets/icons/home.svg' alt='홈 버튼' />
+          <Link
+            href='/'
+            aria-label='메인 페이지로 돌아가기'
+            className='relative h-18 w-18 cursor-pointer'
+          >
+            <Image fill src='/assets/icons/home.svg' alt='' />
           </Link>
         </header>
       )}

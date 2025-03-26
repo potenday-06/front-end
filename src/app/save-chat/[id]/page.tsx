@@ -44,24 +44,27 @@ const ChatList = () => {
   return (
     <div className='bg-cloud-case1 flex h-full flex-col'>
       <header className='flex items-start justify-between p-24 pb-0'>
-        <Image
-          className='mt-4 cursor-pointer'
+        <button
           onClick={handleLinkClick}
-          src='/assets/icons/button-prev-gray.svg'
-          width={24}
-          height={24}
-          alt='뒤로 가기 버튼'
-        />
+          aria-label='이전 페이지로 돌아가기'
+          className='relative mt-4 h-24 w-24 cursor-pointer'
+        >
+          <Image src='/assets/icons/button-prev-gray.svg' fill alt='' />
+        </button>
 
         <div className='flex flex-col items-center gap-4'>
           <h1 className='text-18'>토리와 대화 내용</h1>
           {date && <h3 className='text-14-500'>{date}</h3>}
         </div>
-        <Link href='/' className='relative mt-6 h-18 w-18'>
+        <Link
+          href='/'
+          aria-label='메인 페이지로 돌아가기'
+          className='relative mt-6 h-18 w-18'
+        >
           <Image
             className='cursor-pointer'
             src='/assets/icons/home.svg'
-            alt='홈 버튼'
+            alt=''
             fill
           />
         </Link>

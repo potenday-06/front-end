@@ -21,12 +21,15 @@ const ChatHeader = ({ chatMode }: { chatMode: ChatMode }) => {
         </>
       )}
 
-      <Link href='/' className='relative h-18 w-18 cursor-pointer'>
+      <Link
+        href='/'
+        aria-label='메인 페이지로 돌아가기'
+        className='relative h-18 w-18 cursor-pointer'
+      >
         <Image
           onClick={() => router.refresh()}
           src='/assets/icons/home.svg'
-          alt='홈 버튼'
-          tabIndex={1}
+          alt=''
           fill
         />
       </Link>

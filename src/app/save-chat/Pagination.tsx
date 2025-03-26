@@ -15,28 +15,32 @@ const Pagination = async ({
   return (
     <footer className='flex justify-between'>
       {hasPreviousPage && !isEmpty ? (
-        <Link href={`/save-chat?page=${currentPage - 1}`}>
+        <Link
+          aria-label='이전 페이지'
+          href={`/save-chat?page=${currentPage - 1}`}
+        >
           <Image
             className='cursor-pointer'
             src='/assets/icons/button-prev-purple.svg'
             width={48}
             height={48}
-            alt='이전 페이지'
-            tabIndex={3}
+            alt=''
           />
         </Link>
       ) : (
         <div style={{ width: 48, height: 48 }} />
       )}
       {hasNextPage && !isEmpty ? (
-        <Link href={`/save-chat?page=${currentPage + 1}`}>
+        <Link
+          aria-label='다음 페이지'
+          href={`/save-chat?page=${currentPage + 1}`}
+        >
           <Image
             className='cursor-pointer'
             src='/assets/icons/button-next-purple.svg'
             width={48}
             height={48}
-            alt='다음 페이지'
-            tabIndex={4}
+            alt=''
           />
         </Link>
       ) : (

@@ -33,13 +33,12 @@ const SaveChat = async ({
   return (
     <div className='bg-cloud-case2 flex h-svh flex-col p-24'>
       <header className='flex justify-between'>
-        <Link href='/' className='mt-4' tabIndex={1}>
-          <Image
-            src='/assets/icons/button-prev-gray.svg'
-            width={24}
-            height={24}
-            alt='뒤로 가기 버튼'
-          />
+        <Link
+          href='/'
+          aria-label='메인 페이지로 돌아가기'
+          className='relative mt-4 h-24 w-24'
+        >
+          <Image src='/assets/icons/button-prev-gray.svg' fill alt='' />
         </Link>
         <div className='flex flex-col items-center gap-4'>
           <h1 className='text-18'>우리가 만든 우주</h1>
