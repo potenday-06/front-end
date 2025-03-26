@@ -10,6 +10,8 @@ import {
   getConversations,
 } from '@/utils/api/conversation/getConversation'
 import Link from 'next/link'
+import { postKeywords } from '@/utils/api/keywords/postKeywords'
+import { instance } from '@/utils/api/instance'
 
 const ChatList = () => {
   const { id } = useParams()
@@ -21,6 +23,7 @@ const ChatList = () => {
   const [conversations, setConversations] = useState<ConversationType[]>([])
   const [selectedConversation, setSelectedConversation] =
     useState<ConversationType>()
+  const [keywords, setKeywords] = useState<string[]>([])
 
   useEffect(() => {
     const fetchConversations = async () => {
@@ -32,6 +35,59 @@ const ChatList = () => {
     }
     fetchConversations()
   }, [])
+
+  useEffect(() => {
+    if (!selectedConversation) return
+
+    const generateAndSaveKeywords = async (
+      summary: string,
+      conversationId: number
+    ) => {
+      if (!summary) return
+      const data = await postKeywords(summary)
+      const keywords = data.result.text
+      if (keywords) {
+        const formattedKeywords = data.result.text
+          .replace(/["\\]/g, '')
+          .split(',')
+          .map((keyword: string) => keyword.trim())
+          .slice(0, 3)
+
+        setKeywords(formattedKeywords)
+
+        await instance(
+          `v1/conversations/${selectedConversation.conversationId}/keywords`,
+          {
+            method: 'PATCH',
+            body: JSON.stringify({ keywords: formattedKeywords }),
+            includeAccessToken: true,
+          }
+        )
+        setConversations((prev) =>
+          prev.map((conv) =>
+            conv.conversationId === conversationId
+              ? { ...conv, keywords: formattedKeywords }
+              : conv
+          )
+        )
+      }
+    }
+
+    // 선택된 대화의 키워드가 없으면 새로 키워드 생성 api 호출 후 저장
+    if (
+      !selectedConversation.keywords ||
+      selectedConversation.keywords.length === 0 ||
+      (selectedConversation.keywords.length === 1 &&
+        selectedConversation.keywords[0] === '')
+    ) {
+      generateAndSaveKeywords(
+        selectedConversation.summary,
+        selectedConversation.conversationId
+      )
+    } else {
+      setKeywords(selectedConversation.keywords)
+    }
+  }, [selectedConversation])
 
   const handleLinkClick = () => {
     if (selectedConversation) {
@@ -71,7 +127,7 @@ const ChatList = () => {
       </header>
 
       {selectedConversation ? (
-        <Summary conversation={selectedConversation} />
+        <Summary conversation={selectedConversation} keywords={keywords} />
       ) : (
         <ul className='scrollbar-bar-hidden flex flex-col items-center gap-24 overflow-y-auto p-24 [&::-webkit-scrollbar]:hidden'>
           {conversations?.map((conversation, index) => {
