@@ -18,8 +18,12 @@ export default async function Home() {
       <header className='flex items-center justify-between'>
         <div className='h-24 w-24' />
         <h1 className='text-18'>토리별</h1>
-        <Link href='/setting' className='relative h-24 w-24 cursor-pointer'>
-          <Image src='/assets/icons/setting.svg' alt='설정페이지 아이콘' fill />
+        <Link
+          href='/setting'
+          aria-label='설정 페이지로 이동'
+          className='relative h-24 w-24 cursor-pointer'
+        >
+          <Image src='/assets/icons/setting.svg' alt='' fill />
         </Link>
       </header>
 

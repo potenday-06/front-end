@@ -106,14 +106,13 @@ const Onboarding = () => {
 
         <div className='flex items-center justify-between'>
           {step !== 1 ? (
-            <Image
-              className='cursor-pointer'
+            <button
               onClick={handlePrevStep}
-              width={48}
-              height={48}
-              src='/assets/icons/button-previous.svg'
-              alt='이전 버튼'
-            />
+              aria-label='이전 버튼'
+              className='relative h-48 w-48 cursor-pointer'
+            >
+              <Image fill src='/assets/icons/button-previous.svg' alt='' />
+            </button>
           ) : (
             <div className='h-48 w-48' />
           )}
@@ -121,14 +120,13 @@ const Onboarding = () => {
           <Link href='/' className='text-14 text-gray-40 underline'>
             바로 시작하기
           </Link>
-          <Image
-            className='cursor-pointer'
+          <button
             onClick={handleNextStep}
-            width={48}
-            height={48}
-            src='/assets/icons/button-next.svg'
-            alt='다음 버튼'
-          />
+            aria-label='다음 버튼'
+            className='relative h-48 w-48 cursor-pointer'
+          >
+            <Image fill src='/assets/icons/button-next.svg' alt='' />
+          </button>
         </div>
       </Footer>
     </div>
