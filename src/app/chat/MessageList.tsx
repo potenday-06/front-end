@@ -46,7 +46,10 @@ const MessageList = ({
   const items = rowVirtualizer.getVirtualItems()
 
   return (
-    <main ref={containerRef} className='flex-1 overflow-auto px-24'>
+    <main
+      ref={containerRef}
+      className='flex-1 overflow-auto px-24 [&::-webkit-scrollbar]:hidden'
+    >
       <div
         className='relative'
         style={{ height: `${rowVirtualizer.getTotalSize()}px` }}
