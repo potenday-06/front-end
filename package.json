@@ -11,10 +11,11 @@
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
-    "@tanstack/react-virtual": "^3.13.4",
     "@types/js-cookie": "^3.0.6",
+    "@virtuoso.dev/message-list": "^1.9.15",
     "clsx": "^2.1.1",
     "cookies-next": "^5.1.0",
+    "jotai": "^2.12.1",
     "js-cookie": "^3.0.5",
     "lottie-react": "^2.4.1",
     "next": "15.1.7",
