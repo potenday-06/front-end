@@ -9,14 +9,11 @@ import { useVirtualizer } from '@tanstack/react-virtual'
 type MessageListProps = {
   messages: MessageType[]
   isLoading: boolean
+  viewOnly?: boolean
+  chatMode?: ChatMode
 }
 
-const MessageList = ({
-  messages,
-  viewOnly,
-  chatMode,
-  isLoading,
-}: MessageListProps) => {
+const MessageList = ({ messages, viewOnly, chatMode }: MessageListProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   const messagesWithTrigger = useMemo(() => {
