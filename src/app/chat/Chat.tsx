@@ -11,6 +11,7 @@ import Lottie from 'lottie-react'
 import chatEndAnimation from '../../../public/assets/animation/chat-end.json'
 import { postMessage } from '@/utils/api/chat/postMessage'
 import { postSummary } from '@/utils/api/chat/postSummary'
+import useScrollToBottom from '@/utils/useScrollToBottom'
 import ChatHeader from './ChatHeader'
 import ChatMain from './ChatMain'
 import ChatFooter from './ChatFooter'
@@ -75,6 +76,8 @@ const Chat = () => {
 
     return () => clearTimeout(timer)
   }, [showAnimation, router, handleMoveHomePage])
+
+  useScrollToBottom(showAnimation, [chatMode])
 
   if (showAnimation)
     return (

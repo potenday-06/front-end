@@ -16,12 +16,12 @@ const Setting = async () => {
   return (
     <div className='flex h-svh flex-col p-24'>
       <header className='flex items-center justify-between'>
-        <Link href='/' className='relative h-24 w-24 cursor-pointer'>
-          <Image
-            src='assets/icons/button-prev-gray.svg'
-            fill
-            alt='뒤로 가기 버튼'
-          />
+        <Link
+          href='/'
+          aria-label='메인 페이지로 돌아가기'
+          className='relative h-24 w-24 cursor-pointer'
+        >
+          <Image src='assets/icons/button-prev-gray.svg' fill alt='' />
         </Link>
         <h1 className='text-18'>나의 정보</h1>
         <div className='h-24 w-24' />

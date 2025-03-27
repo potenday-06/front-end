@@ -8,9 +8,7 @@ import { useVirtualizer } from '@tanstack/react-virtual'
 
 type MessageListProps = {
   messages: MessageType[]
-  isLoading?: boolean
-  viewOnly?: boolean
-  chatMode?: ChatMode
+  isLoading: boolean
 }
 
 const MessageList = ({
