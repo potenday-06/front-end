@@ -6,6 +6,7 @@ import './globals.css'
 
 import Script from 'next/script'
 import KakaoScript from '@/components/KakaoScript'
+import FirebaseMessagingInit from '@/components/FirebaseMessagingInit'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://toristar.site'),
@@ -74,6 +75,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className='m-0 flex h-svh items-center justify-center bg-[#f2f2f2]'
       >
+        <FirebaseMessagingInit />
         <div className='relative flex h-svh min-h-svh w-full max-w-414 flex-col bg-purple-20'>
           {children}
         </div>
@@ -82,6 +84,7 @@ export default function RootLayout({
           src='https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js'
           strategy='beforeInteractive'
         />
+        <Script src='/service-worker.js' />
       </body>
     </html>
   )
