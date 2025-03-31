@@ -1,8 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 
-// import { getAnalytics } from 'firebase/analytics'
-
 const firebaseConfig = {
   apiKey: 'AIzaSyCTCA9I3rwf36j6Vf_5zZdb78THjn-pfrs',
   authDomain: 'next-pwa-dd8a6.firebaseapp.com',
@@ -17,5 +15,3 @@ const firebaseConfig = {
 export const firebaseApp = initializeApp(firebaseConfig)
 
 export const db = getFirestore(firebaseApp)
-
-// const analytics = getAnalytics(app)
