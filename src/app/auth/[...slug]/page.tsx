@@ -1,9 +1,9 @@
 'use client'
 import Loading from '@/app/loading'
-import { firebaseApp } from '@/firebase'
+
 import { saveFcmTokenToFirestore } from '@/utils/firebaseCloudMessaging/saveFcmTokenToFirestore'
 import { setCookie } from 'cookies-next'
-import { getMessaging, getToken, isSupported } from 'firebase/messaging'
+
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 

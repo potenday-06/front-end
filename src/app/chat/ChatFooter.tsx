@@ -2,6 +2,7 @@ import Button from '@/components/Button'
 import ChatUserInput from './ChatUserInput'
 import { ChatMode } from './Chat'
 import { Dispatch, SetStateAction } from 'react'
+import { sendEndChatNotification } from '@/utils/firebaseCloudMessaging/sendNotification'
 
 interface ChatFooterProps {
   chatMode: ChatMode
@@ -22,6 +23,22 @@ const ChatFooter = ({
   setShowAnimation,
   handleChatStopAndSave,
 }: ChatFooterProps) => {
+  const handleEndChat = async () => {
+    try {
+      const userId = localStorage.getItem('userId')
+
+      if (userId) {
+        // push 알림 전송
+        await sendEndChatNotification(userId)
+      }
+
+      setShowAnimation(true)
+    } catch (error) {
+      console.error('push 알림 전송 오류:', error)
+      setShowAnimation(true)
+    }
+  }
+
   return (
     <footer>
       {chatMode === 'input' && (
@@ -41,9 +58,7 @@ const ChatFooter = ({
       )}
       {chatMode === 'end' && (
         <div className='p-24'>
-          <Button onClick={() => setShowAnimation(true)}>
-            오늘 대화 마치기
-          </Button>
+          <Button onClick={handleEndChat}>오늘 대화 마치기</Button>
         </div>
       )}
     </footer>
