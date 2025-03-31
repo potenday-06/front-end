@@ -1,6 +1,9 @@
 'use client'
 import Loading from '@/app/loading'
+
+import { saveFcmTokenToFirestore } from '@/utils/firebaseCloudMessaging/saveFcmTokenToFirestore'
 import { setCookie } from 'cookies-next'
+
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -48,6 +51,10 @@ const AuthRedirect = () => {
         const token = data.data.accessToken
 
         setCookie('accessToken1', token)
+        localStorage.setItem('userId', data.data.memberId.toString())
+
+        // FCM 토큰을 저장하기 위해 유저 Id Firebase DB에 함께 저장
+        await saveFcmTokenToFirestore(data.data.memberId.toString())
 
         router.push('/')
       } catch (err) {
