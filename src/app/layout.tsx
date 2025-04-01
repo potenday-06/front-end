@@ -57,13 +57,6 @@ export const viewport: Viewport = {
   themeColor: '#f2f2f2',
 }
 
-declare global {
-  interface Window {
-    Kakao: any
-    naver: any
-  }
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{

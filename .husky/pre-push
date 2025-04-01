@@ -1,22 +1,27 @@
 #!/bin/sh
 
-echo "🚀 pre-push 훅 실행됨"
-echo "Remote: $1"
-echo "URL: $2"
-
-FORBIDDEN_HTTPS_URL="https://github.com/potenday-06/front-end.git" # 레포 https url 
+FORBIDDEN_HTTPS_URL="<https://github.com/potenday-06/front-end.git>" # 레포 https url 
 FORBIDDEN_SSH_URL="git@github.com:potenday-06/front-end.git" # 레포 ssh url
-FORBIDDEN_REF_MAIN="main"
-FORBIDDEN_REF_DEV="develop"
+FORBIDDEN_REF_MAIN="refs/heads/main"
+FORBIDDEN_REF_DEV="refs/heads/dev"
 
-# 현재 브랜치 가져오기
-current_branch=$(git rev-parse --abbrev-ref HEAD)
-echo "현재 푸쉬하는 브랜치: $current_branch"
+remote="$1"
+url="$2"
 
-if [ "$current_branch" = "$FORBIDDEN_REF_MAIN" ] || [ "$current_branch" = "$FORBIDDEN_REF_DEV" ]; then
-    echo "🚫 MAIN OR DEVELOP 브랜치로 직접 PUSH 할 수 없습니다! 🚫"
-    exit 1
+if [ "$url" != "$FORBIDDEN_HTTPS_URL" -a "$url" != "$FORBIDDEN_SSH_URL" ]
+then
+    echo "forked branch can push your commits"
+    exit 0 # Forked Project 에서는 제한하지 않음
 fi
 
-echo "✅ Push 허용됨"
+if read local_ref local_sha remote_ref remote_sha
+then
+  echo "현재 푸쉬하는 브랜치는 $local_ref 내부입니다."
+    if [ "$remote_ref" == "$FORBIDDEN_REF_MAIN" ] || [ "$remote_ref" == "$FORBIDDEN_REF_DEV" ]
+    then
+        echo "DO NOT PUSH TO MAIN OR DEV"
+        exit 1 # 금지된 ref 로 push 를 실행하면 에러
+    fi
+fi
+
 exit 0
