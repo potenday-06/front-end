@@ -1,3 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'HSSanTokki20-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405@1.0/HSSanTokki20-Regular.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ownglyph_ParkDaHyun';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  color: white;
+}
+h1 {
+  font-family: 'HSSanTokki20-Regular';
+}
+
+h2 {
+  font-family: 'Ownglyph_ParkDaHyun';
+}
+
+.bg-cloud-case1 {
+  background-image: url('/assets/images/cloud-case1.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: bottom;
+}
+
+.bg-cloud-onb-page2 {
+  background-image: url('/assets/images/cloud-onb-page-2.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: bottom;
+}
+
+.bg-cloud-onb-page3 {
+  background-image: url('/assets/images/cloud-onb-page-3.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: bottom;
+}
+
+.bg-cloud-case2 {
+  background-image: url('/assets/images/cloud-case2.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: bottom;
+}
+
+.bg-cloud-main {
+  background-image: url('/assets/images/cloud-main.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: bottom;
+}
+
+.scrollbar-bar-hidden {
+  -ms-overflow-style: none; /* IE and 엣지 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
