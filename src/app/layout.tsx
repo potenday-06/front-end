@@ -73,10 +73,10 @@ export default function RootLayout({
     <html lang='ko' className={`${suit.variable}`}>
       <body
         suppressHydrationWarning
-        className='m-0 flex h-svh items-center justify-center bg-[#f2f2f2]'
+        className='m-0 flex h-full min-h-svh items-center justify-center bg-[#f2f2f2]'
       >
         <FirebaseMessagingInit />
-        <div className='relative flex h-svh min-h-svh w-full max-w-414 flex-col bg-purple-20'>
+        <div className='relative flex h-full min-h-svh w-full max-w-414 flex-col bg-purple-20'>
           {children}
         </div>
         <KakaoScript />
