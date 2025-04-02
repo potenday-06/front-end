@@ -1,4 +1,3 @@
-// src/utils/firebaseCloudMessaging/saveFcmTokenToFirestore.ts
 import { getMessaging, getToken, isSupported } from 'firebase/messaging'
 import { doc, setDoc } from 'firebase/firestore'
 import { firebaseApp, db } from '@/firebase'
@@ -18,7 +17,7 @@ export const saveFcmTokenToFirestore = async (userId: string) => {
       return
     }
 
-    const permission = Notification.permission
+    const permission = await Notification.requestPermission()
     if (permission !== 'granted') {
       console.warn('알림 권한이 없습니다.')
       return
