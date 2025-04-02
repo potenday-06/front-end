@@ -10,6 +10,7 @@
   "description": "달나라 토끼들의 꿈에서 태어난 토리와 대화해보세요",
   "start_url": "/onboarding",
   "scope": "/",
+  "gcm_sender_id": "103953800507",
   "icons": [
     {
       "src": "/assets/pwa/192.png",
