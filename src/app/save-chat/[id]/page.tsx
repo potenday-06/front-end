@@ -42,7 +42,7 @@ const ChatList = () => {
   }
 
   return (
-    <div className='bg-cloud-case1 flex h-full flex-col'>
+    <div className='bg-cloud-case1 flex h-svh flex-col'>
       <header className='flex items-start justify-between p-24 pb-0'>
         <button
           onClick={handleLinkClick}
