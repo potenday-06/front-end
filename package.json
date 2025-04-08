@@ -26,6 +26,7 @@
     "tailwindcss-preset-px-to-rem": "^1.2.1"
   },
   "devDependencies": {
+    "@types/glob": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -37,6 +38,7 @@
     "eslint-plugin-prettier": "^5.2.3",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
+    "minimatch": "^5.1.6",
     "postcss": "^8",
     "prettier": "^3.5.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
