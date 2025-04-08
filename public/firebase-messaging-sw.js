@@ -19,11 +19,27 @@ firebase.initializeApp(firebaseConfig)
 
 const messaging = firebase.messaging()
 
-messaging.onBackgroundMessage((payload) => {
-  const title = payload.notification.title + ' (onBackgroundMessage)'
+// 포그라운드 메시지 수신
+self.addEventListener('message', (event) => {
+  const payload = event.data
+
+  const title = payload.data?.title || '알림'
   const notificationOptions = {
-    body: payload.notification.body,
+    body: payload.data?.body || '',
     icon: '/assets/pwa/192.png',
+    data: payload.data,
+  }
+
+  self.registration.showNotification(title, notificationOptions)
+})
+
+// 백그라운드 메시지 수신
+messaging.onBackgroundMessage((payload) => {
+  const title = payload.data.title
+  const notificationOptions = {
+    body: payload.data.body,
+    icon: '/assets/pwa/192.png',
+    data: payload.data,
   }
 
   self.registration.showNotification(title, notificationOptions)
@@ -32,7 +48,8 @@ messaging.onBackgroundMessage((payload) => {
 self.addEventListener('notificationclick', function (event) {
   event.notification.close()
 
-  const redirectUrl = event?.notification?.data?.redirectUrl
+  const redirectUrl =
+    event?.notification?.data?.redirectUrl || event.data?.redirectUrl
 
   event.waitUntil(
     clients.matchAll({ type: 'window' }).then(function (clientList) {

@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-export const sendEndChatNotification = async (userId: string) => {
+export const sendNotification = async (userId: string) => {
   const accessToken = Cookies.get('accessToken1')
 
   try {
