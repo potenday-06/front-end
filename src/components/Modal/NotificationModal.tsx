@@ -12,8 +12,8 @@ const NotificationModal = ({ closeModal }: { closeModal: () => void }) => {
 
   const handleConfirm = async () => {
     if (!userId) return
-    await saveFcmTokenToFirestore(userId)
     closeModal()
+    await saveFcmTokenToFirestore(userId)
   }
 
   return (
