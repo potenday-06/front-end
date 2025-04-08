@@ -4,6 +4,7 @@ export interface Conversation {
   conversationId: number
   createdAt: number
   summary: string
+  keywords: string[]
 }
 
 interface StarConversations {
