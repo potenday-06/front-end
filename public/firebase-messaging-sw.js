@@ -19,20 +19,6 @@ firebase.initializeApp(firebaseConfig)
 
 const messaging = firebase.messaging()
 
-// 포그라운드 메시지 수신
-self.addEventListener('message', (event) => {
-  const payload = event.data
-
-  const title = payload.data?.title || '알림'
-  const notificationOptions = {
-    body: payload.data?.body || '',
-    icon: '/assets/pwa/192.png',
-    data: payload.data,
-  }
-
-  self.registration.showNotification(title, notificationOptions)
-})
-
 // 백그라운드 메시지 수신
 messaging.onBackgroundMessage((payload) => {
   const title = payload.data.title
