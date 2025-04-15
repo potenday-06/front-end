@@ -19,21 +19,21 @@
     "firebase-admin": "^13.2.0",
     "js-cookie": "^3.0.5",
     "lottie-react": "^2.4.1",
-    "next": "15.1.7",
+    "next": "15.3.0",
     "next-pwa": "^5.6.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "tailwindcss-preset-px-to-rem": "^1.2.1"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",
     "eslint": "^8.57.1",
-    "eslint-config-next": "^15.1.7",
+    "eslint-config-next": "15.3.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "husky": "^9.1.7",
@@ -53,5 +53,9 @@
     "*.{md,json}": [
       "prettier --write"
     ]
+  },
+  "overrides": {
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2"
   }
 }
