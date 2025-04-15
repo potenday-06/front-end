@@ -179,23 +179,25 @@ Progressive Web Application을 적용하여 **모바일 홈 화면에 앱을 추
 
 #### 추가 순서
 
-<p>
-  1. 모바일 크롬 또는 사파리에서 https://toristar.site 접속<br/>
-  2. 상단 주소창 우측 공유 버튼 클릭(크롬 기준)<br/>
-  3. 아래로 스크롤 후 '홈 화면에 추가' 메뉴 선택<br/>
-  4. 우측 상단에 '추가' 버튼 선택 후 홈 화면에 pwa 앱 생성 및 실행
-</p>
-<img src="public/readme/pwa-1.PNG" width="200px" height="420px">
-<img src="public/readme/pwa-2.PNG" width="200px" height="420px">
-<img src="public/readme/pwa-3.PNG" width="200px" height="420px">
-<img src="public/readme/pwa-4.PNG" width="200px" height="420px">
-
+<div>
+  <p>
+    1. 모바일 크롬 또는 사파리에서 https://toristar.site 접속<br/>
+    2. 상단 주소창 우측 공유 버튼 클릭(크롬 기준)<br/>
+    3. 아래로 스크롤 후 '홈 화면에 추가' 메뉴 선택<br/>
+    4. 우측 상단에 '추가' 버튼 선택 후 홈 화면에 pwa 앱 생성 및 실행
+  </p>
+  <img src="public/readme/pwa-1.PNG" width="200px" height="420px">
+  <img src="public/readme/pwa-2.PNG" width="200px" height="420px">
+  <img src="public/readme/pwa-3.PNG" width="200px" height="420px">
+  <img src="public/readme/pwa-4.PNG" width="200px" height="420px">
+</div>
 ## 6. push 알림
 
 알림 설정을 허용한 유저에 한해서 **매일 오후 7시에 push 알림을 전송**합니다. 앱을 닫고 있어도 백그라운드 알림을 받을 수 있습니다.
 
 #### 알림 허용 방법
 
+<div>
   <p>
     1. 메인 페이지 좌측 상단 알림 버튼 클릭<br/>
     2. 알림 모달에서 허용 선택<br/>
@@ -203,5 +205,6 @@ Progressive Web Application을 적용하여 **모바일 홈 화면에 앱을 추
   </p>
   <img src="public/readme/push-1.jpg" width="200px" height="420px">
   <img src="public/readme/push-2.jpg" width="200px" height="420px">
-  <img src="public/readme/push-3.jpg" width="200px" height="420px">
+  <img src="public/readme/push-5.jpg" width="200px" height="420px">
   <img src="public/readme/push-4.JPG" width="200px" height="420px">
+</div>
