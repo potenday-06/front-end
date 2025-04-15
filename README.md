@@ -178,19 +178,19 @@ npm run dev # 웹 실행
 Progressive Web Application을 적용하여 **모바일 홈 화면에 앱을 추가**할 수 있습니다.
 
 #### 추가 순서
-
-<p>
-  1. 모바일 크롬 또는 사파리에서 https://toristar.site 접속<br/>
-  2. 상단 주소창 우측 공유 버튼 클릭(크롬 기준)<br/>
-  3. 아래로 스크롤 후 '홈 화면에 추가' 메뉴 선택
-</p>
-<img src="public/readme/pwa-1.PNG" width="200px" height="420px">
-<img src="public/readme/pwa-2.PNG" width="200px" height="420px">
-
 <div>
-  <p>4. 우측 상단에 '추가' 버튼 선택 후 홈 화면에 pwa 앱 생성 및 실행</p>
-  <img src="public/readme/pwa-3.PNG" width="200px" height="420px">
-  <img src="public/readme/pwa-4.PNG" width="200px" height="420px">
+    <p>
+      1. 모바일 크롬 또는 사파리에서 https://toristar.site 접속<br/>
+      2. 상단 주소창 우측 공유 버튼 클릭(크롬 기준)<br/>
+      3. 아래로 스크롤 후 '홈 화면에 추가' 메뉴 선택
+    </p>
+    <img src="public/readme/pwa-1.PNG" width="200px" height="420px">
+    <img src="public/readme/pwa-2.PNG" width="200px" height="420px">
+</div>
+<div>
+    <p>4. 우측 상단에 '추가' 버튼 선택 후 홈 화면에 pwa 앱 생성 및 실행</p>
+    <img src="public/readme/pwa-3.PNG" width="200px" height="420px">
+    <img src="public/readme/pwa-4.PNG" width="200px" height="420px">
 </div>
 
 ## 6. push 알림
