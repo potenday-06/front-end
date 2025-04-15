@@ -191,6 +191,7 @@ Progressive Web Application을 적용하여 **모바일 홈 화면에 앱을 추
   <img src="public/readme/pwa-3.PNG" width="200px" height="420px">
   <img src="public/readme/pwa-4.PNG" width="200px" height="420px">
 </div>
+
 ## 6. push 알림
 
 알림 설정을 허용한 유저에 한해서 **매일 오후 7시에 push 알림을 전송**합니다. 앱을 닫고 있어도 백그라운드 알림을 받을 수 있습니다.
