@@ -205,7 +205,8 @@ Progressive Web Application을 적용하여 **모바일 홈 화면에 앱을 추
     2. 알림 모달에서 허용 선택<br/>
     3. 오후 7시 push 알림 수신
   </p>
-  <img src="public/readme/push-1.jpg" width="200px" height="420px">
-  <img src="public/readme/push-2.jpg" width="200px" height="420px">
-  <img src="public/readme/push-3.JPG" width="200px" height="420px">
+  <img src="public/readme/push-1.jpg" width="250px" height="520px">
+  <img src="public/readme/push-2.jpg" width="250px" height="520px">
+  <img src="public/readme/push-3.jpg" width="250px" height="520px">
+  <img src="public/readme/push-4.JPG" width="250px" height="520px">
 </div>
