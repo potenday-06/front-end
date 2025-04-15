@@ -184,13 +184,13 @@ Progressive Web Application을 적용하여 **모바일 홈 화면에 앱을 추
   2. 상단 주소창 우측 공유 버튼 클릭(크롬 기준)<br/>
   3. 아래로 스크롤 후 '홈 화면에 추가' 메뉴 선택
 </p>
-<img src="public/readme/pwa-1.png" width="200px" height="420px">
-<img src="public/readme/pwa-2.png" width="200px" height="420px">
+<img src="public/readme/pwa-1.PNG" width="200px" height="420px">
+<img src="public/readme/pwa-2.PNG" width="200px" height="420px">
 
 <div>
   <p>4. 우측 상단에 '추가' 버튼 선택 후 홈 화면에 pwa 앱 생성 및 실행</p>
-  <img src="public/readme/pwa-3.png" width="200px" height="420px">
-  <img src="public/readme/pwa-4.png" width="200px" height="420px">
+  <img src="public/readme/pwa-3.PNG" width="200px" height="420px">
+  <img src="public/readme/pwa-4.PNG" width="200px" height="420px">
 </div>
 
 ## 6. push 알림
@@ -207,5 +207,5 @@ Progressive Web Application을 적용하여 **모바일 홈 화면에 앱을 추
   </p>
   <img src="public/readme/push-1.jpg" width="200px" height="420px">
   <img src="public/readme/push-2.jpg" width="200px" height="420px">
-  <img src="public/readme/push-3.jpg" width="200px" height="420px">
+  <img src="public/readme/push-3.JPG" width="200px" height="420px">
 </div>
