@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import { ChatMode } from './Chat'
-import AIMessage from './AiMessage'
+
 import MessageList from './MessageList'
 import { MessageType } from '@/utils/api/wholeConversation/getWholeConversation'
+import { useEffect, useRef } from 'react'
 
 const ChatMain = ({
   chatMode,
@@ -15,9 +16,22 @@ const ChatMain = ({
   summary: string
   isLoading: boolean
 }) => {
+  const summaryRef = useRef<HTMLParagraphElement>(null)
+
+  useEffect(() => {
+    if (chatMode === 'end' && summaryRef.current) {
+      summaryRef.current.focus()
+    }
+  }, [chatMode])
+
   return chatMode === 'end' ? (
     <main className='flex flex-1 flex-col items-center justify-between overflow-y-hidden px-24 pb-0 pt-40'>
-      <p className='scrollbar-bar-hidden overflow-y-auto text-16-600 [&::-webkit-scrollbar]:hidden'>
+      <p
+        ref={summaryRef}
+        tabIndex={-1}
+        aria-live='assertive'
+        className='scrollbar-bar-hidden overflow-y-auto text-16-600 [&::-webkit-scrollbar]:hidden'
+      >
         {summary}
       </p>
       <Image
