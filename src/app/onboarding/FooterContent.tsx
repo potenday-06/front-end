@@ -1,4 +1,4 @@
-const OnboardingDescription = ({ step }: { step: number }) => {
+const FooterContent = ({ step }: { step: number }) => {
   return (
     <>
       {step === 1 && (
@@ -41,4 +41,4 @@ const OnboardingDescription = ({ step }: { step: number }) => {
   )
 }
 
-export default OnboardingDescription
+export default FooterContent
