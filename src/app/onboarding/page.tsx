@@ -25,11 +25,6 @@ const Onboarding = () => {
 
   const [isAnimationComplete, setIsAnimationComplete] = useState(false)
 
-  const backgroundImageStyle = clsx('bg-cloud-case1', {
-    'bg-cloud-onb-page2': step === 2,
-    'bg-cloud-onb-page3': step === 3,
-  })
-
   const mainStyle = clsx({
     'justify-end': step === 2,
   })
@@ -73,7 +68,7 @@ const Onboarding = () => {
     </div>
   ) : (
     <div
-      className={`${backgroundImageStyle} flex h-svh flex-col bg-purple-20 pt-24 ${fadeClasses[fadeState]}`}
+      className={`bg-cloud-onb-page3 flex h-svh flex-col bg-purple-20 pt-24 ${fadeClasses[fadeState]}`}
     >
       <ProgressBar step={step} />
 

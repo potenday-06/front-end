@@ -18,6 +18,7 @@ const MainContent = ({ step }: { step: number }) => {
           height={106}
           src='/assets/icons/tori-hug-star.svg'
           alt='토리'
+          priority
         />
       )}
       {step === 3 && (
@@ -28,6 +29,7 @@ const MainContent = ({ step }: { step: number }) => {
             height={136}
             src='/assets/icons/star-with-ring.svg'
             alt='별'
+            priority
           />
           <Image
             className='absolute left-1/2 top-[45%] -translate-x-1/2'
@@ -35,6 +37,7 @@ const MainContent = ({ step }: { step: number }) => {
             height={103}
             src='/assets/icons/star.svg'
             alt='별'
+            priority
           />
         </div>
       )}
