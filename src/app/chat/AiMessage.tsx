@@ -15,7 +15,7 @@ const AIMessage = ({ content }: Pick<MessageProps, 'content'>) => {
         {content ? (
           <div className='text-14-500'>{content}</div>
         ) : (
-          <p className='text-14-500'>
+          <p className='text-14-500' tabIndex={0}>
             같이 대화해서 좋아!
             <br />
             오늘 기분 어떤지 이야기해줄래?

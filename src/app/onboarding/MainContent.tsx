@@ -7,7 +7,10 @@ const MainContent = ({ step }: { step: number }) => {
       {step === 1 && (
         <div className='w-full pt-24'>
           <AIMessage />
-          <div className='ml-auto mt-24 flex w-max items-center justify-center rounded-12 border border-solid border-[#b49df1] bg-white px-23 py-13 text-14-500 text-purple-40'>
+          <div
+            tabIndex={0}
+            className='ml-auto mt-24 flex w-max items-center justify-center rounded-12 border border-solid border-[#b49df1] bg-white px-23 py-13 text-14-500 text-purple-40'
+          >
             나는 오늘 너무 기분 좋았어!
           </div>
         </div>
