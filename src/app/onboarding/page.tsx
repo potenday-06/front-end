@@ -4,17 +4,17 @@ import Image from 'next/image'
 
 import { useLayoutEffect, useState } from 'react'
 
-import StepTwo from './Step2'
-import StepThree from './Step3'
-import StepOne from './Step1'
 import Lottie from 'lottie-react'
 import splashScreen from '../../../public/assets/animation/splash-screen.json'
 
 import Link from 'next/link'
-import OnboardingDescription from './OnboardingDescription'
+
 import { useRouter } from 'next/navigation'
 import Footer from '@/components/Footer'
 import clsx from 'clsx'
+import ProgressBar from '@/components/ProgressBar'
+import FooterContent from './FooterContent'
+import MainContent from './MainContent'
 
 type FadeState = 'splash' | 'fade-out' | 'fade-in'
 
@@ -24,11 +24,6 @@ const Onboarding = () => {
   const [fadeState, setFadeState] = useState<FadeState>('splash')
 
   const [isAnimationComplete, setIsAnimationComplete] = useState(false)
-
-  const backgroundImageStyle = clsx('bg-cloud-case1', {
-    'bg-cloud-onb-page2': step === 2,
-    'bg-cloud-onb-page3': step === 3,
-  })
 
   const mainStyle = clsx({
     'justify-end': step === 2,
@@ -65,19 +60,6 @@ const Onboarding = () => {
     }
   }
 
-  const renderStep = () => {
-    switch (step) {
-      case 1:
-        return <StepOne />
-      case 2:
-        return <StepTwo />
-      case 3:
-        return <StepThree />
-      default:
-        return null
-    }
-  }
-
   return !isAnimationComplete ? (
     <div
       className={`z-[9999] h-svh max-w-414 overflow-y-hidden bg-[#8a60ff] ${fadeClasses[fadeState]}`}
@@ -86,23 +68,16 @@ const Onboarding = () => {
     </div>
   ) : (
     <div
-      className={`${backgroundImageStyle} flex h-svh flex-col bg-purple-20 ${fadeClasses[fadeState]}`}
+      className={`bg-cloud-onb-page3 flex h-svh flex-col bg-purple-20 pt-24 ${fadeClasses[fadeState]}`}
     >
-      <header className='flex justify-center p-24'>
-        <Image
-          width={289}
-          height={32}
-          src={`/assets/icons/progress-bar-${step}.svg`}
-          alt='상태바'
-        />
-      </header>
+      <ProgressBar step={step} />
 
       <main className={`${mainStyle} flex flex-1 flex-col items-center p-24`}>
-        {renderStep()}
+        <MainContent step={step} />
       </main>
 
       <Footer type='onboarding'>
-        <OnboardingDescription step={step} />
+        <FooterContent step={step} />
 
         <div className='flex items-center justify-between'>
           {step !== 1 ? (
