@@ -6,13 +6,13 @@ importScripts(
 )
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCTCA9I3rwf36j6Vf_5zZdb78THjn-pfrs',
-  authDomain: 'next-pwa-dd8a6.firebaseapp.com',
-  projectId: 'next-pwa-dd8a6',
-  storageBucket: 'next-pwa-dd8a6.firebasestorage.app',
-  messagingSenderId: '326049825993',
-  appId: '1:326049825993:web:87c418ba62493c62c37918',
-  measurementId: 'G-9VZ01RCGZY',
+  apiKey: 'AIzaSyD8Ei3a_gOgOTQIsg0YVNFFJNC0_Kqka0U',
+  authDomain: 'toristar-pwa.firebaseapp.com',
+  projectId: 'toristar-pwa',
+  storageBucket: 'toristar-pwa.firebasestorage.app',
+  messagingSenderId: '777760746951',
+  appId: '1:777760746951:web:52a2a42333c3f31725fde2',
+  measurementId: 'G-33J5XFYGT8',
 }
 
 firebase.initializeApp(firebaseConfig)
