@@ -1,3 +1,4 @@
+import ProgressBar from '@/components/ProgressBar'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -8,8 +9,6 @@ const ChatOnboardingHeader = ({
   step: number
   onPrev?: () => void
 }) => {
-  const progressBarSrc = `/assets/icons/progress-bar-${step}.svg`
-
   return (
     <>
       {step !== 4 ? (
@@ -17,17 +16,12 @@ const ChatOnboardingHeader = ({
           <button
             onClick={onPrev}
             aria-label='뒤로 돌아가기 버튼'
-            className='relative h-24 w-24 cursor-pointer'
+            className='relative mr-auto h-24 w-24 cursor-pointer'
           >
             <Image fill src='/assets/icons/button-prev-gray.svg' alt='' />
           </button>
-          <Image
-            className='ml-auto'
-            width={289}
-            height={32}
-            src={progressBarSrc}
-            alt='상태 바'
-          />
+
+          <ProgressBar step={step} />
           <div className='h-16 w-16' />
         </header>
       ) : (

@@ -3,55 +3,57 @@
 import { useEffect } from 'react'
 import { getMessaging, onMessage, isSupported } from 'firebase/messaging'
 import { firebaseApp } from '@/firebase'
+import { useRouter } from 'next/navigation'
 
 const FirebaseMessagingInit = () => {
-  useEffect(() => {
-    const setupFCM = async () => {
-      if (!('Notification' in window)) return
-
-      const permission = Notification.permission
-
-      const supported = await isSupported()
-      if (!supported) return
-
-      if (permission === 'default') {
-        // 자동 권한 요청
-        const newPermission = await Notification.requestPermission()
-
-        if (newPermission !== 'granted') return
-      }
-    }
-
-    setupFCM()
-  }, [])
+  const router = useRouter()
 
   useEffect(() => {
     const listenForeground = async () => {
       const supported = await isSupported()
-      if (!supported) return
+      if (!supported) {
+        console.warn('브라우저가 FCM을 지원하지 않습니다.')
+        return
+      }
 
-      const messaging = getMessaging(firebaseApp)
+      try {
+        const messaging = getMessaging(firebaseApp)
 
-      // 포그라운드 메시지 수신
-      onMessage(messaging, (payload) => {
-        if (Notification.permission === 'granted') {
-          const notification = new Notification(
-            payload.notification?.title || '알림',
-            {
-              body: payload.notification?.body || '',
+        // 포그라운드 메시지 수신 리스너 설정
+        onMessage(messaging, (payload) => {
+          if (Notification.permission === 'granted') {
+            const title = payload.data?.title || '알림'
+            const body = payload.data?.body || ''
+            const redirectUrl = payload.data?.redirectUrl || '/'
+
+            const notificationOptions = {
+              body: body,
               icon: '/assets/pwa/192.png',
+              data: {
+                redirectUrl: redirectUrl,
+              },
             }
-          )
 
-          notification.onclick = () => {
-            window.open('/', '_blank')?.focus()
+            const notification = new Notification(title, notificationOptions)
+
+            notification.onclick = (event) => {
+              event.preventDefault()
+              window.focus()
+              notification.close()
+
+              if (redirectUrl) {
+                router.push(redirectUrl)
+              }
+            }
           }
-        }
-      })
+        })
+      } catch (error) {
+        console.error('포그라운드 메시지 리스너 설정 오류:', error)
+      }
     }
 
     listenForeground()
-  }, [])
+  }, [router])
 
   return null
 }

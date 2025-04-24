@@ -28,11 +28,11 @@ export async function POST(request: Request) {
     const fcmToken = userDoc.data().fcmToken
 
     const message = {
-      notification: {
+      data: {
         title,
         body: notificationBody,
+        redirectUrl: data.redirectUrl || '/',
       },
-      data: data || {},
       token: fcmToken,
     }
 

@@ -50,6 +50,8 @@ const MessageList = ({ messages, viewOnly, chatMode }: MessageListProps) => {
       <div
         className='relative'
         style={{ height: `${rowVirtualizer.getTotalSize()}px` }}
+        aria-live='polite'
+        aria-atomic='false'
       >
         {items.map((item) => {
           const message = messagesWithTrigger[item.index]

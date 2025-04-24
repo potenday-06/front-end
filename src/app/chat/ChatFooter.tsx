@@ -2,7 +2,7 @@ import Button from '@/components/Button'
 import ChatUserInput from './ChatUserInput'
 import { ChatMode } from './Chat'
 import { Dispatch, SetStateAction } from 'react'
-import { sendEndChatNotification } from '@/utils/firebaseCloudMessaging/sendNotification'
+import { sendNotification } from '@/utils/firebaseCloudMessaging/sendNotification'
 
 interface ChatFooterProps {
   chatMode: ChatMode
@@ -29,7 +29,7 @@ const ChatFooter = ({
 
       if (userId) {
         // push 알림 전송
-        await sendEndChatNotification(userId)
+        await sendNotification(userId)
       }
 
       setShowAnimation(true)

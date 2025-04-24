@@ -1,4 +1,5 @@
 import Button from '@/components/Button'
+import NotificationButton from '@/components/NotificationButton'
 import { getUserInfo } from '@/utils/api/userInfo/getUserInfo'
 
 import Image from 'next/image'
@@ -16,7 +17,7 @@ export default async function Home() {
   return (
     <div className='bg-cloud-main relative flex min-h-svh flex-col justify-between p-24'>
       <header className='flex items-center justify-between'>
-        <div className='h-24 w-24' />
+        <NotificationButton />
         <h1 className='text-18'>토리별</h1>
         <Link
           href='/setting'
