@@ -4,6 +4,8 @@ const useCheckMobileDevice = () => {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const checkMobileDevice = () => {
       const userAgent = navigator.userAgent.toLowerCase()
       const mobileRegex =
