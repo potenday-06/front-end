@@ -15,7 +15,7 @@ const FooterContent = ({ step }: { step: number }) => {
     <>
       {step === 1 && (
         <>
-          <div className='text-16-500 text-purple-40' tabIndex={0}>
+          <div className='text-16-500 text-purple-40 outline-none' tabIndex={0}>
             안녕? 여기는 토리가 있는 토리별이야!
             <br />
             토리는 아이들과 대화하는 AI토끼야.
@@ -30,7 +30,7 @@ const FooterContent = ({ step }: { step: number }) => {
 
       {step === 2 && (
         <div
-          className='text-16-500 text-purple-40'
+          className='text-16-500 text-purple-40 outline-none'
           tabIndex={0}
           ref={contentRef}
         >
@@ -46,7 +46,7 @@ const FooterContent = ({ step }: { step: number }) => {
 
       {step === 3 && (
         <div
-          className='text-16-500 text-purple-40'
+          className='text-16-500 text-purple-40 outline-none'
           tabIndex={0}
           ref={contentRef}
         >
