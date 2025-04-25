@@ -1,9 +1,9 @@
 'use client'
 
-import Chat from './Chat'
+import dynamic from 'next/dynamic'
 
-const Page = () => {
+const Chat = dynamic(() => import('./Chat'), { ssr: false })
+
+export default function Page() {
   return <Chat />
 }
-
-export default Page
