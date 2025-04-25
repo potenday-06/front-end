@@ -6,6 +6,7 @@ const FooterContent = ({ step }: { step: number }) => {
   const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
     if (contentRef.current) {
       contentRef.current.focus()
     }

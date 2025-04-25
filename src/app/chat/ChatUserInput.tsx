@@ -17,6 +17,7 @@ const ChatUserInput = ({ onSubmit, isLoading }: ChatUserInputProps) => {
   const isMobile = useCheckMobileDevice()
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
     if (textareaRef.current) {
       textareaRef.current.focus()
     }
