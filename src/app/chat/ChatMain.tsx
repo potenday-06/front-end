@@ -19,6 +19,7 @@ const ChatMain = ({
   const summaryRef = useRef<HTMLParagraphElement>(null)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
     if (chatMode === 'end' && summaryRef.current) {
       summaryRef.current.focus()
     }
