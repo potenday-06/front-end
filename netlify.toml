@@ -1,2 +1,8 @@
 [[plugins]]
 package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/auth/callback/kakao"
+  to = "https://toristar.site/auth/callback/kakao"
+  status = 301
+  force = true
