@@ -6,13 +6,13 @@ importScripts(
 )
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyD8Ei3a_gOgOTQIsg0YVNFFJNC0_Kqka0U',
-  authDomain: 'toristar-pwa.firebaseapp.com',
-  projectId: 'toristar-pwa',
-  storageBucket: 'toristar-pwa.firebasestorage.app',
-  messagingSenderId: '777760746951',
-  appId: '1:777760746951:web:52a2a42333c3f31725fde2',
-  measurementId: 'G-33J5XFYGT8',
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 }
 
 firebase.initializeApp(firebaseConfig)
