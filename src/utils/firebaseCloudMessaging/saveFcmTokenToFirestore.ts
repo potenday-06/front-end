@@ -1,6 +1,6 @@
 import { getMessaging, getToken, isSupported } from 'firebase/messaging'
-import { doc, setDoc } from 'firebase/firestore'
-import { firebaseApp, db } from '@/firebase'
+import { firebaseApp } from '@/firebase'
+import Cookies from 'js-cookie'
 
 /**
  * FCM 토큰을 발급하고 Firestore에 저장합니다.
@@ -8,6 +8,7 @@ import { firebaseApp, db } from '@/firebase'
  */
 
 export const saveFcmTokenToFirestore = async (userId: string) => {
+  const accessToken = Cookies.get('accessToken1')
   if (typeof window === 'undefined') return
 
   try {
@@ -24,6 +25,7 @@ export const saveFcmTokenToFirestore = async (userId: string) => {
     }
 
     const messaging = getMessaging(firebaseApp)
+
     const fcmToken = await getToken(messaging, {
       vapidKey: process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY,
     })
@@ -33,11 +35,22 @@ export const saveFcmTokenToFirestore = async (userId: string) => {
       return
     }
 
-    const userRef = doc(db, 'users', userId)
-    await setDoc(userRef, {
-      fcmToken,
-      updatedAt: new Date().toISOString(),
+    const response = await fetch(`/api/fcmtoken`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        userId,
+        fcmToken,
+      }),
     })
+
+    if (!response.ok) {
+      throw new Error('fcmToken 저장 실패')
+    }
+
     console.log('FCM 토큰 Firestore 저장 완료')
   } catch (error) {
     console.error('FCM 저장 중 오류 발생:', error)
