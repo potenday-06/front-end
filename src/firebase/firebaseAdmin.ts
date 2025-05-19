@@ -1,20 +1,21 @@
 import admin from 'firebase-admin'
 
-// Firebase Admin SDK가 이미 초기화되었는지 확인
 if (!admin.apps.length) {
-  const serviceAccountBase64 = process.env.FIREBASE_SERVICE_ACCOUNT_KEY
+  const privateKey = process.env.NEXT_PUBLIC_PRIVATE_KEY?.replace(/\\n/g, '\n')
+  const clientEmail = process.env.NEXT_PUBLIC_CLIENT_EMAIL
+  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID
 
-  if (!serviceAccountBase64) {
-    throw new Error('FIREBASE_SERVICE_ACCOUNT_KEY_BASE64 환경 변수가 없습니다.')
+  if (!privateKey || !clientEmail || !projectId) {
+    throw new Error('Firebase 환경변수가 누락되었습니다.')
   }
 
-  const serviceAccount = JSON.parse(
-    Buffer.from(serviceAccountBase64, 'base64').toString('utf-8')
-  )
-
   admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: `https://${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}.firebaseio.com`,
+    credential: admin.credential.cert({
+      privateKey,
+      clientEmail,
+      projectId,
+    }),
+    databaseURL: `https://${projectId}.firebaseio.com`,
   })
 }
 
