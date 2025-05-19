@@ -2,13 +2,13 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCTCA9I3rwf36j6Vf_5zZdb78THjn-pfrs',
-  authDomain: 'next-pwa-dd8a6.firebaseapp.com',
-  projectId: 'next-pwa-dd8a6',
-  storageBucket: 'next-pwa-dd8a6.firebasestorage.app',
-  messagingSenderId: '326049825993',
-  appId: '1:326049825993:web:87c418ba62493c62c37918',
-  measurementId: 'G-9VZ01RCGZY',
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 }
 
 // firebase 초기화
